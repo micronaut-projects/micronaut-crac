@@ -5,4 +5,5 @@ plugins {
 dependencies {
     api(libs.managed.crac)
     compileOnly(mn.micronaut.http.server.netty)
+    testRuntimeOnly(mn.micronaut.http.server.netty)
 }
