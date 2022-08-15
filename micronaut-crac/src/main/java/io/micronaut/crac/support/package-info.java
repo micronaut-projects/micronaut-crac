@@ -17,7 +17,6 @@
  * Adds Ordered CRaC support to the Micronaut Framework.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 
 @Configuration
