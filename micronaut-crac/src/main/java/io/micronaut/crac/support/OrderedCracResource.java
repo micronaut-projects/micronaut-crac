@@ -25,7 +25,6 @@ import io.micronaut.core.order.Ordered;
  * into the Micronaut classpath.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 public interface OrderedCracResource extends Ordered {
