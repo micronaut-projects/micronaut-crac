@@ -23,7 +23,6 @@ import io.micronaut.core.annotation.NonNull;
  * delegates to the CRaC api.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 @FunctionalInterface
