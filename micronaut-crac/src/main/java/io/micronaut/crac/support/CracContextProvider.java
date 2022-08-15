@@ -22,7 +22,6 @@ import org.crac.Resource;
 /**
  * API to get the Context for checkpoint/restore notifications.
  * @author Sergio del Amo
- * @since 3.7.0
  */
 @FunctionalInterface
 public interface CracContextProvider {
