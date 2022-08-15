@@ -13,19 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.support;
+package io.micronaut.crac;
 
-import io.micronaut.core.annotation.Experimental;
+import io.micronaut.core.annotation.NonNull;
+import jakarta.inject.Singleton;
+import org.crac.Context;
+import org.crac.Core;
+import org.crac.Resource;
 
 /**
- * Registers all defined Resources for Coordinated Restore at Checkpoint.
- *
- * @author Tim Yates
- * @since 3.7.0
+ * Gets a Global Context through {@link Core#getGlobalContext()}.
+ * @author Sergio del Amo
+ * @since 1.0.0
  */
-@Experimental
-@FunctionalInterface
-public interface CracResourceRegistrar {
-
-    void registerResources();
+@Singleton
+public class GlobalCracContextProvider implements CracContextProvider {
+    @Override
+    @NonNull
+    public Context<Resource> provideContext() {
+        return Core.getGlobalContext();
+    }
 }
