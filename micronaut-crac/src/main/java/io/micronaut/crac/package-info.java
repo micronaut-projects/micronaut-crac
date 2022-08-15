@@ -18,7 +18,6 @@
  *
  * @see <a href="https://openjdk.org/projects/crac/">OpenJDK CrAC (Coordinated Restore at Checkpoint)</a>.
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 package io.micronaut.crac;
