@@ -13,24 +13,24 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.support;
+package io.micronaut.crac;
 
 import io.micronaut.core.annotation.NonNull;
-import jakarta.inject.Singleton;
 import org.crac.Context;
-import org.crac.Core;
 import org.crac.Resource;
 
 /**
- * Gets a Global Context through {@link Core#getGlobalContext()}.
+ * API to get the Context for checkpoint/restore notifications.
  * @author Sergio del Amo
- * @since 3.7.0
+ * @since 1.0.0
  */
-@Singleton
-public class GlobalCracContextProvider implements CracContextProvider {
-    @Override
+@FunctionalInterface
+public interface CracContextProvider {
+
+    /**
+     *
+     * @return Gets the Context for checkpoint/restore notifications.
+     */
     @NonNull
-    public Context<Resource> provideContext() {
-        return Core.getGlobalContext();
-    }
+    Context<Resource> provideContext();
 }

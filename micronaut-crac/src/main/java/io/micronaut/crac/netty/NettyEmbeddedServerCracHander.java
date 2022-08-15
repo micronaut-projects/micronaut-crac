@@ -18,11 +18,11 @@ package io.micronaut.crac.netty;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
-import io.micronaut.core.annotation.NonNull;
-import io.micronaut.crac.support.CracContext;
-import io.micronaut.crac.support.CracResourceRegistrar;
-import io.micronaut.crac.support.OrderedCracResource;
+import io.micronaut.crac.CracResourceRegistrar;
+import io.micronaut.crac.OrderedResource;
 import io.micronaut.http.server.netty.NettyEmbeddedServer;
+import org.crac.Context;
+import org.crac.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -30,13 +30,13 @@ import org.slf4j.LoggerFactory;
  * Register the NettyEmbedded server as a CRaC resource on startup if CRaC is enabled.
  *
  * @author Tim Yates
- * @since 3.7.0
+ * @since 1.0.0
  */
 @Experimental
 @EachBean(NettyEmbeddedServer.class)
 @Requires(classes = {NettyEmbeddedServer.class})
 @Requires(bean = CracResourceRegistrar.class)
-public class NettyEmbeddedServerCracHander implements OrderedCracResource {
+public class NettyEmbeddedServerCracHander implements OrderedResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerCracHander.class);
 
@@ -47,7 +47,7 @@ public class NettyEmbeddedServerCracHander implements OrderedCracResource {
     }
 
     @Override
-    public void beforeCheckpoint(@NonNull CracContext context) throws Exception {
+    public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
         if (LOG.isDebugEnabled()) {
             LOG.debug("Stopping netty server {}", server);
         }
@@ -55,7 +55,7 @@ public class NettyEmbeddedServerCracHander implements OrderedCracResource {
     }
 
     @Override
-    public void afterRestore(@NonNull CracContext context) throws Exception {
+    public void afterRestore(Context<? extends Resource> context) throws Exception {
         if (LOG.isDebugEnabled()) {
             LOG.debug("Starting netty server {}", server);
         }

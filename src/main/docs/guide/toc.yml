@@ -1,7 +1,8 @@
 introduction:
   title: Introduction
 releaseHistory: Release History
-quickStart:
-  title: Quick Start
+installation: Installation
+resource: Resources
+context: Context Provider
 repository: Repository
 

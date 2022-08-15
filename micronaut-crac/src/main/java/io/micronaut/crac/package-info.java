@@ -20,7 +20,13 @@
  * @author Tim Yates
  * @since 3.7.0
  */
+
+@Configuration
 @Experimental
+@Requires(property = CracConfiguration.PREFIX + ".enabled", defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 package io.micronaut.crac;
 
+import io.micronaut.context.annotation.Configuration;
+import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.core.util.StringUtils;

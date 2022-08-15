@@ -23,7 +23,7 @@ import io.micronaut.core.util.Toggleable;
  * Configuration for CRaC support. Enabled by default.
  *
  * @author Tim Yates
- * @since 3.7.0
+ * @since 1.0.0
  */
 @Experimental
 @ConfigurationProperties(CracConfiguration.PREFIX)

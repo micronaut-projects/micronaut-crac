@@ -1,7 +1,6 @@
 package io.micronaut.crac
 
 import io.micronaut.context.exceptions.NoSuchBeanException
-import io.micronaut.crac.support.CracResourceRegistrar
 import spock.lang.Specification
 import io.micronaut.context.ApplicationContext
 

@@ -4,11 +4,13 @@ import io.micronaut.context.annotation.Property
 import io.micronaut.context.annotation.Replaces
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.annotation.NonNull
-import io.micronaut.crac.support.CracContext
-import io.micronaut.crac.support.OrderedCracResource
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
+import org.crac.CheckpointException
+import org.crac.Context
+import org.crac.Resource
+import org.crac.RestoreException
 import spock.lang.Specification
 
 @Property(name = "spec.name", value = "CracRegistrationSpec")
@@ -16,11 +18,11 @@ import spock.lang.Specification
 class CracRegistrationSpec extends Specification {
 
     @Inject
-    CracContextReplacement cracContextReplacement
+    CracContextProviderReplacement cracContextProviderReplacement
 
     def "resources are registered in the expected order"() {
         expect:
-        cracContextReplacement.registrations == [
+        cracContextProviderReplacement.replacement.registrations == [
                 'TestResource',
                 'NettyEmbeddedServerCracHander',
                 'TestResource3',
@@ -30,19 +32,37 @@ class CracRegistrationSpec extends Specification {
 
     @Singleton
     @Requires(property = "spec.name", value = "CracRegistrationSpec")
-    @Replaces(CracContext.class)
-    static class CracContextReplacement implements CracContext {
+    @Replaces(CracContextProvider.class)
+    static class CracContextProviderReplacement implements CracContextProvider {
+        Context<Resource> replacement = new ContextReplacement();
+        @Override
+        @NonNull
+        Context<Resource> provideContext() {
+            return replacement;
+        }
+    }
+
+    static class ContextReplacement extends Context<Resource> {
         static List<String> registrations = []
+        @Override
+        void beforeCheckpoint(Context<? extends Resource> context) throws CheckpointException {
+
+        }
 
         @Override
-        void register(@NonNull OrderedCracResource orderedCracResource) {
-            registrations.add(orderedCracResource.class.simpleName)
+        void afterRestore(Context<? extends Resource> context) throws RestoreException {
+
+        }
+
+        @Override
+        void register(Resource resource) {
+            registrations.add(resource.class.simpleName)
         }
     }
 
     @Singleton
     @Requires(property = "spec.name", value = "CracRegistrationSpec")
-    static class TestResource implements OrderedCracResource {
+    static class TestResource implements OrderedResource {
 
         @Override
         int getOrder() {
@@ -50,19 +70,19 @@ class CracRegistrationSpec extends Specification {
         }
 
         @Override
-        void beforeCheckpoint(@NonNull CracContext context) throws Exception {
+        void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
 
         }
 
         @Override
-        void afterRestore(@NonNull CracContext context) throws Exception {
+        void afterRestore(Context<? extends Resource> context) throws Exception {
 
         }
     }
 
     @Singleton
     @Requires(property = "spec.name", value = "CracRegistrationSpec")
-    static class TestResource2 implements OrderedCracResource {
+    static class TestResource2 implements OrderedResource {
 
         @Override
         int getOrder() {
@@ -70,19 +90,19 @@ class CracRegistrationSpec extends Specification {
         }
 
         @Override
-        void beforeCheckpoint(@NonNull CracContext context) throws Exception {
+        void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
 
         }
 
         @Override
-        void afterRestore(@NonNull CracContext context) throws Exception {
+        void afterRestore(Context<? extends Resource> context) throws Exception {
 
         }
     }
 
     @Singleton
     @Requires(property = "spec.name", value = "CracRegistrationSpec")
-    static class TestResource3 implements OrderedCracResource {
+    static class TestResource3 implements OrderedResource {
 
         @Override
         int getOrder() {
@@ -90,12 +110,12 @@ class CracRegistrationSpec extends Specification {
         }
 
         @Override
-        void beforeCheckpoint(@NonNull CracContext context) throws Exception {
+        void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
 
         }
 
         @Override
-        void afterRestore(@NonNull CracContext context) throws Exception {
+        void afterRestore(Context<? extends Resource> context) throws Exception {
 
         }
     }

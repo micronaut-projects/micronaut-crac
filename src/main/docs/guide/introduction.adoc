@@ -1,1 +1,1 @@
-TODO
+This Micronaut module adds support for https://wiki.openjdk.org/display/CRaC[CRaC (Coordinated Restore at Checkpoint)] within the framework.
