@@ -28,7 +28,6 @@ import org.slf4j.LoggerFactory;
  * delegates to the CRaC api.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 @Singleton
