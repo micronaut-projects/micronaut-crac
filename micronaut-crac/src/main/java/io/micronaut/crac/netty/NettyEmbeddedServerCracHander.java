@@ -30,7 +30,6 @@ import org.slf4j.LoggerFactory;
  * Register the NettyEmbedded server as a CRaC resource on startup if CRaC is enabled.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 @EachBean(NettyEmbeddedServer.class)
