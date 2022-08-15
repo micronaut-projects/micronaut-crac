@@ -24,7 +24,6 @@ import java.util.List;
  * Registers all defined Resources for Coordinated Restore at Checkpoint.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 @Singleton
