@@ -24,7 +24,6 @@ import org.crac.Resource;
 /**
  * Gets a Global Context through {@link Core#getGlobalContext()}.
  * @author Sergio del Amo
- * @since 3.7.0
  */
 @Singleton
 public class GlobalCracContextProvider implements CracContextProvider {
