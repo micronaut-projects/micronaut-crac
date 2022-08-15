@@ -13,10 +13,12 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.support;
+package io.micronaut.crac;
 
 import io.micronaut.core.annotation.Experimental;
 import jakarta.inject.Singleton;
+import org.crac.Context;
+import org.crac.Resource;
 
 import java.util.List;
 
@@ -24,27 +26,25 @@ import java.util.List;
  * Registers all defined Resources for Coordinated Restore at Checkpoint.
  *
  * @author Tim Yates
- * @since 3.7.0
+ * @since 1.0.0
  */
 @Experimental
 @Singleton
 public class OrderedCracResourceRegistrar implements CracResourceRegistrar {
 
-    private final List<? extends OrderedCracResource> resources;
-    private final CracContext context;
+    private final List<OrderedResource> resources;
+    private final Context<Resource> context;
 
     /**
      * Collects together all available CRaC resources in the order specified.
      *
      * @param resources The ordered registered CRaC resources
-     * @param context   The CRaC context
+     * @param contextProvider CRaC context provider
      */
-    public OrderedCracResourceRegistrar(
-        List<? extends OrderedCracResource> resources,
-        CracContext context
-    ) {
+    public OrderedCracResourceRegistrar(List<OrderedResource> resources,
+                                        CracContextProvider contextProvider) {
         this.resources = resources;
-        this.context = context;
+        this.context = contextProvider.provideContext();
     }
 
     /**

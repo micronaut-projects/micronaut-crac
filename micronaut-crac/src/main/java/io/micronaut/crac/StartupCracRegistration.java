@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.support;
+package io.micronaut.crac;
 
 import io.micronaut.context.event.ApplicationEventListener;
 import io.micronaut.context.event.StartupEvent;
@@ -23,7 +23,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Registers all defined Resources for Coordinated Restore at Checkpoint at application startup.
+ * Registers all defined Resources for Coordinated Restore at Checkpoint at {@link StartupEvent}.
+ * @author Tim Yates
+ * @since 1.0.0
  */
 @Experimental
 @Singleton

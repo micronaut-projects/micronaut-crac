@@ -1,0 +1,3 @@
+Add the following the dependency to your build:
+
+dependency:io.micronaut.crac:micronaut-crac[]

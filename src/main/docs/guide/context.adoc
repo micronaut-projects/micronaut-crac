@@ -1,0 +1,1 @@
+api:crac.GlobalCracContextProvider[], Micronaut CRaC's default implementation of api:crac.CracContextProvider[], returns the global context. You can provide a replacement for api:crac.CracContextProvider[] and provide your custom https://crac.github.io/openjdk-builds/javadoc/api/java.base/jdk/crac/Context.html[Context].

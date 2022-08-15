@@ -13,20 +13,21 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
+package io.micronaut.crac;
+
+import io.micronaut.core.annotation.Experimental;
+
 /**
- * Adds Ordered CRaC support to the Micronaut Framework.
+ * Registers all defined Resources for Coordinated Restore at Checkpoint.
  *
  * @author Tim Yates
- * @since 3.7.0
+ * @since 1.0.0
  */
-
-@Configuration
 @Experimental
-@Requires(property = CracConfiguration.PREFIX + ".enabled", defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
-package io.micronaut.crac.support;
-
-import io.micronaut.context.annotation.Configuration;
-import io.micronaut.context.annotation.Requires;
-import io.micronaut.core.annotation.Experimental;
-import io.micronaut.core.util.StringUtils;
-import io.micronaut.crac.CracConfiguration;
+@FunctionalInterface
+public interface CracResourceRegistrar {
+    /**
+     * Registers Every CRaC resource.
+     */
+    void registerResources();
+}

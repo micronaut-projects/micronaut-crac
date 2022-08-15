@@ -1,7 +1,6 @@
 package io.micronaut.crac
 
-import io.micronaut.context.exceptions.NoSuchBeanException
-import io.micronaut.crac.support.CracResourceRegistrar
+import io.micronaut.core.util.StringUtils
 import spock.lang.Specification
 import io.micronaut.context.ApplicationContext
 
@@ -29,19 +28,14 @@ class CracConfigurationSpec extends Specification {
 
     void "CRaC can be disabled"() {
         given:
-        def ctx = ApplicationContext.run('crac.enabled': 'false')
+        ApplicationContext ctx = ApplicationContext.run('crac.enabled': StringUtils.FALSE)
 
-        when:
-        def cfg = ctx.getBean(CracConfiguration)
-
-        then:
-        !cfg.enabled
-
-        when:
-        ctx.getBean(CracResourceRegistrar)
-
-        then:
-        thrown(NoSuchBeanException)
+        expect:
+        !ctx.containsBean(CracConfiguration)
+        !ctx.containsBean(CracContextProvider)
+        !ctx.containsBean(OrderedResource)
+        !ctx.containsBean(StartupCracRegistration)
+        !ctx.containsBean(CracResourceRegistrar)
 
         cleanup:
         ctx.close()

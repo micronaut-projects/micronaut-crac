@@ -13,26 +13,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.support;
+package io.micronaut.crac;
 
 import io.micronaut.core.annotation.Experimental;
-import io.micronaut.core.annotation.NonNull;
+import io.micronaut.core.order.Ordered;
+import org.crac.Resource;
 
 /**
- * The gateway between Micronaut and the CRaC api. Takes our own internal resources, and uses them as
- * delegates to the CRaC api.
+ * A Coordinated Restore at Checkpoint Resource that may also be {@link Ordered}.
  *
  * @author Tim Yates
- * @since 3.7.0
+ * @since 1.0.0
  */
 @Experimental
-@FunctionalInterface
-public interface CracContext {
-
-    /**
-     * Create a {@link org.crac.Resource} from the given {@link OrderedCracResource} and register it with the CRaC {@link org.crac.Context}.
-     *
-     * @param orderedCracResource CRaC Resource.
-     */
-    void register(@NonNull OrderedCracResource orderedCracResource);
+public interface OrderedResource extends Resource, Ordered {
 }
