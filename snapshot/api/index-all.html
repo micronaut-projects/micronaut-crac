@@ -72,28 +72,16 @@
 </a>
 <h2 class="title">A</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#afterRestore-io.micronaut.crac.support.CracContext-">afterRestore(CracContext)</a></span> - Method in class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#afterRestore-org.crac.Context-">afterRestore(Context&lt;? extends Resource&gt;)</a></span> - Method in class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/CracFacadeResource.html#afterRestore-org.crac.Context-">afterRestore(Context&lt;? extends Resource&gt;)</a></span> - Method in class io.micronaut.crac.support.<a href="io/micronaut/crac/support/CracFacadeResource.html" title="class in io.micronaut.crac.support">CracFacadeResource</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/OrderedCracResource.html#afterRestore-io.micronaut.crac.support.CracContext-">afterRestore(CracContext)</a></span> - Method in interface io.micronaut.crac.support.<a href="io/micronaut/crac/support/OrderedCracResource.html" title="interface in io.micronaut.crac.support">OrderedCracResource</a></dt>
-<dd>
-<div class="block">Invoked by a <code>Context</code> as a notification about restore.</div>
-</dd>
 </dl>
 <a name="I:B">
 <!--   -->
 </a>
 <h2 class="title">B</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#beforeCheckpoint-io.micronaut.crac.support.CracContext-">beforeCheckpoint(CracContext)</a></span> - Method in class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#beforeCheckpoint-org.crac.Context-">beforeCheckpoint(Context&lt;? extends Resource&gt;)</a></span> - Method in class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/CracFacadeResource.html#beforeCheckpoint-org.crac.Context-">beforeCheckpoint(Context&lt;? extends Resource&gt;)</a></span> - Method in class io.micronaut.crac.support.<a href="io/micronaut/crac/support/CracFacadeResource.html" title="class in io.micronaut.crac.support">CracFacadeResource</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/OrderedCracResource.html#beforeCheckpoint-io.micronaut.crac.support.CracContext-">beforeCheckpoint(CracContext)</a></span> - Method in interface io.micronaut.crac.support.<a href="io/micronaut/crac/support/OrderedCracResource.html" title="interface in io.micronaut.crac.support">OrderedCracResource</a></dt>
-<dd>
-<div class="block">Invoked by a <code>Context</code> as a notification about checkpoint.</div>
-</dd>
 </dl>
 <a name="I:C">
 <!--   -->
@@ -106,21 +94,11 @@
 </dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/CracConfiguration.html#CracConfiguration--">CracConfiguration()</a></span> - Constructor for class io.micronaut.crac.<a href="io/micronaut/crac/CracConfiguration.html" title="class in io.micronaut.crac">CracConfiguration</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="io/micronaut/crac/support/CracContext.html" title="interface in io.micronaut.crac.support"><span class="typeNameLink">CracContext</span></a> - Interface in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
-<dd>
-<div class="block">The gateway between Micronaut and the CRaC api.</div>
-</dd>
-<dt><a href="io/micronaut/crac/support/CracContextProvider.html" title="interface in io.micronaut.crac.support"><span class="typeNameLink">CracContextProvider</span></a> - Interface in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
+<dt><a href="io/micronaut/crac/CracContextProvider.html" title="interface in io.micronaut.crac"><span class="typeNameLink">CracContextProvider</span></a> - Interface in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
 <dd>
 <div class="block">API to get the Context for checkpoint/restore notifications.</div>
 </dd>
-<dt><a href="io/micronaut/crac/support/CracFacadeResource.html" title="class in io.micronaut.crac.support"><span class="typeNameLink">CracFacadeResource</span></a> - Class in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
-<dd>
-<div class="block">The bridge between a Micronaut CRaC Resource and the CRaC api.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/CracFacadeResource.html#CracFacadeResource-io.micronaut.crac.support.OrderedCracResource-">CracFacadeResource(OrderedCracResource)</a></span> - Constructor for class io.micronaut.crac.support.<a href="io/micronaut/crac/support/CracFacadeResource.html" title="class in io.micronaut.crac.support">CracFacadeResource</a></dt>
-<dd>&nbsp;</dd>
-<dt><a href="io/micronaut/crac/support/CracResourceRegistrar.html" title="interface in io.micronaut.crac.support"><span class="typeNameLink">CracResourceRegistrar</span></a> - Interface in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
+<dt><a href="io/micronaut/crac/CracResourceRegistrar.html" title="interface in io.micronaut.crac"><span class="typeNameLink">CracResourceRegistrar</span></a> - Interface in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
 <dd>
 <div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint.</div>
 </dd>
@@ -134,23 +112,17 @@
 <dd>
 <div class="block">The default enable value.</div>
 </dd>
-<dt><a href="io/micronaut/crac/support/DefaultCracContext.html" title="class in io.micronaut.crac.support"><span class="typeNameLink">DefaultCracContext</span></a> - Class in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
-<dd>
-<div class="block">The gateway between Micronaut and the CRaC api.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/DefaultCracContext.html#DefaultCracContext-io.micronaut.crac.support.CracContextProvider-">DefaultCracContext(CracContextProvider)</a></span> - Constructor for class io.micronaut.crac.support.<a href="io/micronaut/crac/support/DefaultCracContext.html" title="class in io.micronaut.crac.support">DefaultCracContext</a></dt>
-<dd>&nbsp;</dd>
 </dl>
 <a name="I:G">
 <!--   -->
 </a>
 <h2 class="title">G</h2>
 <dl>
-<dt><a href="io/micronaut/crac/support/GlobalCracContextProvider.html" title="class in io.micronaut.crac.support"><span class="typeNameLink">GlobalCracContextProvider</span></a> - Class in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
+<dt><a href="io/micronaut/crac/GlobalCracContextProvider.html" title="class in io.micronaut.crac"><span class="typeNameLink">GlobalCracContextProvider</span></a> - Class in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
 <dd>
 <div class="block">Gets a Global Context through <code>Core.getGlobalContext()</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/GlobalCracContextProvider.html#GlobalCracContextProvider--">GlobalCracContextProvider()</a></span> - Constructor for class io.micronaut.crac.support.<a href="io/micronaut/crac/support/GlobalCracContextProvider.html" title="class in io.micronaut.crac.support">GlobalCracContextProvider</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/GlobalCracContextProvider.html#GlobalCracContextProvider--">GlobalCracContextProvider()</a></span> - Constructor for class io.micronaut.crac.<a href="io/micronaut/crac/GlobalCracContextProvider.html" title="class in io.micronaut.crac">GlobalCracContextProvider</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:I">
@@ -165,10 +137,6 @@
 <dt><a href="io/micronaut/crac/netty/package-summary.html">io.micronaut.crac.netty</a> - package io.micronaut.crac.netty</dt>
 <dd>
 <div class="block">Classes related to supporting a Netty Server runtime with CRaC.</div>
-</dd>
-<dt><a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a> - package io.micronaut.crac.support</dt>
-<dd>
-<div class="block">Adds Ordered CRaC support to the Micronaut Framework.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/CracConfiguration.html#isEnabled--">isEnabled()</a></span> - Method in class io.micronaut.crac.<a href="io/micronaut/crac/CracConfiguration.html" title="class in io.micronaut.crac">CracConfiguration</a></dt>
 <dd>&nbsp;</dd>
@@ -190,19 +158,19 @@
 </a>
 <h2 class="title">O</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/StartupCracRegistration.html#onApplicationEvent-io.micronaut.context.event.StartupEvent-">onApplicationEvent(StartupEvent)</a></span> - Method in class io.micronaut.crac.support.<a href="io/micronaut/crac/support/StartupCracRegistration.html" title="class in io.micronaut.crac.support">StartupCracRegistration</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/StartupCracRegistration.html#onApplicationEvent-io.micronaut.context.event.StartupEvent-">onApplicationEvent(StartupEvent)</a></span> - Method in class io.micronaut.crac.<a href="io/micronaut/crac/StartupCracRegistration.html" title="class in io.micronaut.crac">StartupCracRegistration</a></dt>
 <dd>&nbsp;</dd>
-<dt><a href="io/micronaut/crac/support/OrderedCracResource.html" title="interface in io.micronaut.crac.support"><span class="typeNameLink">OrderedCracResource</span></a> - Interface in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
-<dd>
-<div class="block">A Coordinated Restore at Checkpoint Resource that may also be Ordered.</div>
-</dd>
-<dt><a href="io/micronaut/crac/support/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac.support"><span class="typeNameLink">OrderedCracResourceRegistrar</span></a> - Class in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
+<dt><a href="io/micronaut/crac/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac"><span class="typeNameLink">OrderedCracResourceRegistrar</span></a> - Class in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
 <dd>
 <div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/OrderedCracResourceRegistrar.html#OrderedCracResourceRegistrar-java.util.List-io.micronaut.crac.support.CracContext-">OrderedCracResourceRegistrar(List&lt;? extends OrderedCracResource&gt;, CracContext)</a></span> - Constructor for class io.micronaut.crac.support.<a href="io/micronaut/crac/support/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac.support">OrderedCracResourceRegistrar</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/OrderedCracResourceRegistrar.html#OrderedCracResourceRegistrar-java.util.List-io.micronaut.crac.CracContextProvider-">OrderedCracResourceRegistrar(List&lt;OrderedResource&gt;, CracContextProvider)</a></span> - Constructor for class io.micronaut.crac.<a href="io/micronaut/crac/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac">OrderedCracResourceRegistrar</a></dt>
 <dd>
 <div class="block">Collects together all available CRaC resources in the order specified.</div>
+</dd>
+<dt><a href="io/micronaut/crac/OrderedResource.html" title="interface in io.micronaut.crac"><span class="typeNameLink">OrderedResource</span></a> - Interface in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
+<dd>
+<div class="block">A Coordinated Restore at Checkpoint Resource that may also be <code>Ordered</code>.</div>
 </dd>
 </dl>
 <a name="I:P">
@@ -214,9 +182,9 @@
 <dd>
 <div class="block">The prefix to use for CRaC configuration.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/CracContextProvider.html#provideContext--">provideContext()</a></span> - Method in interface io.micronaut.crac.support.<a href="io/micronaut/crac/support/CracContextProvider.html" title="interface in io.micronaut.crac.support">CracContextProvider</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/CracContextProvider.html#provideContext--">provideContext()</a></span> - Method in interface io.micronaut.crac.<a href="io/micronaut/crac/CracContextProvider.html" title="interface in io.micronaut.crac">CracContextProvider</a></dt>
 <dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/GlobalCracContextProvider.html#provideContext--">provideContext()</a></span> - Method in class io.micronaut.crac.support.<a href="io/micronaut/crac/support/GlobalCracContextProvider.html" title="class in io.micronaut.crac.support">GlobalCracContextProvider</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/GlobalCracContextProvider.html#provideContext--">provideContext()</a></span> - Method in class io.micronaut.crac.<a href="io/micronaut/crac/GlobalCracContextProvider.html" title="class in io.micronaut.crac">GlobalCracContextProvider</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:R">
@@ -224,17 +192,11 @@
 </a>
 <h2 class="title">R</h2>
 <dl>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/CracContext.html#register-io.micronaut.crac.support.OrderedCracResource-">register(OrderedCracResource)</a></span> - Method in interface io.micronaut.crac.support.<a href="io/micronaut/crac/support/CracContext.html" title="interface in io.micronaut.crac.support">CracContext</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/CracResourceRegistrar.html#registerResources--">registerResources()</a></span> - Method in interface io.micronaut.crac.<a href="io/micronaut/crac/CracResourceRegistrar.html" title="interface in io.micronaut.crac">CracResourceRegistrar</a></dt>
 <dd>
-<div class="block">Create a <code>Resource</code> from the given <a href="io/micronaut/crac/support/OrderedCracResource.html" title="interface in io.micronaut.crac.support"><code>OrderedCracResource</code></a> and register it with the CRaC <code>Context</code>.</div>
+<div class="block">Registers Every CRaC resource.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/DefaultCracContext.html#register-io.micronaut.crac.support.OrderedCracResource-">register(OrderedCracResource)</a></span> - Method in class io.micronaut.crac.support.<a href="io/micronaut/crac/support/DefaultCracContext.html" title="class in io.micronaut.crac.support">DefaultCracContext</a></dt>
-<dd>
-<div class="block">Create a <code>Resource</code> from the given <a href="io/micronaut/crac/support/OrderedCracResource.html" title="interface in io.micronaut.crac.support"><code>OrderedCracResource</code></a> and register it with the CRaC <code>Context</code>.</div>
-</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/CracResourceRegistrar.html#registerResources--">registerResources()</a></span> - Method in interface io.micronaut.crac.support.<a href="io/micronaut/crac/support/CracResourceRegistrar.html" title="interface in io.micronaut.crac.support">CracResourceRegistrar</a></dt>
-<dd>&nbsp;</dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/OrderedCracResourceRegistrar.html#registerResources--">registerResources()</a></span> - Method in class io.micronaut.crac.support.<a href="io/micronaut/crac/support/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac.support">OrderedCracResourceRegistrar</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/OrderedCracResourceRegistrar.html#registerResources--">registerResources()</a></span> - Method in class io.micronaut.crac.<a href="io/micronaut/crac/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac">OrderedCracResourceRegistrar</a></dt>
 <dd>
 <div class="block">For each known resource, register it with the CRaC context.</div>
 </dd>
@@ -248,11 +210,11 @@
 <dd>
 <div class="block">Whether CRaC (Coordinated Restore at Checkpoint) support, even if we're on a supporting JDK, is enabled.</div>
 </dd>
-<dt><a href="io/micronaut/crac/support/StartupCracRegistration.html" title="class in io.micronaut.crac.support"><span class="typeNameLink">StartupCracRegistration</span></a> - Class in <a href="io/micronaut/crac/support/package-summary.html">io.micronaut.crac.support</a></dt>
+<dt><a href="io/micronaut/crac/StartupCracRegistration.html" title="class in io.micronaut.crac"><span class="typeNameLink">StartupCracRegistration</span></a> - Class in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
 <dd>
-<div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint at application startup.</div>
+<div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint at <code>StartupEvent</code>.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/support/StartupCracRegistration.html#StartupCracRegistration-io.micronaut.crac.support.CracResourceRegistrar-">StartupCracRegistration(CracResourceRegistrar)</a></span> - Constructor for class io.micronaut.crac.support.<a href="io/micronaut/crac/support/StartupCracRegistration.html" title="class in io.micronaut.crac.support">StartupCracRegistration</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/StartupCracRegistration.html#StartupCracRegistration-io.micronaut.crac.CracResourceRegistrar-">StartupCracRegistration(CracResourceRegistrar)</a></span> - Constructor for class io.micronaut.crac.<a href="io/micronaut/crac/StartupCracRegistration.html" title="class in io.micronaut.crac">StartupCracRegistration</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a href="#I:A">A</a>&nbsp;<a href="#I:B">B</a>&nbsp;<a href="#I:C">C</a>&nbsp;<a href="#I:D">D</a>&nbsp;<a href="#I:G">G</a>&nbsp;<a href="#I:I">I</a>&nbsp;<a href="#I:N">N</a>&nbsp;<a href="#I:O">O</a>&nbsp;<a href="#I:P">P</a>&nbsp;<a href="#I:R">R</a>&nbsp;<a href="#I:S">S</a>&nbsp;</div>

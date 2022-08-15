@@ -68,6 +68,11 @@
 </a></div>
 <!-- ========= END OF TOP NAVBAR ========= -->
 <div class="header">
+<p>@Configuration
+ @Requires(property="crac.enabled",
+          defaultValue="true",
+          value="true")
+</p>
 <h1 title="Package" class="title">Package&nbsp;io.micronaut.crac</h1>
 <div class="docSummary">
 <div class="block">A set of classes to support Coordinated Restore at Checkpoint (CRaC).</div>
@@ -76,6 +81,35 @@
 </div>
 <div class="contentContainer">
 <ul class="blockList">
+<li class="blockList">
+<table class="typeSummary" border="0" cellpadding="3" cellspacing="0" summary="Interface Summary table, listing interfaces, and an explanation">
+<caption><span>Interface Summary</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Interface</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tbody>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../io/micronaut/crac/CracContextProvider.html" title="interface in io.micronaut.crac">CracContextProvider</a></td>
+<td class="colLast">
+<div class="block">API to get the Context for checkpoint/restore notifications.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../io/micronaut/crac/CracResourceRegistrar.html" title="interface in io.micronaut.crac">CracResourceRegistrar</a></td>
+<td class="colLast">
+<div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../io/micronaut/crac/OrderedResource.html" title="interface in io.micronaut.crac">OrderedResource</a></td>
+<td class="colLast">
+<div class="block">A Coordinated Restore at Checkpoint Resource that may also be <code>Ordered</code>.</div>
+</td>
+</tr>
+</tbody>
+</table>
+</li>
 <li class="blockList">
 <table class="typeSummary" border="0" cellpadding="3" cellspacing="0" summary="Class Summary table, listing classes, and an explanation">
 <caption><span>Class Summary</span><span class="tabEnd">&nbsp;</span></caption>
@@ -88,6 +122,24 @@
 <td class="colFirst"><a href="../../../io/micronaut/crac/CracConfiguration.html" title="class in io.micronaut.crac">CracConfiguration</a></td>
 <td class="colLast">
 <div class="block">Configuration for CRaC support.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../io/micronaut/crac/GlobalCracContextProvider.html" title="class in io.micronaut.crac">GlobalCracContextProvider</a></td>
+<td class="colLast">
+<div class="block">Gets a Global Context through <code>Core.getGlobalContext()</code>.</div>
+</td>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><a href="../../../io/micronaut/crac/OrderedCracResourceRegistrar.html" title="class in io.micronaut.crac">OrderedCracResourceRegistrar</a></td>
+<td class="colLast">
+<div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint.</div>
+</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><a href="../../../io/micronaut/crac/StartupCracRegistration.html" title="class in io.micronaut.crac">StartupCracRegistration</a></td>
+<td class="colLast">
+<div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint at <code>StartupEvent</code>.</div>
 </td>
 </tr>
 </tbody>
