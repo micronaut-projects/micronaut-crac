@@ -32,7 +32,7 @@ import java.util.List;
 @Singleton
 public class OrderedCracResourceRegistrar implements CracResourceRegistrar {
 
-    private final List<? extends OrderedResource> resources;
+    private final List<OrderedResource> resources;
     private final Context<Resource> context;
 
     /**
@@ -41,10 +41,8 @@ public class OrderedCracResourceRegistrar implements CracResourceRegistrar {
      * @param resources The ordered registered CRaC resources
      * @param contextProvider CRaC context provider
      */
-    public OrderedCracResourceRegistrar(
-        List<? extends OrderedResource> resources,
-        CracContextProvider contextProvider
-    ) {
+    public OrderedCracResourceRegistrar(List<OrderedResource> resources,
+                                        CracContextProvider contextProvider) {
         this.resources = resources;
         this.context = contextProvider.provideContext();
     }
