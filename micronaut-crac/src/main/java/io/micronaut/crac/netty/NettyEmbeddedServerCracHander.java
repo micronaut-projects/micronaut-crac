@@ -34,6 +34,7 @@ import org.slf4j.LoggerFactory;
  */
 @Experimental
 @EachBean(NettyEmbeddedServer.class)
+@Requires(classes = {NettyEmbeddedServer.class})
 @Requires(bean = CracResourceRegistrar.class)
 public class NettyEmbeddedServerCracHander implements OrderedCracResource {
 
