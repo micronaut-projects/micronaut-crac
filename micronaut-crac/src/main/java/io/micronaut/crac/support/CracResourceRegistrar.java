@@ -21,7 +21,6 @@ import io.micronaut.core.annotation.Experimental;
  * Registers all defined Resources for Coordinated Restore at Checkpoint.
  *
  * @author Tim Yates
- * @since 3.7.0
  */
 @Experimental
 @FunctionalInterface
