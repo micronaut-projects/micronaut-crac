@@ -9,10 +9,10 @@ plugins {
     id 'io.micronaut.build.shared.settings' version '5.3.14'
 }
 
-rootProject.name = 'micronaut-crac-parent'
+rootProject.name = 'crac-parent'
 
-include 'micronaut-crac'
-include 'micronaut-crac-bom'
+include 'crac'
+include 'crac-bom'
 
 micronautBuild {
     importMicronautCatalog()
