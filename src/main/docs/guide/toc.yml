@@ -3,6 +3,7 @@ introduction:
 releaseHistory: Release History
 installation: Installation
 resource: Resources
+events: Events
 context: Context Provider
 repository: Repository
 
