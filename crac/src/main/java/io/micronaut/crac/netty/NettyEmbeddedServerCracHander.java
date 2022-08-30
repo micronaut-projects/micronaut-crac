@@ -48,9 +48,13 @@ public class NettyEmbeddedServerCracHander implements OrderedResource {
     private final ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher;
     private final NettyEmbeddedServer server;
 
-    public NettyEmbeddedServerCracHander(ApplicationContext applicationContext, NettyEmbeddedServer server) {
-        beforeCheckpointEventPublisher = applicationContext.getEventPublisher(BeforeCheckpointEvent.class);
-        afterRestoreEventPublisher = applicationContext.getEventPublisher(AfterRestoreEvent.class);
+    public NettyEmbeddedServerCracHander(
+        ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher,
+        ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher,
+        NettyEmbeddedServer server
+    ) {
+        this.beforeCheckpointEventPublisher = beforeCheckpointEventPublisher;
+        this.afterRestoreEventPublisher = afterRestoreEventPublisher;
         this.server = server;
     }
 
