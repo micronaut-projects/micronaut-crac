@@ -27,6 +27,10 @@ import io.micronaut.crac.OrderedResource;
 @Experimental
 public class AfterRestoreEvent extends BaseTimedEvent {
 
+    /**
+     * @param resource The resource that triggered the event.
+     * @param timeTakenNanos The time token for the action to be processed in nanoseconds.
+     */
     public AfterRestoreEvent(OrderedResource resource, long timeTakenNanos) {
         super(resource, timeTakenNanos);
     }

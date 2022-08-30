@@ -27,20 +27,34 @@ abstract class BaseTimedEvent {
     private final long timeTakenNanos;
     private final OrderedResource resource;
 
+    /**
+     * A base class for CRaC events.
+     * @param resource The resource that triggered the event.
+     * @param timeTakenNanos The time token for the action to be processed in nanoseconds.
+     */
     BaseTimedEvent(OrderedResource resource, long timeTakenNanos) {
         this.resource = resource;
         this.now = Instant.now();
         this.timeTakenNanos = timeTakenNanos;
     }
 
+    /**
+     * @return The resource that triggered the event.
+     */
     public OrderedResource getResource() {
         return resource;
     }
 
+    /**
+     * @return The {@link Instant} the event was fired.
+     */
     public Instant getNow() {
         return now;
     }
 
+    /**
+     * @return The time token for the action to be processed in nanoseconds.
+     */
     public long getTimeTakenNanos() {
         return timeTakenNanos;
     }
