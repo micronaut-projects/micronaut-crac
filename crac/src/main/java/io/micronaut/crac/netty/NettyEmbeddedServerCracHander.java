@@ -15,7 +15,6 @@
  */
 package io.micronaut.crac.netty;
 
-import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.event.ApplicationEventPublisher;

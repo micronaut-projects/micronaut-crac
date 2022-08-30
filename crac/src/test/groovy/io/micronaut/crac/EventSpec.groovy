@@ -1,7 +1,6 @@
 package io.micronaut.crac
 
 import io.micronaut.context.ApplicationContext
-import io.micronaut.context.annotation.Context
 import io.micronaut.context.annotation.Requires
 import io.micronaut.crac.events.AfterRestoreEvent
 import io.micronaut.crac.events.BeforeCheckpointEvent
