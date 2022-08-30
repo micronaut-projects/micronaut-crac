@@ -15,11 +15,15 @@
  */
 package io.micronaut.crac.netty;
 
+import io.micronaut.context.ApplicationContext;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.context.event.ApplicationEventPublisher;
 import io.micronaut.core.annotation.Experimental;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
+import io.micronaut.crac.events.AfterRestoreEvent;
+import io.micronaut.crac.events.BeforeCheckpointEvent;
 import io.micronaut.http.server.netty.NettyEmbeddedServer;
 import org.crac.Context;
 import org.crac.Resource;
@@ -40,9 +44,13 @@ public class NettyEmbeddedServerCracHander implements OrderedResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerCracHander.class);
 
+    private final ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher;
+    private final ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher;
     private final NettyEmbeddedServer server;
 
-    public NettyEmbeddedServerCracHander(NettyEmbeddedServer server) {
+    public NettyEmbeddedServerCracHander(ApplicationContext applicationContext, NettyEmbeddedServer server) {
+        beforeCheckpointEventPublisher = applicationContext.getEventPublisher(BeforeCheckpointEvent.class);
+        afterRestoreEventPublisher = applicationContext.getEventPublisher(AfterRestoreEvent.class);
         this.server = server;
     }
 
@@ -51,7 +59,9 @@ public class NettyEmbeddedServerCracHander implements OrderedResource {
         if (LOG.isDebugEnabled()) {
             LOG.debug("Stopping netty server {}", server);
         }
+        long beforeStart = System.nanoTime();
         server.stop();
+        beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(this, System.nanoTime() - beforeStart));
     }
 
     @Override
@@ -59,6 +69,8 @@ public class NettyEmbeddedServerCracHander implements OrderedResource {
         if (LOG.isDebugEnabled()) {
             LOG.debug("Starting netty server {}", server);
         }
+        long beforeStart = System.nanoTime();
         server.start();
+        afterRestoreEventPublisher.publishEvent(new AfterRestoreEvent(this, System.nanoTime() - beforeStart));
     }
 }
