@@ -25,10 +25,16 @@ abstract class BaseTimedEvent {
 
     private final Instant now;
     private final long timeTakenNanos;
+    private final OrderedResource resource;
 
     BaseTimedEvent(OrderedResource resource, long timeTakenNanos) {
+        this.resource = resource;
         this.now = Instant.now();
         this.timeTakenNanos = timeTakenNanos;
+    }
+
+    public OrderedResource getResource() {
+        return resource;
     }
 
     public Instant getNow() {
