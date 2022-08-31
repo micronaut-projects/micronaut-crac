@@ -17,12 +17,10 @@ package io.micronaut.crac.netty;
 
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
-import io.micronaut.context.event.ApplicationEventPublisher;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
-import io.micronaut.crac.events.AfterRestoreEvent;
-import io.micronaut.crac.events.BeforeCheckpointEvent;
 import io.micronaut.http.server.netty.NettyEmbeddedServer;
 import org.crac.Context;
 import org.crac.Resource;
@@ -43,37 +41,38 @@ public class NettyEmbeddedServerCracHander implements OrderedResource {
 
     private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerCracHander.class);
 
-    private final ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher;
-    private final ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher;
+    private final CracEventPublisher eventPublisher;
     private final NettyEmbeddedServer server;
 
     public NettyEmbeddedServerCracHander(
-        ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher,
-        ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher,
+        CracEventPublisher eventPublisher,
         NettyEmbeddedServer server
     ) {
-        this.beforeCheckpointEventPublisher = beforeCheckpointEventPublisher;
-        this.afterRestoreEventPublisher = afterRestoreEventPublisher;
+        this.eventPublisher = eventPublisher;
         this.server = server;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Stopping netty server {}", server);
-        }
-        long beforeStart = System.nanoTime();
-        server.stop();
-        beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(this, System.nanoTime() - beforeStart));
+        eventPublisher.fireBeforeCheckpointEvents(this, () -> {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Stopping netty server {}", server);
+            }
+            long beforeStart = System.nanoTime();
+            server.stop();
+            return System.nanoTime() - beforeStart;
+        });
     }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Starting netty server {}", server);
-        }
-        long beforeStart = System.nanoTime();
-        server.start();
-        afterRestoreEventPublisher.publishEvent(new AfterRestoreEvent(this, System.nanoTime() - beforeStart));
+        eventPublisher.fireAfterRestoreEvents(this, () -> {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Starting netty server {}", server);
+            }
+            long beforeStart = System.nanoTime();
+            server.start();
+            return System.nanoTime() - beforeStart;
+        });
     }
 }

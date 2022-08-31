@@ -16,14 +16,14 @@
 /**
  * A set of classes to support Coordinated Restore at Checkpoint (CRaC).
  *
- * @see <a href="https://openjdk.org/projects/crac/">OpenJDK CrAC (Coordinated Restore at Checkpoint)</a>.
+ * @see <a href="https://openjdk.org/projects/crac/">OpenJDK CrAC (Coordinated Restore at Checkpoint)</a>
  * @author Tim Yates
  * @since 3.7.0
  */
 
 @Configuration
 @Experimental
-@Requires(property = CracConfiguration.PREFIX + ".enabled", defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
+@Requires(property = CracConfigurationProperties.PREFIX + ".enabled", defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 package io.micronaut.crac;
 
 import io.micronaut.context.annotation.Configuration;

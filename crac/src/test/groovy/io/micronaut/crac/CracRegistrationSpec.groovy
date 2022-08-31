@@ -20,7 +20,7 @@ class CracRegistrationSpec extends Specification {
     @Inject
     CracContextProviderReplacement cracContextProviderReplacement
 
-    def "resources are registered in the expected order"() {
+    void "resources are registered in the expected order"() {
         expect:
         cracContextProviderReplacement.replacement.registrations == [
                 'TestResource',

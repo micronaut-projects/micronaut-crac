@@ -6,15 +6,16 @@ import io.micronaut.crac.events.AfterRestoreEvent
 import io.micronaut.crac.events.BeforeCheckpointEvent
 import io.micronaut.crac.netty.NettyEmbeddedServerCracHander
 import io.micronaut.http.server.netty.NettyEmbeddedServer
+import io.micronaut.runtime.context.scope.refresh.RefreshEvent
 import io.micronaut.runtime.event.annotation.EventListener
 import spock.lang.Specification
 import jakarta.inject.Singleton
 
 class EventSpec extends Specification {
 
-    def "netty handler fires events"() {
+    void "netty handler fires events when refreshing is #enabled"() {
         given:
-        NettyEmbeddedServer server = ApplicationContext.run(NettyEmbeddedServer, ['spec.name': 'EventSpec'])
+        NettyEmbeddedServer server = ApplicationContext.run(NettyEmbeddedServer, ['spec.name': 'EventSpec', 'crac.refresh-beans': config])
         ApplicationContext ctx = server.getApplicationContext()
         NettyEmbeddedServerCracHander handler = ctx.getBean(NettyEmbeddedServerCracHander)
 
@@ -24,11 +25,16 @@ class EventSpec extends Specification {
         handler.afterRestore(null)
 
         then:
-        EventRecorder.events == ["onCheckpoint", "onRestore"]
+        EventRecorder.events == refreshEvent + ["onCheckpoint", "onRestore"]
 
         cleanup:
         server.close()
         ctx.close()
+
+        where:
+        enabled    | config  | refreshEvent
+        'enabled'  | 'true'  | ['onRefresh']
+        'disabled' | 'false' | []
     }
 
     @Singleton
@@ -37,6 +43,11 @@ class EventSpec extends Specification {
     static class EventRecorder {
 
         static List<String> events = []
+
+        @EventListener
+        void refreshEvent(RefreshEvent event) {
+            events << "onRefresh"
+        }
 
         @EventListener
         void checkpointEvent(BeforeCheckpointEvent event) {
