@@ -74,6 +74,12 @@
 <dl>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#afterRestore-org.crac.Context-">afterRestore(Context&lt;? extends Resource&gt;)</a></span> - Method in class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
 <dd>&nbsp;</dd>
+<dt><a href="io/micronaut/crac/events/AfterRestoreEvent.html" title="class in io.micronaut.crac.events"><span class="typeNameLink">AfterRestoreEvent</span></a> - Class in <a href="io/micronaut/crac/events/package-summary.html">io.micronaut.crac.events</a></dt>
+<dd>
+<div class="block">An event fired after a CRaC checkpoint is restored.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/events/AfterRestoreEvent.html#AfterRestoreEvent-io.micronaut.crac.OrderedResource-long-">AfterRestoreEvent(OrderedResource, long)</a></span> - Constructor for class io.micronaut.crac.events.<a href="io/micronaut/crac/events/AfterRestoreEvent.html" title="class in io.micronaut.crac.events">AfterRestoreEvent</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:B">
 <!--   -->
@@ -81,6 +87,12 @@
 <h2 class="title">B</h2>
 <dl>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#beforeCheckpoint-org.crac.Context-">beforeCheckpoint(Context&lt;? extends Resource&gt;)</a></span> - Method in class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/crac/events/BeforeCheckpointEvent.html" title="class in io.micronaut.crac.events"><span class="typeNameLink">BeforeCheckpointEvent</span></a> - Class in <a href="io/micronaut/crac/events/package-summary.html">io.micronaut.crac.events</a></dt>
+<dd>
+<div class="block">An event fired when a resource CRaC checkpoint occurs.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/events/BeforeCheckpointEvent.html#BeforeCheckpointEvent-io.micronaut.crac.OrderedResource-long-">BeforeCheckpointEvent(OrderedResource, long)</a></span> - Constructor for class io.micronaut.crac.events.<a href="io/micronaut/crac/events/BeforeCheckpointEvent.html" title="class in io.micronaut.crac.events">BeforeCheckpointEvent</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:C">
@@ -134,6 +146,10 @@
 <dd>
 <div class="block">A set of classes to support Coordinated Restore at Checkpoint (CRaC).</div>
 </dd>
+<dt><a href="io/micronaut/crac/events/package-summary.html">io.micronaut.crac.events</a> - package io.micronaut.crac.events</dt>
+<dd>
+<div class="block">Events that are fired when the CRaC checkpoint methods are executed.</div>
+</dd>
 <dt><a href="io/micronaut/crac/netty/package-summary.html">io.micronaut.crac.netty</a> - package io.micronaut.crac.netty</dt>
 <dd>
 <div class="block">Classes related to supporting a Netty Server runtime with CRaC.</div>
@@ -150,7 +166,7 @@
 <dd>
 <div class="block">Register the NettyEmbedded server as a CRaC resource on startup if CRaC is enabled.</div>
 </dd>
-<dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#NettyEmbeddedServerCracHander-io.micronaut.http.server.netty.NettyEmbeddedServer-">NettyEmbeddedServerCracHander(NettyEmbeddedServer)</a></span> - Constructor for class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html#NettyEmbeddedServerCracHander-io.micronaut.context.event.ApplicationEventPublisher-io.micronaut.context.event.ApplicationEventPublisher-io.micronaut.http.server.netty.NettyEmbeddedServer-">NettyEmbeddedServerCracHander(ApplicationEventPublisher&lt;BeforeCheckpointEvent&gt;, ApplicationEventPublisher&lt;AfterRestoreEvent&gt;, NettyEmbeddedServer)</a></span> - Constructor for class io.micronaut.crac.netty.<a href="io/micronaut/crac/netty/NettyEmbeddedServerCracHander.html" title="class in io.micronaut.crac.netty">NettyEmbeddedServerCracHander</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:O">

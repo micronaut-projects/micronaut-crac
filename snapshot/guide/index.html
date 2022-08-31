@@ -51,9 +51,11 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#resource"><strong>4</strong><span>Resources</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#context"><strong>5</strong><span>Context Provider</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#events"><strong>5</strong><span>Events</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>6</strong><span>Repository</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#context"><strong>6</strong><span>Context Provider</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>7</strong><span>Repository</span></a></div>
                                 
                             </div>
                         </div>
@@ -92,9 +94,11 @@
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-resource"><a href="#resource"><strong>4</strong><span>Resources</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-context"><a href="#context"><strong>5</strong><span>Context Provider</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-events"><a href="#events"><strong>5</strong><span>Events</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>6</strong><span>Repository</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-context"><a href="#context"><strong>6</strong><span>Context Provider</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>7</strong><span>Repository</span></a></div>
         
         </div>
     </div>
@@ -184,7 +188,24 @@
 <p>Micronaut CRaC registers resources in order. You can control the order by overriding <code>OrderedResource::getOrder</code>.</p>
 </div>
 
-<h1 id="context"><a class="anchor" href="#context"></a>5 Context Provider</h1>
+<h1 id="events"><a class="anchor" href="#events"></a>5 Events</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/events.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>To notify external components when the default Resource handlers execute, there are two events; <a href="../api/io/micronaut/crac/events/BeforeCheckpointEvent.html">BeforeCheckpointEvent</a> and <a href="../api/io/micronaut/crac/events/AfterRestoreEvent.html">AfterRestoreEvent</a>.
+These events contain the <code>java.time.Instant</code> that the action completed, the length of time it took to execute the action in nanoseconds, and the Resource that was acted upon.</p>
+</div>
+<div class="paragraph">
+<p>Please see the <a href="https://docs.micronaut.io/latest/guide/#contextEvents">Micronaut Framework guide</a> for information on how to listen for these events.</p>
+</div>
+
+<h1 id="context"><a class="anchor" href="#context"></a>6 Context Provider</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/context.adoc"'>
@@ -197,7 +218,7 @@
 <p><a href="../api/io/micronaut/crac/GlobalCracContextProvider.html">GlobalCracContextProvider</a>, Micronaut CRaC&#8217;s default implementation of <a href="../api/io/micronaut/crac/CracContextProvider.html">CracContextProvider</a>, returns the global context. You can provide a replacement for <a href="../api/io/micronaut/crac/CracContextProvider.html">CracContextProvider</a> and provide your custom <a href="https://crac.github.io/openjdk-builds/javadoc/api/java.base/jdk/crac/Context.html">Context</a>.</p>
 </div>
 
-<h1 id="repository"><a class="anchor" href="#repository"></a>6 Repository</h1>
+<h1 id="repository"><a class="anchor" href="#repository"></a>7 Repository</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/repository.adoc"'>

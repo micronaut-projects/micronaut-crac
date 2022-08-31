@@ -1,2 +1,3 @@
 io.micronaut.crac
+io.micronaut.crac.events
 io.micronaut.crac.netty
