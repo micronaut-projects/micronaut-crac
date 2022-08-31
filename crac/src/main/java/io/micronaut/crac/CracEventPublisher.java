@@ -16,7 +16,6 @@
 package io.micronaut.crac;
 
 import io.micronaut.context.event.ApplicationEventPublisher;
-import io.micronaut.core.annotation.Nullable;
 import io.micronaut.crac.events.AfterRestoreEvent;
 import io.micronaut.crac.events.BeforeCheckpointEvent;
 import io.micronaut.runtime.context.scope.refresh.RefreshEvent;
@@ -35,24 +34,19 @@ public class CracEventPublisher {
 
     private final ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher;
     private final ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher;
-    @Nullable
-    private final ApplicationEventPublisher<RefreshEvent> optionalRefreshEventPublisher;
 
     /**
      * @param cracConfiguration The CRaC configuration.
      * @param beforeCheckpointEventPublisher The publisher for {@link BeforeCheckpointEvent} events.
      * @param afterRestoreEventPublisher The publisher for {@link AfterRestoreEvent} events.
-     * @param refreshEventPublisher The publisher for {@link RefreshEvent} events.
      */
     public CracEventPublisher(
         CracConfiguration cracConfiguration,
         ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher,
-        ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher,
-        ApplicationEventPublisher<RefreshEvent> refreshEventPublisher
+        ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher
     ) {
         this.beforeCheckpointEventPublisher = beforeCheckpointEventPublisher;
         this.afterRestoreEventPublisher = afterRestoreEventPublisher;
-        this.optionalRefreshEventPublisher = cracConfiguration.isRefreshBeans() ? refreshEventPublisher : null;
     }
 
     /**
@@ -62,9 +56,6 @@ public class CracEventPublisher {
      * @param action The action to perform that returns the time taken in nanoseconds.
      */
     public void fireBeforeCheckpointEvents(OrderedResource resource, LongSupplier action) {
-        if (optionalRefreshEventPublisher != null) {
-            optionalRefreshEventPublisher.publishEvent(new RefreshEvent());
-        }
         beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(resource, action.getAsLong()));
     }
 

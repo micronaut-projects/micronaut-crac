@@ -4,7 +4,6 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.context.annotation.Requires
 import io.micronaut.crac.events.AfterRestoreEvent
 import io.micronaut.crac.events.BeforeCheckpointEvent
-import io.micronaut.crac.netty.NettyEmbeddedServerCracHander
 import io.micronaut.http.server.netty.NettyEmbeddedServer
 import io.micronaut.runtime.context.scope.refresh.RefreshEvent
 import io.micronaut.runtime.event.annotation.EventListener
@@ -17,12 +16,12 @@ class EventSpec extends Specification {
         given:
         NettyEmbeddedServer server = ApplicationContext.run(NettyEmbeddedServer, ['spec.name': 'EventSpec', 'crac.refresh-beans': config])
         ApplicationContext ctx = server.getApplicationContext()
-        NettyEmbeddedServerCracHander handler = ctx.getBean(NettyEmbeddedServerCracHander)
+        List<OrderedResource> handler = ctx.getBeansOfType(OrderedResource)
 
         when:
         EventRecorder.clearEvents()
-        handler.beforeCheckpoint(null)
-        handler.afterRestore(null)
+        handler*.beforeCheckpoint(null)
+        handler*.afterRestore(null)
 
         then:
         EventRecorder.events == refreshEvent + ["onCheckpoint", "onRestore"]

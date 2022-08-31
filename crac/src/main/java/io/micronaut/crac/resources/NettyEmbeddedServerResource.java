@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.netty;
+package io.micronaut.crac.resources;
 
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
@@ -37,14 +37,19 @@ import org.slf4j.LoggerFactory;
 @EachBean(NettyEmbeddedServer.class)
 @Requires(classes = {NettyEmbeddedServer.class})
 @Requires(bean = CracResourceRegistrar.class)
-public class NettyEmbeddedServerCracHander implements OrderedResource {
+public class NettyEmbeddedServerResource implements OrderedResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerCracHander.class);
+    /**
+     * The default order for this resource.
+     */
+    public static final int ORDER = 0;
+
+    private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerResource.class);
 
     private final CracEventPublisher eventPublisher;
     private final NettyEmbeddedServer server;
 
-    public NettyEmbeddedServerCracHander(
+    public NettyEmbeddedServerResource(
         CracEventPublisher eventPublisher,
         NettyEmbeddedServer server
     ) {
@@ -74,5 +79,10 @@ public class NettyEmbeddedServerCracHander implements OrderedResource {
             server.start();
             return System.nanoTime() - beforeStart;
         });
+    }
+
+    @Override
+    public int getOrder() {
+        return ORDER;
     }
 }

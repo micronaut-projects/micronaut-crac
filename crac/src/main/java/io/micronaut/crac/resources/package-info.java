@@ -14,8 +14,8 @@
  * limitations under the License.
  */
 /**
- * Classes related to supporting a Netty Server runtime with CRaC.
+ * Built-in OrderedResources for CRaC integration.
  * @author Sergio del Amo
  * @since 1.0.0
  */
-package io.micronaut.crac.netty;
+package io.micronaut.crac.resources;
