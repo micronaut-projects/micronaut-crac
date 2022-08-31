@@ -1,0 +1,3 @@
+Prior to a checkpoint being taken, a api:runtime.context.scope.refresh.RefreshEvent[] will be published to invalidate all beans in the @api:runtime.context.scope.Refreshable[] scope.
+
+This behaviour can be disabled by setting the `crac.refresh-beans` property to `false` in the application config.

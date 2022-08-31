@@ -1,7 +1,3 @@
-Prior to a checkpoint being taken, a api:runtime.context.scope.refresh.RefreshEvent[] will be published to invalidate all beans in the @api:runtime.context.scope.Refreshable[] scope.
-
-This behaviour can be disabled by setting the `crac.refresh-beans` property to `false` in the application config.
-
 To notify external components when the default Resource handlers execute, there are two events; api:crac.events.BeforeCheckpointEvent[] and api:crac.events.AfterRestoreEvent[].
 These events contain the `java.time.Instant` that the action completed, the length of time it took to execute the action in nanoseconds, and the Resource that was acted upon.
 
