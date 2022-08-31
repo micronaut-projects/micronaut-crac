@@ -21,6 +21,12 @@ import io.micronaut.crac.OrderedResource;
 import java.time.Instant;
 import java.util.EventObject;
 
+/**
+ * The base class for timed CRaC events.
+ *
+ * @author Tim Yates
+ * @since 1.0.0
+ */
 @Experimental
 abstract class BaseTimedEvent extends EventObject {
 
