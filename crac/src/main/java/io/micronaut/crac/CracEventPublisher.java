@@ -16,12 +16,12 @@
 package io.micronaut.crac;
 
 import io.micronaut.context.event.ApplicationEventPublisher;
+import io.micronaut.core.annotation.Nullable;
 import io.micronaut.crac.events.AfterRestoreEvent;
 import io.micronaut.crac.events.BeforeCheckpointEvent;
 import io.micronaut.runtime.context.scope.refresh.RefreshEvent;
 import jakarta.inject.Singleton;
 
-import java.util.Optional;
 import java.util.function.LongSupplier;
 
 /**
@@ -35,7 +35,8 @@ public class CracEventPublisher {
 
     private final ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher;
     private final ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher;
-    private final Optional<ApplicationEventPublisher<RefreshEvent>> optionalRefreshEventPublisher;
+    @Nullable
+    private final ApplicationEventPublisher<RefreshEvent> optionalRefreshEventPublisher;
 
     /**
      * @param cracConfiguration The CRaC configuration.
@@ -51,7 +52,7 @@ public class CracEventPublisher {
     ) {
         this.beforeCheckpointEventPublisher = beforeCheckpointEventPublisher;
         this.afterRestoreEventPublisher = afterRestoreEventPublisher;
-        this.optionalRefreshEventPublisher = cracConfiguration.isRefreshBeans() ? Optional.of(refreshEventPublisher) : Optional.empty();
+        this.optionalRefreshEventPublisher = cracConfiguration.isRefreshBeans() ? refreshEventPublisher : null;
     }
 
     /**
@@ -61,7 +62,9 @@ public class CracEventPublisher {
      * @param action The action to perform that returns the time taken in nanoseconds.
      */
     public void fireBeforeCheckpointEvents(OrderedResource resource, LongSupplier action) {
-        optionalRefreshEventPublisher.ifPresent(p -> p.publishEvent(new RefreshEvent()));
+        if (optionalRefreshEventPublisher != null) {
+            optionalRefreshEventPublisher.publishEvent(new RefreshEvent());
+        }
         beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(resource, action.getAsLong()));
     }
 
