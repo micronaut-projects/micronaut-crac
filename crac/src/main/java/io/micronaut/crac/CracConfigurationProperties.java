@@ -68,7 +68,7 @@ public class CracConfigurationProperties implements CracConfiguration {
     }
 
     /**
-     * Whether to trigger a refresh event to refresh all {@link io.micronaut.runtime.context.scope.Refreshable} beans prior to taking a checkpoint. Default value ({@value #DEFAULT_REFRESH}).
+     * Whether to trigger a refresh event to refresh all {@code Refreshable} beans prior to taking a checkpoint. Default value ({@value #DEFAULT_REFRESH}).
      *
      * @param refreshBeans Whether to trigger a refresh event prior to taking a checkpoint.
      * @see <a href="https://docs.micronaut.io/latest/guide/#refreshable">Documentation for Refreshable scope</a>
