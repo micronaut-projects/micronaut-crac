@@ -19,13 +19,13 @@ import io.micronaut.core.annotation.Experimental;
 import io.micronaut.crac.OrderedResource;
 
 import java.time.Instant;
+import java.util.EventObject;
 
 @Experimental
-abstract class BaseTimedEvent {
+abstract class BaseTimedEvent extends EventObject {
 
     private final Instant now;
     private final long timeTakenNanos;
-    private final OrderedResource resource;
 
     /**
      * A base class for CRaC events.
@@ -33,16 +33,9 @@ abstract class BaseTimedEvent {
      * @param timeTakenNanos The time token for the action to be processed in nanoseconds.
      */
     BaseTimedEvent(OrderedResource resource, long timeTakenNanos) {
-        this.resource = resource;
+        super(resource);
         this.now = Instant.now();
         this.timeTakenNanos = timeTakenNanos;
-    }
-
-    /**
-     * @return The resource that triggered the event.
-     */
-    public OrderedResource getResource() {
-        return resource;
     }
 
     /**
