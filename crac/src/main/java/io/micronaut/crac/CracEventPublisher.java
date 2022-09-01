@@ -16,6 +16,7 @@
 package io.micronaut.crac;
 
 import io.micronaut.context.event.ApplicationEventPublisher;
+import io.micronaut.core.annotation.NonNull;
 import io.micronaut.crac.events.AfterRestoreEvent;
 import io.micronaut.crac.events.BeforeCheckpointEvent;
 import jakarta.inject.Singleton;
@@ -54,7 +55,7 @@ public class CracEventPublisher {
      * @param resource The @{link OrderedResource} that is being checkpointed.
      * @param action The action to perform that returns the time taken in nanoseconds.
      */
-    public void fireBeforeCheckpointEvents(OrderedResource resource, LongSupplier action) {
+    public void fireBeforeCheckpointEvents(@NonNull OrderedResource resource, @NonNull LongSupplier action) {
         beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(resource, action.getAsLong()));
     }
 
@@ -63,7 +64,7 @@ public class CracEventPublisher {
      *
      * @param resource The @{link OrderedResource} that is being checkpointed.
      */
-    public void fireBeforeCheckpointEvents(OrderedResource resource) {
+    public void fireBeforeCheckpointEvents(@NonNull OrderedResource resource) {
         beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(resource, 0));
     }
 
@@ -73,7 +74,7 @@ public class CracEventPublisher {
      * @param resource The @{link OrderedResource} that is being restored.
      * @param action The action to perform that returns the time taken in nanoseconds.
      */
-    public void fireAfterRestoreEvents(OrderedResource resource, LongSupplier action) {
+    public void fireAfterRestoreEvents(@NonNull OrderedResource resource, @NonNull LongSupplier action) {
         afterRestoreEventPublisher.publishEvent(new AfterRestoreEvent(resource, action.getAsLong()));
     }
 
