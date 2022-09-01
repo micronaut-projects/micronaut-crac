@@ -20,11 +20,12 @@ class CracRegistrationSpec extends Specification {
     @Inject
     CracContextProviderReplacement cracContextProviderReplacement
 
-    def "resources are registered in the expected order"() {
+    void "resources are registered in the expected order"() {
         expect:
         cracContextProviderReplacement.replacement.registrations == [
                 'TestResource',
-                'NettyEmbeddedServerCracHander',
+                'NettyEmbeddedServerResource',
+                'RefreshEventResource',
                 'TestResource3',
                 'TestResource2',
         ]
@@ -66,7 +67,7 @@ class CracRegistrationSpec extends Specification {
 
         @Override
         int getOrder() {
-            -1
+            -2
         }
 
         @Override

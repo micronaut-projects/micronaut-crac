@@ -15,8 +15,6 @@
  */
 package io.micronaut.crac;
 
-import io.micronaut.context.annotation.ConfigurationProperties;
-import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.util.Toggleable;
 
 /**
@@ -25,37 +23,10 @@ import io.micronaut.core.util.Toggleable;
  * @author Tim Yates
  * @since 1.0.0
  */
-@Experimental
-@ConfigurationProperties(CracConfiguration.PREFIX)
-public class CracConfiguration implements Toggleable {
+public interface CracConfiguration extends Toggleable {
 
     /**
-     * The prefix to use for CRaC configuration.
+     * @return Whether to refresh beans prior to taking a checkpoint.
      */
-    public static final String PREFIX = "crac";
-
-    /**
-     * The default enable value.
-     */
-    @SuppressWarnings("WeakerAccess")
-    public static final boolean DEFAULT_ENABLED = true;
-
-    private boolean enabled = DEFAULT_ENABLED;
-
-    /**
-     * @return Whether CRaC is enabled.
-     */
-    @Override
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    /**
-     * Whether CRaC (Coordinated Restore at Checkpoint) support, even if we're on a supporting JDK, is enabled. Default value ({@value #DEFAULT_ENABLED}).
-     *
-     * @param enabled override CRaC if required
-     */
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
+    boolean isRefreshBeans();
 }

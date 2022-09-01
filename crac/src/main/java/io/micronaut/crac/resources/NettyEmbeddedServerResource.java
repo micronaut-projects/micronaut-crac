@@ -13,16 +13,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.netty;
+package io.micronaut.crac.resources;
 
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
-import io.micronaut.context.event.ApplicationEventPublisher;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
-import io.micronaut.crac.events.AfterRestoreEvent;
-import io.micronaut.crac.events.BeforeCheckpointEvent;
 import io.micronaut.http.server.netty.NettyEmbeddedServer;
 import org.crac.Context;
 import org.crac.Resource;
@@ -39,41 +37,52 @@ import org.slf4j.LoggerFactory;
 @EachBean(NettyEmbeddedServer.class)
 @Requires(classes = {NettyEmbeddedServer.class})
 @Requires(bean = CracResourceRegistrar.class)
-public class NettyEmbeddedServerCracHander implements OrderedResource {
+public class NettyEmbeddedServerResource implements OrderedResource {
 
-    private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerCracHander.class);
+    /**
+     * The default order for this resource.
+     */
+    public static final int ORDER = 0;
 
-    private final ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher;
-    private final ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher;
+    private static final Logger LOG = LoggerFactory.getLogger(NettyEmbeddedServerResource.class);
+
+    private final CracEventPublisher eventPublisher;
     private final NettyEmbeddedServer server;
 
-    public NettyEmbeddedServerCracHander(
-        ApplicationEventPublisher<BeforeCheckpointEvent> beforeCheckpointEventPublisher,
-        ApplicationEventPublisher<AfterRestoreEvent> afterRestoreEventPublisher,
+    public NettyEmbeddedServerResource(
+        CracEventPublisher eventPublisher,
         NettyEmbeddedServer server
     ) {
-        this.beforeCheckpointEventPublisher = beforeCheckpointEventPublisher;
-        this.afterRestoreEventPublisher = afterRestoreEventPublisher;
+        this.eventPublisher = eventPublisher;
         this.server = server;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Stopping netty server {}", server);
-        }
-        long beforeStart = System.nanoTime();
-        server.stop();
-        beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(this, System.nanoTime() - beforeStart));
+        eventPublisher.fireBeforeCheckpointEvents(this, () -> {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Stopping netty server {}", server);
+            }
+            long beforeStart = System.nanoTime();
+            server.stop();
+            return System.nanoTime() - beforeStart;
+        });
     }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
-        if (LOG.isDebugEnabled()) {
-            LOG.debug("Starting netty server {}", server);
-        }
-        long beforeStart = System.nanoTime();
-        server.start();
-        afterRestoreEventPublisher.publishEvent(new AfterRestoreEvent(this, System.nanoTime() - beforeStart));
+        eventPublisher.fireAfterRestoreEvents(this, () -> {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Starting netty server {}", server);
+            }
+            long beforeStart = System.nanoTime();
+            server.start();
+            return System.nanoTime() - beforeStart;
+        });
+    }
+
+    @Override
+    public int getOrder() {
+        return ORDER;
     }
 }

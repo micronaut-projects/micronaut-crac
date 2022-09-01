@@ -3,6 +3,7 @@ introduction:
 releaseHistory: Release History
 installation: Installation
 resource: Resources
+refresh: Refresh scope
 events: Events
 context: Context Provider
 repository: Repository
