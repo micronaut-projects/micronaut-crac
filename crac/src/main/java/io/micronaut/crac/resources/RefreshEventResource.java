@@ -25,6 +25,8 @@ import io.micronaut.runtime.context.scope.refresh.RefreshEvent;
 import jakarta.inject.Singleton;
 import org.crac.Context;
 import org.crac.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 /**
  * An OrderedResource that emits a RefreshEvent when a CRaC checkpoint is taken.
@@ -35,6 +37,8 @@ import org.crac.Resource;
 @Singleton
 @Requires(property = CracConfigurationProperties.PREFIX + ".refresh-beans", defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 public class RefreshEventResource implements OrderedResource {
+
+    private static final Logger LOG = LoggerFactory.getLogger(RefreshEventResource.class);
 
     private final CracEventPublisher cracEventPublisher;
     private final ApplicationEventPublisher<RefreshEvent> refreshEventPublisher;
@@ -53,12 +57,18 @@ public class RefreshEventResource implements OrderedResource {
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("Before checkpoint, firing events");
+        }
         refreshEventPublisher.publishEvent(new RefreshEvent());
         cracEventPublisher.fireBeforeCheckpointEvents(this);
     }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
+        if (LOG.isDebugEnabled()) {
+            LOG.debug("After restore, firing events");
+        }
         cracEventPublisher.fireAfterRestoreEvents(this);
     }
 
