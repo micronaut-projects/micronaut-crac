@@ -64,7 +64,7 @@ public class RefreshEventResource implements OrderedResource {
 
     @Override
     public int getOrder() {
-        // Occurs just before Netty, while the ApplicationContext is still running
-        return NettyEmbeddedServerResource.ORDER - 1;
+        // CRaC calls the resources in reverse order of registration when checkpointing, and this needs to come BEFORE netty shuts the ApplicationContext
+        return NettyEmbeddedServerResource.ORDER + 1;
     }
 }

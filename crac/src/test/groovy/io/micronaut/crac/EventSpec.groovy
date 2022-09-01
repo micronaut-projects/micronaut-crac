@@ -20,12 +20,16 @@ class EventSpec extends Specification {
         given:
         NettyEmbeddedServer server = ApplicationContext.run(NettyEmbeddedServer, ['spec.name': 'EventSpec', 'crac.refresh-beans': config])
         ApplicationContext ctx = server.getApplicationContext()
-        List<OrderedResource> handler = ctx.getBeansOfType(OrderedResource)
+        List<OrderedResource> resources = ctx.getBeansOfType(OrderedResource)
 
         when:
         EventRecorder.clearEvents()
-        handler*.beforeCheckpoint(null)
-        handler*.afterRestore(null)
+
+        and: "Checkpoints are notified created in reverse order as performed by the CRaC JDK"
+        resources.reverse()*.beforeCheckpoint(null)
+
+        and: "Restore handlers are notified in the order they were registered as performed by the CRaC JDK"
+        resources*.afterRestore(null)
 
         then:
         EventRecorder.events == expected
@@ -36,7 +40,7 @@ class EventSpec extends Specification {
 
         where:
         enabled    | config  | expected
-        'enabled'  | 'true'  | ['onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onCheckpoint[MockNettyServerResource]", "onRestore[RefreshEventResource]", "onRestore[MockNettyServerResource]"]
+        'enabled'  | 'true'  | ['onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onCheckpoint[MockNettyServerResource]", "onRestore[MockNettyServerResource]", "onRestore[RefreshEventResource]"]
         'disabled' | 'false' | ["onCheckpoint[MockNettyServerResource]", "onRestore[MockNettyServerResource]"]
     }
 

@@ -24,8 +24,8 @@ class CracRegistrationSpec extends Specification {
         expect:
         cracContextProviderReplacement.replacement.registrations == [
                 'TestResource',
-                'RefreshEventResource',
                 'NettyEmbeddedServerResource',
+                'RefreshEventResource',
                 'TestResource3',
                 'TestResource2',
         ]

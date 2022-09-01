@@ -15,10 +15,10 @@ class NettySpec extends Specification {
     void "checkpoint stops netty"() {
         given:
         NettyEmbeddedServer server = ctx.getBean(NettyEmbeddedServer)
-        List<OrderedResource> handler = ctx.getBeansOfType(OrderedResource)
+        List<OrderedResource> resources = ctx.getBeansOfType(OrderedResource)
 
-        when:
-        handler*.beforeCheckpoint(null)
+        when: "we call the resources in the reverse order, as per how CRaC does it"
+        resources.reverse()*.beforeCheckpoint(null)
 
         then:
         !server.running
