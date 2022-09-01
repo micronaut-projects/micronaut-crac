@@ -19,6 +19,7 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.context.event.ApplicationEventPublisher;
 import io.micronaut.core.util.StringUtils;
 import io.micronaut.crac.CracConfigurationProperties;
+import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.runtime.context.scope.refresh.RefreshEvent;
 import jakarta.inject.Singleton;
@@ -35,23 +36,30 @@ import org.crac.Resource;
 @Requires(property = CracConfigurationProperties.PREFIX + ".refresh-beans", defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 public class RefreshEventResource implements OrderedResource {
 
+    private final CracEventPublisher cracEventPublisher;
     private final ApplicationEventPublisher<RefreshEvent> refreshEventPublisher;
 
     /**
+     * @param cracEventPublisher The CRaC event publisher
      * @param refreshEventPublisher The publisher to use to emit the RefreshEvent
      */
-    public RefreshEventResource(ApplicationEventPublisher<RefreshEvent> refreshEventPublisher) {
+    public RefreshEventResource(
+        CracEventPublisher cracEventPublisher,
+        ApplicationEventPublisher<RefreshEvent> refreshEventPublisher
+    ) {
+        this.cracEventPublisher = cracEventPublisher;
         this.refreshEventPublisher = refreshEventPublisher;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
         refreshEventPublisher.publishEvent(new RefreshEvent());
+        cracEventPublisher.fireBeforeCheckpointEvents(this);
     }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
-        // Left intentionally blank
+        cracEventPublisher.fireAfterRestoreEvents(this);
     }
 
     @Override

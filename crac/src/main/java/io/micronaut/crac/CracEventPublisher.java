@@ -18,7 +18,6 @@ package io.micronaut.crac;
 import io.micronaut.context.event.ApplicationEventPublisher;
 import io.micronaut.crac.events.AfterRestoreEvent;
 import io.micronaut.crac.events.BeforeCheckpointEvent;
-import io.micronaut.runtime.context.scope.refresh.RefreshEvent;
 import jakarta.inject.Singleton;
 
 import java.util.function.LongSupplier;
@@ -50,13 +49,22 @@ public class CracEventPublisher {
     }
 
     /**
-     * Fires a {@link BeforeCheckpointEvent} event and optionally a {@link RefreshEvent} event if configured.
+     * Fires a {@link BeforeCheckpointEvent} event.
      *
      * @param resource The @{link OrderedResource} that is being checkpointed.
      * @param action The action to perform that returns the time taken in nanoseconds.
      */
     public void fireBeforeCheckpointEvents(OrderedResource resource, LongSupplier action) {
         beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(resource, action.getAsLong()));
+    }
+
+    /**
+     * Fires a {@link BeforeCheckpointEvent} event with no action to be performed.
+     *
+     * @param resource The @{link OrderedResource} that is being checkpointed.
+     */
+    public void fireBeforeCheckpointEvents(OrderedResource resource) {
+        beforeCheckpointEventPublisher.publishEvent(new BeforeCheckpointEvent(resource, 0));
     }
 
     /**
@@ -67,5 +75,14 @@ public class CracEventPublisher {
      */
     public void fireAfterRestoreEvents(OrderedResource resource, LongSupplier action) {
         afterRestoreEventPublisher.publishEvent(new AfterRestoreEvent(resource, action.getAsLong()));
+    }
+
+    /**
+     * Fires an {@link AfterRestoreEvent} event with no action to be performed.
+     *
+     * @param resource The @{link OrderedResource} that is being restored.
+     */
+    public void fireAfterRestoreEvents(OrderedResource resource) {
+        afterRestoreEventPublisher.publishEvent(new AfterRestoreEvent(resource, 0));
     }
 }
