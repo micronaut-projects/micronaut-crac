@@ -51,9 +51,9 @@
             </div>
 <div class="sect2">
 <h3 id="_crac_config_properties">Crac Config Properties</h3>
-<a id="io.micronaut.crac.CracConfiguration" href="#io.micronaut.crac.CracConfiguration">&#128279;</a>
+<a id="io.micronaut.crac.CracConfigurationProperties" href="#io.micronaut.crac.CracConfigurationProperties">&#128279;</a>
 <table class="tableblock frame-all grid-all stretch">
-<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/crac/CracConfiguration.html">CracConfiguration</a></caption>
+<caption class="title">Table 1. Configuration Properties for <a href="../api/io/micronaut/crac/CracConfigurationProperties.html">CracConfigurationProperties</a></caption>
 <colgroup>
 <col style="width: 33.3333%;">
 <col style="width: 33.3333%;">
@@ -71,6 +71,11 @@
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>crac.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">Whether CRaC (Coordinated Restore at Checkpoint) support, even if we&#8217;re on a supporting JDK, is enabled. Default value (true).</p></td>
+</tr>
+<tr>
+<td class="tableblock halign-left valign-top"><p class="tableblock"><code>crac.refresh-beans</code></p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to trigger a refresh event to refresh all {@code Refreshable} beans prior to taking a checkpoint. Default value (true).</p></td>
 </tr>
 </tbody>
 </table>

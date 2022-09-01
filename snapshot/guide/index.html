@@ -2,7 +2,7 @@
         "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
 <head>
-    <title>Micronaut crac</title>
+    <title>Micronaut CRaC</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
     <link rel="stylesheet" href="../css/custom.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
@@ -51,11 +51,13 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#resource"><strong>4</strong><span>Resources</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#events"><strong>5</strong><span>Events</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#refresh"><strong>5</strong><span>Refresh scope</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#context"><strong>6</strong><span>Context Provider</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#events"><strong>6</strong><span>Events</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>7</strong><span>Repository</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#context"><strong>7</strong><span>Context Provider</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>8</strong><span>Repository</span></a></div>
                                 
                             </div>
                         </div>
@@ -94,18 +96,20 @@
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-resource"><a href="#resource"><strong>4</strong><span>Resources</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-events"><a href="#events"><strong>5</strong><span>Events</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-refresh"><a href="#refresh"><strong>5</strong><span>Refresh scope</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-context"><a href="#context"><strong>6</strong><span>Context Provider</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-events"><a href="#events"><strong>6</strong><span>Events</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>7</strong><span>Repository</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-context"><a href="#context"><strong>7</strong><span>Context Provider</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>8</strong><span>Repository</span></a></div>
         
         </div>
     </div>
     
     <div class="docs-content">
     <div class="project">
-        <h1>Micronaut crac</h1>
+        <h1>Micronaut CRaC</h1>
         <p></p>
         <p>Adds support for CRaC (Coordinated Restore at Checkpoint) to the Micronaut Framework.</p>
         <p><strong>Version:</strong> <select style='max-width: 200px' onChange='window.document.location.href=this.options[this.selectedIndex].value;'><option selected='selected' value='https://micronaut-projects.github.io/micronaut-crac/snapshot/guide/index.html'>SNAPSHOT</option></select> </p>
@@ -188,7 +192,23 @@
 <p>Micronaut CRaC registers resources in order. You can control the order by overriding <code>OrderedResource::getOrder</code>.</p>
 </div>
 
-<h1 id="events"><a class="anchor" href="#events"></a>5 Events</h1>
+<h1 id="refresh"><a class="anchor" href="#refresh"></a>5 Refresh scope</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/refresh.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Prior to a checkpoint being taken, a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a> will be published to invalidate all beans in the @<a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> scope.</p>
+</div>
+<div class="paragraph">
+<p>This behaviour can be disabled by setting the <code>crac.refresh-beans</code> property to <code>false</code> in the application config.</p>
+</div>
+
+<h1 id="events"><a class="anchor" href="#events"></a>6 Events</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/events.adoc"'>
@@ -205,7 +225,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <p>Please see the <a href="https://docs.micronaut.io/latest/guide/#contextEvents">Micronaut Framework guide</a> for information on how to listen for these events.</p>
 </div>
 
-<h1 id="context"><a class="anchor" href="#context"></a>6 Context Provider</h1>
+<h1 id="context"><a class="anchor" href="#context"></a>7 Context Provider</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/context.adoc"'>
@@ -218,7 +238,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <p><a href="../api/io/micronaut/crac/GlobalCracContextProvider.html">GlobalCracContextProvider</a>, Micronaut CRaC&#8217;s default implementation of <a href="../api/io/micronaut/crac/CracContextProvider.html">CracContextProvider</a>, returns the global context. You can provide a replacement for <a href="../api/io/micronaut/crac/CracContextProvider.html">CracContextProvider</a> and provide your custom <a href="https://crac.github.io/openjdk-builds/javadoc/api/java.base/jdk/crac/Context.html">Context</a>.</p>
 </div>
 
-<h1 id="repository"><a class="anchor" href="#repository"></a>7 Repository</h1>
+<h1 id="repository"><a class="anchor" href="#repository"></a>8 Repository</h1>
 
 <div class='contribute-btn'>
     <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/repository.adoc"'>
