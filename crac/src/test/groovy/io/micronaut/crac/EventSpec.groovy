@@ -1,12 +1,16 @@
 package io.micronaut.crac
 
 import io.micronaut.context.ApplicationContext
+import io.micronaut.context.annotation.Replaces
 import io.micronaut.context.annotation.Requires
 import io.micronaut.crac.events.AfterRestoreEvent
 import io.micronaut.crac.events.BeforeCheckpointEvent
+import io.micronaut.crac.resources.NettyEmbeddedServerResource
 import io.micronaut.http.server.netty.NettyEmbeddedServer
 import io.micronaut.runtime.context.scope.refresh.RefreshEvent
 import io.micronaut.runtime.event.annotation.EventListener
+import org.crac.Context
+import org.crac.Resource
 import spock.lang.Specification
 import jakarta.inject.Singleton
 
@@ -32,9 +36,35 @@ class EventSpec extends Specification {
 
         where:
         enabled    | config  | expected
-        'enabled'  | 'true'  | ['onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onCheckpoint[NettyEmbeddedServerResource]", "onRestore[RefreshEventResource]", "onRestore[NettyEmbeddedServerResource]"]
-        'disabled' | 'false' | ["onCheckpoint[NettyEmbeddedServerResource]", "onRestore[NettyEmbeddedServerResource]"]
+        'enabled'  | 'true'  | ["onCheckpoint[MockNettyServerResource]", 'onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onRestore[MockNettyServerResource]", "onRestore[RefreshEventResource]"]
+        'disabled' | 'false' | ["onCheckpoint[MockNettyServerResource]", "onRestore[MockNettyServerResource]"]
     }
+
+    /**
+     * We don't actually want to stop netty here, we just want to test the event order
+     */
+    @Singleton
+    @Replaces(NettyEmbeddedServerResource)
+    @Requires(property = "spec.name", value = "EventSpec")
+    static class MockNettyServerResource implements OrderedResource {
+
+        private final CracEventPublisher eventPublisher;
+
+        MockNettyServerResource(CracEventPublisher eventPublisher) {
+            this.eventPublisher = eventPublisher
+        }
+
+        @Override
+        void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
+            eventPublisher.fireBeforeCheckpointEvents(this)
+        }
+
+        @Override
+        void afterRestore(Context<? extends Resource> context) throws Exception {
+            eventPublisher.fireAfterRestoreEvents(this)
+        }
+    }
+
 
     @Singleton
     @Requires(property = "spec.name", value = "EventSpec")
