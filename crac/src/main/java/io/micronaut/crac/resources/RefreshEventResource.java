@@ -64,7 +64,7 @@ public class RefreshEventResource implements OrderedResource {
 
     @Override
     public int getOrder() {
-        // Occurs after Netty but with enough gap for users to register their own resources prior to this if required
-        return NettyEmbeddedServerResource.ORDER + 1000;
+        // Occurs just before Netty, while the ApplicationContext is still running
+        return NettyEmbeddedServerResource.ORDER - 1;
     }
 }

@@ -36,7 +36,7 @@ class EventSpec extends Specification {
 
         where:
         enabled    | config  | expected
-        'enabled'  | 'true'  | ["onCheckpoint[MockNettyServerResource]", 'onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onRestore[MockNettyServerResource]", "onRestore[RefreshEventResource]"]
+        'enabled'  | 'true'  | ['onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onCheckpoint[MockNettyServerResource]", "onRestore[RefreshEventResource]", "onRestore[MockNettyServerResource]"]
         'disabled' | 'false' | ["onCheckpoint[MockNettyServerResource]", "onRestore[MockNettyServerResource]"]
     }
 
