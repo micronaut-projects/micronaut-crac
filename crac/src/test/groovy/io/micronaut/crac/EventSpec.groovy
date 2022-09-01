@@ -24,16 +24,16 @@ class EventSpec extends Specification {
         handler*.afterRestore(null)
 
         then:
-        EventRecorder.events == refreshEvent + ["onCheckpoint", "onRestore"]
+        EventRecorder.events == expected
 
         cleanup:
         server.close()
         ctx.close()
 
         where:
-        enabled    | config  | refreshEvent
-        'enabled'  | 'true'  | ['onRefresh']
-        'disabled' | 'false' | []
+        enabled    | config  | expected
+        'enabled'  | 'true'  | ['onRefresh[SingletonMap]', "onCheckpoint[RefreshEventResource]", "onCheckpoint[NettyEmbeddedServerResource]", "onRestore[RefreshEventResource]", "onRestore[NettyEmbeddedServerResource]"]
+        'disabled' | 'false' | ["onCheckpoint[NettyEmbeddedServerResource]", "onRestore[NettyEmbeddedServerResource]"]
     }
 
     @Singleton
@@ -45,17 +45,17 @@ class EventSpec extends Specification {
 
         @EventListener
         void refreshEvent(RefreshEvent event) {
-            events << "onRefresh"
+            events << "onRefresh[${event.source.getClass().simpleName}]"
         }
 
         @EventListener
         void checkpointEvent(BeforeCheckpointEvent event) {
-            events << 'onCheckpoint'
+            events << "onCheckpoint[${event.source.getClass().simpleName}]"
         }
 
         @EventListener
         void restoreEvent(AfterRestoreEvent event) {
-            events << 'onRestore'
+            events << "onRestore[${event.source.getClass().simpleName}]"
         }
 
         static void clearEvents() {
