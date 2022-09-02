@@ -44,7 +44,7 @@ public class RefreshEventResource implements OrderedResource {
     private final ApplicationEventPublisher<RefreshEvent> refreshEventPublisher;
 
     /**
-     * @param cracEventPublisher The CRaC event publisher
+     * @param cracEventPublisher    The CRaC event publisher
      * @param refreshEventPublisher The publisher to use to emit the RefreshEvent
      */
     public RefreshEventResource(
