@@ -19,6 +19,8 @@ import io.micronaut.core.annotation.Experimental;
 import jakarta.inject.Singleton;
 import org.crac.Context;
 import org.crac.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.util.List;
 
@@ -31,6 +33,8 @@ import java.util.List;
 @Experimental
 @Singleton
 public class OrderedCracResourceRegistrar implements CracResourceRegistrar {
+
+    private static final Logger LOG = LoggerFactory.getLogger(OrderedCracResourceRegistrar.class);
 
     private final List<OrderedResource> resources;
     private final Context<Resource> context;
@@ -52,6 +56,11 @@ public class OrderedCracResourceRegistrar implements CracResourceRegistrar {
      */
     @Override
     public void registerResources() {
-        resources.forEach(context::register);
+        resources.forEach(resource -> {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Registering CRaC resource: {}", resource.getClass().getName());
+            }
+            context.register(resource);
+        });
     }
 }
