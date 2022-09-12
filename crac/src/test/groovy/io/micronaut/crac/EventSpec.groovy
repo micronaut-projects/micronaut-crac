@@ -6,6 +6,7 @@ import io.micronaut.context.annotation.Requires
 import io.micronaut.crac.events.AfterRestoreEvent
 import io.micronaut.crac.events.BeforeCheckpointEvent
 import io.micronaut.crac.resources.NettyEmbeddedServerResource
+import io.micronaut.crac.test.CheckpointSimulator
 import io.micronaut.http.server.netty.NettyEmbeddedServer
 import io.micronaut.runtime.context.scope.refresh.RefreshEvent
 import io.micronaut.runtime.event.annotation.EventListener
@@ -20,16 +21,16 @@ class EventSpec extends Specification {
         given:
         NettyEmbeddedServer server = ApplicationContext.run(NettyEmbeddedServer, ['spec.name': 'EventSpec', 'crac.refresh-beans': config])
         ApplicationContext ctx = server.getApplicationContext()
-        List<OrderedResource> resources = ctx.getBeansOfType(OrderedResource)
+        CheckpointSimulator simulator = ctx.getBean(CheckpointSimulator)
 
         when:
         EventRecorder.clearEvents()
 
         and: "Checkpoints are notified created in reverse order as performed by the CRaC JDK"
-        resources.reverse()*.beforeCheckpoint(null)
+        simulator.runBeforeCheckpoint()
 
         and: "Restore handlers are notified in the order they were registered as performed by the CRaC JDK"
-        resources*.afterRestore(null)
+        simulator.runAfterRestore()
 
         then:
         EventRecorder.events == expected
