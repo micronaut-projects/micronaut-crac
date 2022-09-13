@@ -104,6 +104,10 @@
 </a>
 <h2 class="title">C</h2>
 <dl>
+<dt><a href="io/micronaut/crac/test/CheckpointSimulator.html" title="interface in io.micronaut.crac.test"><span class="typeNameLink">CheckpointSimulator</span></a> - Interface in <a href="io/micronaut/crac/test/package-summary.html">io.micronaut.crac.test</a></dt>
+<dd>
+<div class="block">Provides a mechanism to simulate a checkpoint/restore for testing.</div>
+</dd>
 <dt><a href="io/micronaut/crac/CracConfiguration.html" title="interface in io.micronaut.crac"><span class="typeNameLink">CracConfiguration</span></a> - Interface in <a href="io/micronaut/crac/package-summary.html">io.micronaut.crac</a></dt>
 <dd>
 <div class="block">Configuration for CRaC support.</div>
@@ -139,6 +143,12 @@
 <div class="block">The default enable value.</div>
 </dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/CracConfigurationProperties.html#DEFAULT_REFRESH">DEFAULT_REFRESH</a></span> - Static variable in class io.micronaut.crac.<a href="io/micronaut/crac/CracConfigurationProperties.html" title="class in io.micronaut.crac">CracConfigurationProperties</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" title="class in io.micronaut.crac.test"><span class="typeNameLink">DefaultCheckpointSimulator</span></a> - Class in <a href="io/micronaut/crac/test/package-summary.html">io.micronaut.crac.test</a></dt>
+<dd>
+<div class="block">Provides a mechanism to simulate a checkpoint/restore for testing.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html#DefaultCheckpointSimulator-java.util.List-">DefaultCheckpointSimulator(List&lt;OrderedResource&gt;)</a></span> - Constructor for class io.micronaut.crac.test.<a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" title="class in io.micronaut.crac.test">DefaultCheckpointSimulator</a></dt>
 <dd>&nbsp;</dd>
 </dl>
 <a name="I:F">
@@ -196,6 +206,8 @@
 <dd>
 <div class="block">Built-in OrderedResources for CRaC integration.</div>
 </dd>
+<dt><a href="io/micronaut/crac/test/package-summary.html">io.micronaut.crac.test</a> - package io.micronaut.crac.test</dt>
+<dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/CracConfigurationProperties.html#isEnabled--">isEnabled()</a></span> - Method in class io.micronaut.crac.<a href="io/micronaut/crac/CracConfigurationProperties.html" title="class in io.micronaut.crac">CracConfigurationProperties</a></dt>
 <dd>&nbsp;</dd>
 <dt><span class="memberNameLink"><a href="io/micronaut/crac/CracConfiguration.html#isRefreshBeans--">isRefreshBeans()</a></span> - Method in interface io.micronaut.crac.<a href="io/micronaut/crac/CracConfiguration.html" title="interface in io.micronaut.crac">CracConfiguration</a></dt>
@@ -272,6 +284,18 @@
 <dd>
 <div class="block">For each known resource, register it with the CRaC context.</div>
 </dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/test/CheckpointSimulator.html#runAfterRestore--">runAfterRestore()</a></span> - Method in interface io.micronaut.crac.test.<a href="io/micronaut/crac/test/CheckpointSimulator.html" title="interface in io.micronaut.crac.test">CheckpointSimulator</a></dt>
+<dd>
+<div class="block">Simulates a restore.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html#runAfterRestore--">runAfterRestore()</a></span> - Method in class io.micronaut.crac.test.<a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" title="class in io.micronaut.crac.test">DefaultCheckpointSimulator</a></dt>
+<dd>&nbsp;</dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/test/CheckpointSimulator.html#runBeforeCheckpoint--">runBeforeCheckpoint()</a></span> - Method in interface io.micronaut.crac.test.<a href="io/micronaut/crac/test/CheckpointSimulator.html" title="interface in io.micronaut.crac.test">CheckpointSimulator</a></dt>
+<dd>
+<div class="block">Simulates a checkpoint.</div>
+</dd>
+<dt><span class="memberNameLink"><a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html#runBeforeCheckpoint--">runBeforeCheckpoint()</a></span> - Method in class io.micronaut.crac.test.<a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" title="class in io.micronaut.crac.test">DefaultCheckpointSimulator</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <a name="I:S">
 <!--   -->
