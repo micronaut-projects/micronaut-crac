@@ -64,7 +64,7 @@ public class NettyEmbeddedServerResource implements OrderedResource {
                 LOG.debug("Stopping netty server {}", server);
             }
             long beforeStart = System.nanoTime();
-            server.stop();
+            server.stopServerOnly();
             return System.nanoTime() - beforeStart;
         });
     }
