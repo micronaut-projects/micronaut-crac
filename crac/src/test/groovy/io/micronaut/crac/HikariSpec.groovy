@@ -1,6 +1,7 @@
 package io.micronaut.crac
 
 import com.zaxxer.hikari.HikariDataSource
+import groovy.sql.Sql
 import io.micronaut.context.BeanContext
 import io.micronaut.context.annotation.Property
 import io.micronaut.crac.test.CheckpointSimulator
@@ -35,14 +36,21 @@ class HikariSpec extends Specification {
         hikariDataSource.allowPoolSuspension
         hikariDataSource.running
 
-        when:
+        when: "we make sure we've got a connection warmed up"
+        def rows = new Sql(dataSource).rows("select 1")
+
+        then:
+        rows.size() == 1
+        rows[0].values()[0] == 1
+
+        when: "we trigger a checkpoint"
         CheckpointSimulator simulator = ctx.getBean(CheckpointSimulator)
         simulator.runBeforeCheckpoint()
 
         then:
         !hikariDataSource.running
 
-        when:
+        when: "we trigger a restore"
         simulator.runAfterRestore()
 
         then:
