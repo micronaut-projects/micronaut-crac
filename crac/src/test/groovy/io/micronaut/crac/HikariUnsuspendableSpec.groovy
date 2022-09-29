@@ -6,7 +6,6 @@ import com.zaxxer.hikari.HikariDataSource
 import groovy.sql.Sql
 import io.micronaut.context.ApplicationContext
 import io.micronaut.context.BeanContext
-import io.micronaut.crac.resources.DataSourceResource
 import io.micronaut.crac.test.CheckpointSimulator
 import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
@@ -30,7 +29,7 @@ class HikariUnsuspendableSpec extends Specification {
                 )
                 .build()
         def appender = new MemoryAppender()
-        Logger l = (Logger) LoggerFactory.getLogger(DataSourceResource.packageName)
+        Logger l = (Logger) LoggerFactory.getLogger("io.micronaut.crac.resources")
         l.addAppender(appender)
         appender.start()
 
