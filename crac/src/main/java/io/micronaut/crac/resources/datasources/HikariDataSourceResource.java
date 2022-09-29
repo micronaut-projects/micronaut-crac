@@ -62,7 +62,7 @@ public class HikariDataSourceResource implements Resource {
         poolBean.softEvictConnections();
 
         if (LOG.isDebugEnabled()) {
-            LOG.debug("Waiting 30s for connections to be closed");
+            LOG.debug("Waiting {} for connections to be closed", datasourcePauseTimeout);
         }
         CompletableFuture<Void> awaitClosure = CompletableFuture.runAsync(this::waitForConnectionClosure);
         awaitClosure.get(datasourcePauseTimeout.getSeconds(), TimeUnit.SECONDS);
