@@ -41,7 +41,7 @@ public class HikariDataSourceResource implements Resource {
     public HikariDataSourceResource(HikariDataSource dataSource) {
         this.dataSource = dataSource;
         if (!dataSource.isAllowPoolSuspension()) {
-            LOG.error("HikariDataSource {} is not configured to allow pool suspension. This will cause problems when the application is checkpointed. Please set configuration datasources.*.allow-pool-suspension to fix this", dataSource);
+            LOG.error("{} is not configured to allow pool suspension. This will cause problems when the application is checkpointed. Please set configuration datasources.*.allow-pool-suspension to fix this", dataSource);
         }
         this.poolBean = dataSource.getHikariPoolMXBean();
     }

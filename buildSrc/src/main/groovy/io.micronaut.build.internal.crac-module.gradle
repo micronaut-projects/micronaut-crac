@@ -10,5 +10,6 @@ dependencies {
     testImplementation(mn.micronaut.jdbc.hikari)
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.groovy.sql)
+    testImplementation(mn.logback)
     testRuntimeOnly(mn.h2)
 }
