@@ -15,6 +15,7 @@
  */
 package io.micronaut.crac.resources.datasources;
 
+import io.micronaut.core.annotation.Experimental;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
@@ -28,6 +29,7 @@ import javax.sql.DataSource;
  * @author Tim Yates
  * @since 1.1.0
  */
+@Experimental
 public class UnknownDataSourceResource implements Resource {
 
     private static final Logger LOG = LoggerFactory.getLogger(UnknownDataSourceResource.class);
@@ -40,15 +42,15 @@ public class UnknownDataSourceResource implements Resource {
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        if (LOG.isErrorEnabled()) {
-            LOG.error("Cannot suspend DataSource {}", dataSource);
+        if (LOG.isWarnEnabled()) {
+            LOG.warn("Cannot suspend DataSource {}", dataSource);
         }
     }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
-        if (LOG.isErrorEnabled()) {
-            LOG.error("Cannot resume DataSource {}", dataSource);
+        if (LOG.isWarnEnabled()) {
+            LOG.warn("Cannot resume DataSource {}", dataSource);
         }
     }
 }

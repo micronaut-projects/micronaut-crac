@@ -5,6 +5,9 @@ import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import spock.lang.Specification
 
+import java.time.Duration
+import java.time.temporal.ChronoUnit
+
 @MicronautTest
 class ConfigurationSpec extends Specification {
 
@@ -16,6 +19,7 @@ class ConfigurationSpec extends Specification {
         with(ctx.getBean(CracConfiguration)) {
             enabled
             refreshBeans
+            datasourcePauseTimeout == Duration.of(30, ChronoUnit.SECONDS)
         }
     }
 }

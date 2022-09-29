@@ -1,17 +1,12 @@
 package io.micronaut.crac
 
-import ch.qos.logback.classic.Level
 import ch.qos.logback.classic.Logger
-import com.zaxxer.hikari.HikariDataSource
-import groovy.sql.Sql
 import io.micronaut.context.ApplicationContext
 import io.micronaut.context.BeanContext
-import io.micronaut.crac.test.CheckpointSimulator
+import io.micronaut.context.exceptions.BeanInstantiationException
 import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
 import spock.lang.Specification
-
-import javax.sql.DataSource
 
 class HikariUnsuspendableSpec extends Specification {
 
@@ -35,43 +30,10 @@ class HikariUnsuspendableSpec extends Specification {
 
         when:
         ctx.start()
-        DataSource dataSource = ctx.getBean(DataSource)
 
         then:
-        dataSource instanceof HikariDataSource
-
-        when:
-        HikariDataSource hikariDataSource = (HikariDataSource) dataSource
-
-        then: "Pool is unsuspendable"
-        !hikariDataSource.allowPoolSuspension
-        hikariDataSource.running
-
-        when: "we make sure we've got a connection warmed up"
-        def rows = new Sql(dataSource).rows("select 1")
-
-        then:
-        rows.size() == 1
-        rows[0].values()[0] == 1
-
-        when: "we trigger a checkpoint"
-        CheckpointSimulator simulator = ctx.getBean(CheckpointSimulator)
-        simulator.runBeforeCheckpoint()
-
-        then: 'we get a useful error message'
-        appender.events.find {
-            it.message.contains('This will cause problems when the application is checkpointed. Please set configuration datasources.*.allow-pool-suspension to fix this') &&
-                    it.level == Level.ERROR
-        }
-
-        and: 'the failure is logged'
-        appender.events.find {
-            it.message.contains('Error stopping datasource') &&
-                    it.level == Level.ERROR
-        }
-
-        and: 'the pool is still running'
-        hikariDataSource.running
+        def exception = thrown(BeanInstantiationException)
+        exception.message.contains("This will cause problems when the application is checkpointed. Please set configuration datasources.*.allow-pool-suspension to fix this")
 
         cleanup:
         appender.stop()

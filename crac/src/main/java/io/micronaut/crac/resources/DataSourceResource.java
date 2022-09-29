@@ -19,6 +19,7 @@ import com.zaxxer.hikari.HikariDataSource;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.crac.CracConfiguration;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
@@ -49,16 +50,17 @@ public class DataSourceResource implements OrderedResource {
     private final Resource handler;
 
     public DataSourceResource(
+        CracConfiguration configuration,
         CracEventPublisher eventPublisher,
         DataSource dataSource
     ) {
         this.eventPublisher = eventPublisher;
-        this.handler = getHandler(dataSource);
+        this.handler = getHandler(dataSource, configuration);
     }
 
-    private Resource getHandler(DataSource dataSource) {
+    private Resource getHandler(DataSource dataSource, CracConfiguration configuration) {
         if (dataSource instanceof HikariDataSource) {
-            return new HikariDataSourceResource((HikariDataSource) dataSource);
+            return new HikariDataSourceResource((HikariDataSource) dataSource, configuration);
         } else {
             if (LOG.isWarnEnabled()) {
                 LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());

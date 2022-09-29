@@ -18,6 +18,8 @@ package io.micronaut.crac;
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.core.annotation.Experimental;
 
+import java.time.Duration;
+
 /**
  * Configuration for CRaC support. Enabled by default.
  *
@@ -39,9 +41,11 @@ public class CracConfigurationProperties implements CracConfiguration {
     @SuppressWarnings("WeakerAccess")
     public static final boolean DEFAULT_ENABLED = true;
     public static final boolean DEFAULT_REFRESH = true;
+    public static final String DEFAULT_DATASOURCE_PAUSE_TIMEOUT = "PT30S";
 
     private boolean enabled = DEFAULT_ENABLED;
     private boolean refreshBeans = DEFAULT_REFRESH;
+    private Duration datasourcePauseTimeout = Duration.parse(DEFAULT_DATASOURCE_PAUSE_TIMEOUT);
 
     /**
      * @return Whether CRaC is enabled.
@@ -75,5 +79,19 @@ public class CracConfigurationProperties implements CracConfiguration {
      */
     public void setRefreshBeans(boolean refreshBeans) {
         this.refreshBeans = refreshBeans;
+    }
+
+    @Override
+    public Duration getDatasourcePauseTimeout() {
+        return datasourcePauseTimeout;
+    }
+
+    /**
+     * The timeout to wait for a datasource to pause before taking a checkpoint. Default value ({@value #DEFAULT_DATASOURCE_PAUSE_TIMEOUT}).
+     *
+     * @param datasourcePauseTimeout The timeout to wait for a datasource to pause before taking a checkpoint.
+     */
+    public void setDatasourcePauseTimeout(Duration datasourcePauseTimeout) {
+        this.datasourcePauseTimeout = datasourcePauseTimeout;
     }
 }
