@@ -5,6 +5,9 @@ plugins {
 dependencies {
     api(libs.managed.crac)
     compileOnly(mn.micronaut.http.server.netty)
-    compileOnly("io.micronaut.sql:micronaut-jdbc-hikari")
+    compileOnly(mn.micronaut.jdbc.hikari)
+
+    testImplementation(mn.micronaut.jdbc.hikari)
     testImplementation(mn.micronaut.http.server.netty)
+    testRuntimeOnly(mn.h2)
 }
