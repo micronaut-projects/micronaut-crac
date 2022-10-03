@@ -17,6 +17,7 @@ package io.micronaut.crac;
 
 import io.micronaut.context.annotation.ConfigurationProperties;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.core.annotation.NonNull;
 
 import java.time.Duration;
 
@@ -82,6 +83,7 @@ public class CracConfigurationProperties implements CracConfiguration {
     }
 
     @Override
+    @NonNull
     public Duration getDatasourcePauseTimeout() {
         return datasourcePauseTimeout;
     }

@@ -15,6 +15,7 @@
  */
 package io.micronaut.crac;
 
+import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.util.Toggleable;
 
 import java.time.Duration;
@@ -32,5 +33,9 @@ public interface CracConfiguration extends Toggleable {
      */
     boolean isRefreshBeans();
 
+    /**
+     * @return The timeout to wait for a datasource to pause before taking a checkpoint.
+     */
+    @NonNull
     Duration getDatasourcePauseTimeout();
 }
