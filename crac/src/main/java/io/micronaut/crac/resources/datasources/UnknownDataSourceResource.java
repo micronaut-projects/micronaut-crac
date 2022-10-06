@@ -43,14 +43,14 @@ public class UnknownDataSourceResource implements Resource {
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
         if (LOG.isWarnEnabled()) {
-            LOG.warn("Cannot suspend DataSource {}", dataSource);
+            LOG.warn("Cannot suspend DataSource {}", dataSource.getClass().getName());
         }
     }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
         if (LOG.isWarnEnabled()) {
-            LOG.warn("Cannot resume DataSource {}", dataSource);
+            LOG.warn("Cannot resume DataSource {}", dataSource.getClass().getName());
         }
     }
 }
