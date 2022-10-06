@@ -61,12 +61,11 @@ public class DataSourceResource implements OrderedResource {
     private Resource getHandler(DataSource dataSource, CracConfiguration configuration) {
         if (dataSource instanceof HikariDataSource) {
             return new HikariDataSourceResource((HikariDataSource) dataSource, configuration);
-        } else {
-            if (LOG.isWarnEnabled()) {
-                LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());
-            }
-            return new UnknownDataSourceResource(dataSource);
         }
+        if (LOG.isWarnEnabled()) {
+            LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());
+        }
+        return new UnknownDataSourceResource(dataSource);
     }
 
     @Override
