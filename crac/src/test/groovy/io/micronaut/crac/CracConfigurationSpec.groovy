@@ -40,4 +40,17 @@ class CracConfigurationSpec extends Specification {
         cleanup:
         ctx.close()
     }
+
+    void "datasource pause timeout can be configured"() {
+        given:
+        ApplicationContext ctx = ApplicationContext.run('crac.datasource-pause-timeout': "PT1H")
+
+        expect:
+        with(ctx.getBean(CracConfiguration)) {
+            datasourcePauseTimeout.seconds == 3600
+        }
+
+        cleanup:
+        ctx.close()
+    }
 }

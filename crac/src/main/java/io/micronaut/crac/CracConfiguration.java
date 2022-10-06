@@ -15,7 +15,10 @@
  */
 package io.micronaut.crac;
 
+import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.util.Toggleable;
+
+import java.time.Duration;
 
 /**
  * Configuration for CRaC support. Enabled by default.
@@ -29,4 +32,10 @@ public interface CracConfiguration extends Toggleable {
      * @return Whether to refresh beans prior to taking a checkpoint.
      */
     boolean isRefreshBeans();
+
+    /**
+     * @return The timeout to wait for a datasource to pause before taking a checkpoint.
+     */
+    @NonNull
+    Duration getDatasourcePauseTimeout();
 }
