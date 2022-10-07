@@ -6,5 +6,6 @@ resource: Resources
 refresh: Refresh scope
 events: Events
 context: Context Provider
+docker: Docker Support
 repository: Repository
 
