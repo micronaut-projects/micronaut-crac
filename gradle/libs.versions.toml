@@ -1,9 +1,9 @@
 [versions]
 micronaut = "4.0.0-SNAPSHOT"
 micronaut-docs = "2.0.0"
-spock = "2.1-groovy-3.0"
 micronaut-test = "3.7.0"
 groovy = "4.0.6"
+spock = "2.3-groovy-4.0"
 
 managed-crac = "0.1.3"
 
