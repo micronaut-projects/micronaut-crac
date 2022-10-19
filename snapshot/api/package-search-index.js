@@ -1,0 +1,1 @@
+packageSearchIndex = [{"l":"All Packages","u":"allpackages-index.html"},{"l":"io.micronaut.crac"},{"l":"io.micronaut.crac.events"},{"l":"io.micronaut.crac.resources"},{"l":"io.micronaut.crac.test"}];updateSearchResults();
