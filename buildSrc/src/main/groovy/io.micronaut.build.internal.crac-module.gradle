@@ -6,7 +6,9 @@ dependencies {
     api(libs.managed.crac)
     compileOnly(mn.micronaut.http.server.netty)
     compileOnly(mn.micronaut.jdbc.hikari)
+    compileOnly(mn.micronaut.data.tx)
 
+    testImplementation(mn.micronaut.data.tx)
     testImplementation(mn.micronaut.jdbc.hikari)
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.groovy.sql)

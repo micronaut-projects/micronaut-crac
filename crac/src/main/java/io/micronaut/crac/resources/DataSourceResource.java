@@ -25,6 +25,7 @@ import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
 import io.micronaut.crac.resources.datasources.UnknownDataSourceResource;
+import io.micronaut.transaction.jdbc.DelegatingDataSource;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
@@ -59,7 +60,19 @@ public class DataSourceResource implements OrderedResource {
     }
 
     private Resource getHandler(DataSource dataSource, CracConfiguration configuration) {
+        if (dataSource instanceof DelegatingDataSource) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("DelegatingDataSource detected, unwrapping");
+            }
+            dataSource = DelegatingDataSource.unwrapDataSource(dataSource);
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("Unwrapped DataSource is {}", dataSource.getClass().getName());
+            }
+        }
         if (dataSource instanceof HikariDataSource) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
+            }
             return new HikariDataSourceResource((HikariDataSource) dataSource, configuration);
         }
         if (LOG.isWarnEnabled()) {
@@ -97,5 +110,4 @@ public class DataSourceResource implements OrderedResource {
             return System.nanoTime() - beforeStart;
         });
     }
-
 }
