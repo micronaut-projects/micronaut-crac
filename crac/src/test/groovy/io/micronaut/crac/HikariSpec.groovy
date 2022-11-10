@@ -7,6 +7,7 @@ import io.micronaut.context.BeanContext
 import io.micronaut.context.annotation.Property
 import io.micronaut.crac.test.CheckpointSimulator
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
+import io.micronaut.transaction.jdbc.DelegatingDataSource
 import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
 import spock.lang.AutoCleanup
@@ -20,7 +21,7 @@ import javax.sql.DataSource
 @Property(name = "datasources.default.password", value = "")
 @Property(name = "datasources.default.driver-class-name", value = "org.h2.Driver")
 @Property(name = "datasources.default.allow-pool-suspension", value = "true")
-@Property(name = "crac.datasource-pause-timeout", value = "PT3M")
+@Property(name = "crac.datasource-pause-timeout", value = "PT10S")
 class HikariSpec extends Specification {
 
     @Inject
@@ -39,10 +40,10 @@ class HikariSpec extends Specification {
         DataSource dataSource = ctx.getBean(DataSource)
 
         then:
-        dataSource instanceof HikariDataSource
+        dataSource instanceof DelegatingDataSource
 
         when:
-        HikariDataSource hikariDataSource = (HikariDataSource) dataSource
+        HikariDataSource hikariDataSource = (HikariDataSource) dataSource.targetDataSource
 
         then: "Pool is configured as suspendable"
         hikariDataSource.allowPoolSuspension
@@ -63,7 +64,7 @@ class HikariSpec extends Specification {
         !hikariDataSource.running
 
         and:
-        appender.events.formattedMessage.any { it.contains("Waiting PT3M for connections to be closed") }
+        appender.events.formattedMessage.any { it.contains("Waiting PT10S for connections to be closed") }
 
         when: "we trigger a restore"
         simulator.runAfterRestore()
