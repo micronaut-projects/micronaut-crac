@@ -14,5 +14,5 @@ dependencies {
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.groovy.sql)
     testImplementation(libs.logback)
-    testRuntimeOnly(libs.h2)
+    testRuntimeOnly(mnSql.h2)
 }
