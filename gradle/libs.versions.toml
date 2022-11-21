@@ -1,10 +1,28 @@
 [versions]
 micronaut = "4.0.0-SNAPSHOT"
+micronaut-data = "3.8.1"
 micronaut-docs = "2.0.0"
+micronaut-serialization = "2.0.0-SNAPSHOT"
+micronaut-sql = "5.0.0-SNAPSHOT"
 micronaut-test = "4.0.0-SNAPSHOT"
+
 groovy = "4.0.6"
 spock = "2.3-groovy-4.0"
+
 managed-crac = "0.1.3"
 
+h2 = "2.1.210"
+logback = "1.4.5"
+
 [libraries]
+micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serialization" }
+micronaut-sql = { module = "io.micronaut.sql:micronaut-sql-bom", version.ref = "micronaut-sql" }
+
 managed-crac = { module = "io.github.crac:org-crac", version.ref = "managed-crac" }
+
+#Should switch to importing the data catalog once we get a 4.0.0 based build
+micronaut-data-tx = { module = "io.micronaut.data:micronaut-data-tx", version.ref = "micronaut-data" }
+
+logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }
+h2 = { module = "com.h2database:h2", version.ref = "h2" }
+
