@@ -17,11 +17,9 @@ logback = "1.4.5"
 [libraries]
 micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serialization" }
 micronaut-sql = { module = "io.micronaut.sql:micronaut-sql-bom", version.ref = "micronaut-sql" }
+micronaut-data = { module = "io.micronaut.data:micronaut-data-bom", version.ref = "micronaut-data" }
 
 managed-crac = { module = "io.github.crac:org-crac", version.ref = "managed-crac" }
-
-#Should switch to importing the data catalog once we get a 4.0.0 based build
-micronaut-data-tx = { module = "io.micronaut.data:micronaut-data-tx", version.ref = "micronaut-data" }
 
 # Temporary until https://github.com/micronaut-projects/micronaut-core/pull/8388
 logback = { module = "ch.qos.logback:logback-classic", version.ref = "logback" }

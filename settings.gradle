@@ -13,7 +13,7 @@ plugins {
 dependencyResolutionManagement {
     repositories {
         maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots" }
-        mavenLocal()
+        mavenCentral()
     }
 }
 
@@ -24,6 +24,7 @@ include 'crac-bom'
 
 micronautBuild {
     importMicronautCatalog()
+    importMicronautCatalog("micronaut-data")
     importMicronautCatalog("micronaut-serde")
     importMicronautCatalog("micronaut-sql")
 }
