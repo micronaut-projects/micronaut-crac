@@ -9,20 +9,14 @@ plugins {
     id 'io.micronaut.build.shared.settings' version '6.1.0'
 }
 
-// Required for 4.0.0-SNAPSHOT, can be removed after
-dependencyResolutionManagement {
-    repositories {
-        maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots" }
-        mavenCentral()
-    }
-}
-
 rootProject.name = 'crac-parent'
 
 include 'crac'
 include 'crac-bom'
 
 micronautBuild {
+    // Required for 4.0.0-SNAPSHOT, can be removed after
+    addSnapshotRepository()
     importMicronautCatalog()
     importMicronautCatalog("micronaut-data")
     importMicronautCatalog("micronaut-serde")
