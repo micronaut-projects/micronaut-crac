@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="script-dir/jquery-ui.min.css" title="Style">
 <link rel="stylesheet" type="text/css" href="jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="script-dir/jquery-3.5.1.min.js"></script>
+<script type="text/javascript" src="script-dir/jquery-3.6.0.min.js"></script>
 <script type="text/javascript" src="script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="all-classes-index-page">
@@ -91,13 +91,21 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab1">
 <div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" title="class in io.micronaut.crac.test">DefaultCheckpointSimulator</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/DataSourceResource.html" title="class in io.micronaut.crac.resources">DataSourceResource</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Register DataSources as CRaC resources on startup if CRaC is enabled.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" title="class in io.micronaut.crac.test">DefaultCheckpointSimulator</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Provides a mechanism to simulate a checkpoint/restore for testing.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/GlobalCracContextProvider.html" title="class in io.micronaut.crac">GlobalCracContextProvider</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/GlobalCracContextProvider.html" title="class in io.micronaut.crac">GlobalCracContextProvider</a></div>
+<div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Gets a Global Context through <code>Core.getGlobalContext()</code>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/datasources/HikariDataSourceResource.html" title="class in io.micronaut.crac.resources.datasources">HikariDataSourceResource</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Handler for Hikari DataSources.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/NettyEmbeddedServerResource.html" title="class in io.micronaut.crac.resources">NettyEmbeddedServerResource</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
@@ -118,6 +126,10 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/StartupCracRegistration.html" title="class in io.micronaut.crac">StartupCracRegistration</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint at <code>StartupEvent</code>.</div>
+</div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/datasources/UnknownDataSourceResource.html" title="class in io.micronaut.crac.resources.datasources">UnknownDataSourceResource</a></div>
+<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
+<div class="block">Handler for currently unhandled DataSources.</div>
 </div>
 </div>
 </div>
