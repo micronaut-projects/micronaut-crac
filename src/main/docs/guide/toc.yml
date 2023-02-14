@@ -7,5 +7,6 @@ refresh: Refresh scope
 events: Events
 context: Context Provider
 docker: Docker Support
+testing: Testing
 repository: Repository
 
