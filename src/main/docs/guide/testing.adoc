@@ -4,12 +4,8 @@ As tests annotated with `@MicronautTest` are implicitly in the `Singleton` scope
 
 To avoid this, you can either disable eager singleton initialization for your tests, or you will need to manually get an instance of the bean you would normally inject.  As an example, to get an `HttpClient` you could do:
 
-[source,groovy]
-.Getting an HttpClient instance in Spock with eager singleton initialization enabled
-----
-include::crac/src/test/groovy/io/micronaut/crac/EagerInitialisationSpec.groovy[tags=eager, indent=0]
-----
+snippet::io.micronaut.crac.EagerHttpClientCreationTest[tags=test,indent=0,title=Lazily get an HttpClient in a test]
 
 <1> Inject the `EmbeddedServer` as normal
-<2> Create a memoized method to create the `HttpClient` when it is first called
-<3> Use the method to get the `HttpClient` and make the request
+<2> Lazily create a `HttpClient` when it is first called
+<3> Get the `HttpClient` and make the request
