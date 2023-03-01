@@ -23,15 +23,14 @@ import io.micronaut.crac.CracConfiguration;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
-import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
 import io.micronaut.crac.resources.datasources.UnknownDataSourceResource;
-import io.micronaut.transaction.jdbc.DelegatingDataSource;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
+import java.util.Optional;
 
 /**
  * Register DataSources as CRaC resources on startup if CRaC is enabled.
@@ -49,32 +48,30 @@ public class DataSourceResource implements OrderedResource {
 
     private final CracEventPublisher eventPublisher;
     private final Resource handler;
+    private final DataSourceResolver dataSourceResolver;
 
+    @Deprecated
     public DataSourceResource(
         CracConfiguration configuration,
         CracEventPublisher eventPublisher,
         DataSource dataSource
     ) {
+        this(configuration, eventPublisher, dataSource, dataSource1 -> Optional.empty()):
+    }
+
+    public DataSourceResource(
+        CracConfiguration configuration,
+        CracEventPublisher eventPublisher,
+        DataSource dataSource,
+        DataSourceResolver dataSourceResolver
+    ) {
         this.eventPublisher = eventPublisher;
         this.handler = getHandler(dataSource, configuration);
+        this.dataSourceResolver = dataSourceResolver;
     }
 
     private Resource getHandler(DataSource dataSource, CracConfiguration configuration) {
-        if (dataSource instanceof DelegatingDataSource) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("DelegatingDataSource detected, unwrapping");
-            }
-            dataSource = DelegatingDataSource.unwrapDataSource(dataSource);
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Unwrapped DataSource is {}", dataSource.getClass().getName());
-            }
-        }
-        if (dataSource instanceof HikariDataSource) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
-            }
-            return new HikariDataSourceResource((HikariDataSource) dataSource, configuration);
-        }
+        Optional<DataSource> resolvedDataSourceOptional = dataSourceResolver.resolve(dataSource);
         if (LOG.isWarnEnabled()) {
             LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());
         }
