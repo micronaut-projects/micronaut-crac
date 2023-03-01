@@ -16,6 +16,7 @@ include 'crac-bom'
 
 include 'test-suite'
 include 'test-suite-groovy'
+include 'test-suite-hikari-jooq'
 include 'test-suite-kotlin'
 
 micronautBuild {

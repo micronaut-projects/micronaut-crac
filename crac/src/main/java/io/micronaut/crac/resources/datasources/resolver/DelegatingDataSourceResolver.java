@@ -13,10 +13,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.resources;
-
+package io.micronaut.crac.resources.datasources.resolver;
 
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.core.annotation.Experimental;
 import io.micronaut.transaction.jdbc.DelegatingDataSource;
 import jakarta.inject.Singleton;
 import org.slf4j.Logger;
@@ -26,14 +26,20 @@ import javax.sql.DataSource;
 import java.util.Optional;
 
 /**
- * if the data Source is of type {@link io.micronaut.transaction.jdbc.DelegatingDataSource}
+ * If the data Source is of type {@link io.micronaut.transaction.jdbc.DelegatingDataSource}, extract the underlying data source.
+ *
  * @author Sergio del Amo
  * @since 1.2.0
  */
-@Requires(classes = DelegatingDataSource.class)
 @Singleton
+@Experimental
+@Requires(classes = DelegatingDataSource.class)
 public class DelegatingDataSourceResolver implements DataSourceResolver {
+
+    static final int ORDER = 1;
+
     private static final Logger LOG = LoggerFactory.getLogger(DelegatingDataSourceResolver.class);
+
     @Override
     public Optional<DataSource> resolve(DataSource dataSource) {
         if (dataSource instanceof DelegatingDataSource) {
@@ -49,5 +55,8 @@ public class DelegatingDataSourceResolver implements DataSourceResolver {
         return Optional.empty();
     }
 
-    //TODO override order
+    @Override
+    public int getOrder() {
+        return ORDER;
+    }
 }

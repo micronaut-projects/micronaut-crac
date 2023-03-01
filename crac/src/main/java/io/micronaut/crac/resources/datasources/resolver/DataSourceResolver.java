@@ -13,13 +13,20 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package io.micronaut.crac.resources;
+package io.micronaut.crac.resources.datasources.resolver;
+
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.order.Ordered;
 
 import javax.sql.DataSource;
 import java.util.Optional;
 
+/**
+ * Interface to allow DataSource resolution.
+ *
+ * @author Tim Yates
+ * @since 1.2.0
+ */
 @FunctionalInterface
 public interface DataSourceResolver extends Ordered {
 

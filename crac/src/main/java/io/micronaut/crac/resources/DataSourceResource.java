@@ -23,7 +23,10 @@ import io.micronaut.crac.CracConfiguration;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
+import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
 import io.micronaut.crac.resources.datasources.UnknownDataSourceResource;
+import io.micronaut.crac.resources.datasources.resolver.DataSourceResolver;
+import jakarta.inject.Inject;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
@@ -50,15 +53,23 @@ public class DataSourceResource implements OrderedResource {
     private final Resource handler;
     private final DataSourceResolver dataSourceResolver;
 
+    /**
+     * @deprecated Use {@link #DataSourceResource(CracConfiguration, CracEventPublisher, DataSource, DataSourceResolver)} instead
+     *
+     * @param configuration
+     * @param eventPublisher
+     * @param dataSource
+     */
     @Deprecated
     public DataSourceResource(
         CracConfiguration configuration,
         CracEventPublisher eventPublisher,
         DataSource dataSource
     ) {
-        this(configuration, eventPublisher, dataSource, dataSource1 -> Optional.empty()):
+        this(configuration, eventPublisher, dataSource, dataSource1 -> Optional.empty());
     }
 
+    @Inject
     public DataSourceResource(
         CracConfiguration configuration,
         CracEventPublisher eventPublisher,
@@ -66,12 +77,19 @@ public class DataSourceResource implements OrderedResource {
         DataSourceResolver dataSourceResolver
     ) {
         this.eventPublisher = eventPublisher;
-        this.handler = getHandler(dataSource, configuration);
         this.dataSourceResolver = dataSourceResolver;
+        this.handler = getHandler(dataSource, configuration);
     }
 
     private Resource getHandler(DataSource dataSource, CracConfiguration configuration) {
         Optional<DataSource> resolvedDataSourceOptional = dataSourceResolver.resolve(dataSource);
+        if (resolvedDataSourceOptional.isPresent()) {
+            if (LOG.isDebugEnabled()) {
+                LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
+            }
+            return new HikariDataSourceResource((HikariDataSource) resolvedDataSourceOptional.get(), configuration);
+        }
+
         if (LOG.isWarnEnabled()) {
             LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());
         }
