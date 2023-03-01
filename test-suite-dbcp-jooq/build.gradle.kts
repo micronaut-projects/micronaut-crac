@@ -9,7 +9,7 @@ dependencies {
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.micronaut.inject.groovy)
     testImplementation(mn.micronaut.jooq)
-    testImplementation(mn.micronaut.jdbc.hikari)
+    testImplementation(mn.micronaut.jdbc.dbcp)
     testImplementation(mn.logback)
     testRuntimeOnly(mn.h2)
 }
