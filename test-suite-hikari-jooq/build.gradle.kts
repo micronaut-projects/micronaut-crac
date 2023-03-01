@@ -17,3 +17,12 @@ dependencies {
 tasks.test {
     useJUnitPlatform()
 }
+
+configurations.all {
+    resolutionStrategy.eachDependency {
+        if (requested.group == "org.jooq") {
+            useVersion("3.14.16")
+            because("JOOQ 3.15.x+ requires Java 11")
+        }
+    }
+}
