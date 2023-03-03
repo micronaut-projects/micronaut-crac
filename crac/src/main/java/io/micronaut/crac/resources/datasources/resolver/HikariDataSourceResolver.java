@@ -17,33 +17,52 @@ package io.micronaut.crac.resources.datasources.resolver;
 
 import com.zaxxer.hikari.HikariDataSource;
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.NonNull;
+import io.micronaut.crac.CracConfiguration;
+import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
+import io.micronaut.transaction.jdbc.DelegatingDataSource;
 import jakarta.inject.Singleton;
+import org.crac.Resource;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
 import java.util.Optional;
 
 /**
- * Filter the DataSource if it is not a Hikari DataSource.
+ * If the data Source is of type {@link DelegatingDataSource}, extract the underlying data source.
  *
- * @author Tim Yates
+ * @author Sergio del Amo
  * @since 1.2.0
  */
 @Singleton
-@Requires(classes = HikariDataSource.class)
-public class HikariDataSourceResolver implements DataSourceResolver {
+@Experimental
+@Requires(classes = HikariDataSource.class, missing = { DelegatingDataSource.class })
+public class HikariDataSourceResolver implements DataSourceResourceResolver {
+
+    static final int ORDER = 1;
+
+    private static final Logger LOG = LoggerFactory.getLogger(HikariDataSourceResolver.class);
 
     @Override
     @NonNull
-    public Optional<DataSource> resolve(@NonNull DataSource dataSource) {
-        if (dataSource instanceof HikariDataSource) {
-            return Optional.of(dataSource);
-        }
-        return Optional.empty();
+    public Optional<Resource> resolve(@NonNull DataSource dataSource, @NonNull CracConfiguration configuration) {
+        return resourceForNonDelegatingDataSource(dataSource, configuration);
+    }
+
+    static Optional<Resource> resourceForNonDelegatingDataSource(DataSource dataSource, CracConfiguration configuration) {
+        return dataSource instanceof HikariDataSource ?
+            Optional.of(dataSource).map(ds -> {
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
+                }
+                return new HikariDataSourceResource((HikariDataSource) ds, configuration);
+            }) : Optional.empty();
     }
 
     @Override
     public int getOrder() {
-        return DelegatingDataSourceResolver.ORDER + 1;
+        return ORDER;
     }
 }

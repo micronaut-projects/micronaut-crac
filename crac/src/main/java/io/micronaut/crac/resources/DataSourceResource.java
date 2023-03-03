@@ -15,7 +15,6 @@
  */
 package io.micronaut.crac.resources;
 
-import com.zaxxer.hikari.HikariDataSource;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
@@ -23,9 +22,8 @@ import io.micronaut.crac.CracConfiguration;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
-import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
 import io.micronaut.crac.resources.datasources.UnknownDataSourceResource;
-import io.micronaut.crac.resources.datasources.resolver.DataSourceResolver;
+import io.micronaut.crac.resources.datasources.resolver.DataSourceResourceResolver;
 import jakarta.inject.Inject;
 import org.crac.Context;
 import org.crac.Resource;
@@ -51,10 +49,10 @@ public class DataSourceResource implements OrderedResource {
 
     private final CracEventPublisher eventPublisher;
     private final Resource handler;
-    private final DataSourceResolver dataSourceResolver;
+    private final DataSourceResourceResolver dataSourceResolver;
 
     /**
-     * @deprecated Use {@link #DataSourceResource(CracConfiguration, CracEventPublisher, DataSource, DataSourceResolver)} instead
+     * @deprecated Use {@link #DataSourceResource(CracConfiguration, CracEventPublisher, DataSource, DataSourceResourceResolver)} instead
      *
      * @param configuration
      * @param eventPublisher
@@ -66,7 +64,7 @@ public class DataSourceResource implements OrderedResource {
         CracEventPublisher eventPublisher,
         DataSource dataSource
     ) {
-        this(configuration, eventPublisher, dataSource, dataSource1 -> Optional.empty());
+        this(configuration, eventPublisher, dataSource, (ds, conf) -> Optional.empty());
     }
 
     @Inject
@@ -74,7 +72,7 @@ public class DataSourceResource implements OrderedResource {
         CracConfiguration configuration,
         CracEventPublisher eventPublisher,
         DataSource dataSource,
-        DataSourceResolver dataSourceResolver
+        DataSourceResourceResolver dataSourceResolver
     ) {
         this.eventPublisher = eventPublisher;
         this.dataSourceResolver = dataSourceResolver;
@@ -82,18 +80,12 @@ public class DataSourceResource implements OrderedResource {
     }
 
     private Resource getHandler(DataSource dataSource, CracConfiguration configuration) {
-        Optional<DataSource> resolvedDataSourceOptional = dataSourceResolver.resolve(dataSource);
-        if (resolvedDataSourceOptional.isPresent()) {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
+        return dataSourceResolver.resolve(dataSource, configuration).orElseGet(() -> {
+            if (LOG.isWarnEnabled()) {
+                LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());
             }
-            return new HikariDataSourceResource((HikariDataSource) resolvedDataSourceOptional.get(), configuration);
-        }
-
-        if (LOG.isWarnEnabled()) {
-            LOG.warn("DataSource {} is not currently supported by CRaC", dataSource.getClass().getName());
-        }
-        return new UnknownDataSourceResource(dataSource);
+            return new UnknownDataSourceResource(dataSource);
+        });
     }
 
     @Override
