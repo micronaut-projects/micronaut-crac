@@ -20,7 +20,6 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.crac.CracConfiguration;
-import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
 import io.micronaut.transaction.jdbc.DelegatingDataSource;
 import jakarta.inject.Singleton;
 import org.crac.Resource;
@@ -56,13 +55,7 @@ public class HikariDelegatingDataSourceResolver implements DataSourceResourceRes
             if (LOG.isDebugEnabled()) {
                 LOG.debug("Unwrapped DataSource is {}", result.getClass().getName());
             }
-            return result instanceof HikariDataSource ?
-                Optional.of(result).map(ds -> {
-                    if (LOG.isDebugEnabled()) {
-                        LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
-                    }
-                    return new HikariDataSourceResource((HikariDataSource) ds, configuration);
-                }) : Optional.empty();
+            return HikariDataSourceResolver.resourceForNonDelegatingDataSource(result, configuration);
         }
         return Optional.empty();
     }

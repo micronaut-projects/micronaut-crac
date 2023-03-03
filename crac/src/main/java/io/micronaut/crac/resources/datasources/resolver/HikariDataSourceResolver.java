@@ -48,13 +48,17 @@ public class HikariDataSourceResolver implements DataSourceResourceResolver {
     @Override
     @NonNull
     public Optional<Resource> resolve(@NonNull DataSource dataSource, @NonNull CracConfiguration configuration) {
+        return resourceForNonDelegatingDataSource(dataSource, configuration);
+    }
+
+    static Optional<Resource> resourceForNonDelegatingDataSource(DataSource dataSource, CracConfiguration configuration) {
         return dataSource instanceof HikariDataSource ?
             Optional.of(dataSource).map(ds -> {
-                    if (LOG.isDebugEnabled()) {
-                        LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
-                    }
-                    return new HikariDataSourceResource((HikariDataSource) ds, configuration);
-                }) : Optional.empty();
+                if (LOG.isDebugEnabled()) {
+                    LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
+                }
+                return new HikariDataSourceResource((HikariDataSource) ds, configuration);
+            }) : Optional.empty();
     }
 
     @Override
