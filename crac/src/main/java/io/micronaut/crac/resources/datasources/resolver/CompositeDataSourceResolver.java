@@ -18,7 +18,9 @@ package io.micronaut.crac.resources.datasources.resolver;
 import io.micronaut.context.annotation.Primary;
 import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.NonNull;
+import io.micronaut.crac.CracConfiguration;
 import jakarta.inject.Singleton;
+import org.crac.Resource;
 
 import javax.sql.DataSource;
 import java.util.List;
@@ -33,21 +35,21 @@ import java.util.Optional;
 @Primary
 @Singleton
 @Experimental
-public class CompositeDataSourceResolver implements DataSourceResolver {
+public class CompositeDataSourceResolver implements DataSourceResourceResolver {
 
-    private final List<DataSourceResolver> resolvers;
+    private final List<DataSourceResourceResolver> resolvers;
 
-    public CompositeDataSourceResolver(List<DataSourceResolver> resolvers) {
+    public CompositeDataSourceResolver(List<DataSourceResourceResolver> resolvers) {
         this.resolvers = resolvers;
     }
 
     @Override
     @NonNull
-    public Optional<DataSource> resolve(@NonNull DataSource dataSource) {
-        return resolvers.stream().reduce(
-            Optional.of(dataSource),
-            (ds, r) -> ds.flatMap(r::resolve),
-            (ds1, ds2) -> ds1
-        );
+    public Optional<Resource> resolve(@NonNull DataSource dataSource, @NonNull CracConfiguration configuration) {
+        return resolvers.stream()
+            .map(resolver -> resolver.resolve(dataSource, configuration))
+            .filter(Optional::isPresent)
+            .map(Optional::get)
+            .findFirst();
     }
 }

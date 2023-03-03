@@ -15,10 +15,15 @@
  */
 package io.micronaut.crac.resources.datasources.resolver;
 
+import com.zaxxer.hikari.HikariDataSource;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.core.annotation.NonNull;
+import io.micronaut.crac.CracConfiguration;
+import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
 import io.micronaut.transaction.jdbc.DelegatingDataSource;
 import jakarta.inject.Singleton;
+import org.crac.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -33,24 +38,31 @@ import java.util.Optional;
  */
 @Singleton
 @Experimental
-@Requires(classes = DelegatingDataSource.class)
-public class DelegatingDataSourceResolver implements DataSourceResolver {
+@Requires(classes = { DelegatingDataSource.class, HikariDataSource.class })
+public class HikariDelegatingDataSourceResolver implements DataSourceResourceResolver {
 
     static final int ORDER = 1;
 
-    private static final Logger LOG = LoggerFactory.getLogger(DelegatingDataSourceResolver.class);
+    private static final Logger LOG = LoggerFactory.getLogger(HikariDelegatingDataSourceResolver.class);
 
     @Override
-    public Optional<DataSource> resolve(DataSource dataSource) {
+    @NonNull
+    public Optional<Resource> resolve(@NonNull DataSource dataSource, @NonNull CracConfiguration configuration) {
         if (dataSource instanceof DelegatingDataSource) {
             if (LOG.isDebugEnabled()) {
                 LOG.debug("DelegatingDataSource detected, unwrapping");
             }
-            DataSource result  = DelegatingDataSource.unwrapDataSource(dataSource);
+            DataSource result = DelegatingDataSource.unwrapDataSource(dataSource);
             if (LOG.isDebugEnabled()) {
                 LOG.debug("Unwrapped DataSource is {}", result.getClass().getName());
             }
-            return Optional.of(result);
+            return result instanceof HikariDataSource ?
+                Optional.of(result).map(ds -> {
+                    if (LOG.isDebugEnabled()) {
+                        LOG.debug("HikariDataSource detected, using HikariDataSourceResource");
+                    }
+                    return new HikariDataSourceResource((HikariDataSource) ds, configuration);
+                }) : Optional.empty();
         }
         return Optional.empty();
     }

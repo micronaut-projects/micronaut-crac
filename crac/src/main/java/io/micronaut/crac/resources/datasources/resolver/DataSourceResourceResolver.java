@@ -17,6 +17,8 @@ package io.micronaut.crac.resources.datasources.resolver;
 
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.core.order.Ordered;
+import io.micronaut.crac.CracConfiguration;
+import org.crac.Resource;
 
 import javax.sql.DataSource;
 import java.util.Optional;
@@ -28,8 +30,8 @@ import java.util.Optional;
  * @since 1.2.0
  */
 @FunctionalInterface
-public interface DataSourceResolver extends Ordered {
+public interface DataSourceResourceResolver extends Ordered {
 
     @NonNull
-    Optional<DataSource> resolve(@NonNull DataSource dataSource);
+    Optional<Resource> resolve(@NonNull DataSource dataSource, @NonNull CracConfiguration configuration);
 }
