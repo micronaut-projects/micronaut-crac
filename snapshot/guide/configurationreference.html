@@ -46,7 +46,7 @@
         <div class="docs-content">
             <div class="project">
                 <h1>Configuration Reference</h1>
-                <p><strong>Version:</strong>2.0.0-SNAPSHOT</p>
+                <p><strong>Version:</strong>1.2.0-SNAPSHOT</p>
                 <p></p>
             </div>
 <div class="sect2">
@@ -70,17 +70,17 @@
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>crac.enabled</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether CRaC (Coordinated Restore at Checkpoint) support, even if we&#8217;re on a supporting JDK, is enabled. Default value (true).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>crac.refresh-beans</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">boolean</p></td>
-<td class="tableblock halign-left valign-top"></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">Whether to trigger a refresh event to refresh all {@code Refreshable} beans prior to taking a checkpoint. Default value (true).</p></td>
 </tr>
 <tr>
 <td class="tableblock halign-left valign-top"><p class="tableblock"><code>crac.datasource-pause-timeout</code></p></td>
 <td class="tableblock halign-left valign-top"><p class="tableblock">java.time.Duration</p></td>
-<td class="tableblock halign-left valign-top"><p class="tableblock">The timeout to wait for a datasource to pause before taking a checkpoint. Default value ().</p></td>
+<td class="tableblock halign-left valign-top"><p class="tableblock">The timeout to wait for a datasource to pause before taking a checkpoint. Default value ("PT30S").</p></td>
 </tr>
 </tbody>
 </table>
