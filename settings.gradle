@@ -6,7 +6,7 @@ pluginManagement {
 }
 
 plugins {
-    id 'io.micronaut.build.shared.settings' version '5.4.6'
+    id 'io.micronaut.build.shared.settings' version '5.4.8'
 }
 
 rootProject.name = 'crac-parent'
@@ -15,7 +15,9 @@ include 'crac'
 include 'crac-bom'
 
 include 'test-suite'
+include 'test-suite-dbcp-jooq'
 include 'test-suite-groovy'
+include 'test-suite-hikari-jooq'
 include 'test-suite-kotlin'
 
 micronautBuild {
