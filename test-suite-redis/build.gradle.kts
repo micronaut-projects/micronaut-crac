@@ -4,11 +4,6 @@ plugins {
     id("io.micronaut.test-resources") version "3.7.3"
 }
 
-repositories {
-    mavenCentral()
-    mavenLocal()
-}
-
 dependencies {
     testImplementation(project(":crac"))
     testImplementation(mn.micronaut.test.spock)
