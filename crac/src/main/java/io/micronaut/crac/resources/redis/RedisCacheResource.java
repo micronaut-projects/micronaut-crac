@@ -20,9 +20,9 @@ import io.micronaut.context.BeanContext;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.core.util.StringUtils;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
-import io.micronaut.crac.resources.NettyEmbeddedServerResource;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
@@ -38,7 +38,10 @@ import org.slf4j.LoggerFactory;
 @EachBean(RedisCache.class)
 @Requires(classes = {RedisCache.class})
 @Requires(bean = CracResourceRegistrar.class)
+@Requires(property = RedisCacheResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 public class RedisCacheResource extends AbstractRedisResource {
+
+    static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".cache-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisCacheResource.class);
 
@@ -66,10 +69,5 @@ public class RedisCacheResource extends AbstractRedisResource {
             beanContext.destroyBean(redisCache);
             return System.nanoTime() - beforeStart;
         });
-    }
-
-    @Override
-    public int getOrder() {
-        return NettyEmbeddedServerResource.ORDER - 2;
     }
 }

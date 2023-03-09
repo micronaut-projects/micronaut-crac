@@ -20,6 +20,7 @@ import io.micronaut.context.BeanContext;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
+import io.micronaut.core.util.StringUtils;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.resources.NettyEmbeddedServerResource;
@@ -38,7 +39,10 @@ import org.slf4j.LoggerFactory;
 @EachBean(RedisClient.class)
 @Requires(classes = {RedisClient.class})
 @Requires(bean = CracResourceRegistrar.class)
+@Requires(property = RedisClientResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 public class RedisClientResource extends AbstractRedisResource {
+
+    static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".client-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisClientResource.class);
 

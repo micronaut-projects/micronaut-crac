@@ -9,6 +9,7 @@ dependencies {
     testImplementation(mn.micronaut.test.spock)
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.micronaut.inject.groovy)
+    testImplementation(mn.micronaut.cache.core)
     testImplementation(mn.micronaut.redis.lettuce)
     testImplementation(mn.logback)
 
