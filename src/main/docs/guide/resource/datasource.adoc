@@ -1,0 +1,10 @@
+We currently support https://micronaut-projects.github.io/micronaut-sql/latest/guide[Hikari DataSources] that are configured to allow suspension with:
+
+[configuration]
+----
+datasources:
+  default:
+    allow-pool-suspension: true
+----
+
+When a checkpoint is taken, the pool is suspended and the connections are closed.  When the checkpoint is restored, the pool is resumed and the connections are re-established.
