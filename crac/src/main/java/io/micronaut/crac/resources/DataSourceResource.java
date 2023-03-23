@@ -24,14 +24,12 @@ import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.OrderedResource;
 import io.micronaut.crac.resources.datasources.UnknownDataSourceResource;
 import io.micronaut.crac.resources.datasources.resolver.DataSourceResourceResolver;
-import jakarta.inject.Inject;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.sql.DataSource;
-import java.util.Optional;
 
 /**
  * Register DataSources as CRaC resources on startup if CRaC is enabled.
@@ -51,23 +49,6 @@ public class DataSourceResource implements OrderedResource {
     private final Resource handler;
     private final DataSourceResourceResolver dataSourceResolver;
 
-    /**
-     * @deprecated Use {@link #DataSourceResource(CracConfiguration, CracEventPublisher, DataSource, DataSourceResourceResolver)} instead
-     *
-     * @param configuration
-     * @param eventPublisher
-     * @param dataSource
-     */
-    @Deprecated
-    public DataSourceResource(
-        CracConfiguration configuration,
-        CracEventPublisher eventPublisher,
-        DataSource dataSource
-    ) {
-        this(configuration, eventPublisher, dataSource, (ds, conf) -> Optional.empty());
-    }
-
-    @Inject
     public DataSourceResource(
         CracConfiguration configuration,
         CracEventPublisher eventPublisher,
