@@ -49,6 +49,13 @@ public class DataSourceResource implements OrderedResource {
     private final Resource handler;
     private final DataSourceResourceResolver dataSourceResolver;
 
+    /**
+     * 
+     * @param configuration
+     * @param eventPublisher
+     * @param dataSource
+     * @param dataSourceResolver
+     */
     public DataSourceResource(
         CracConfiguration configuration,
         CracEventPublisher eventPublisher,
