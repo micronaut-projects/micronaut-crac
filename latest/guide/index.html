@@ -49,7 +49,7 @@
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#installation"><strong>3</strong><span>Installation</span></a></div>
                                 
-                                <div class="toc-item" style="margin-left:0"><a href="#resource"><strong>4</strong><span>Resources</span></a></div>
+                                <div class="toc-item" style="margin-left:0"><a href="#resource"><strong>4</strong><span>CRaC Resources</span></a></div>
                                 
                                 <div class="toc-item" style="margin-left:0"><a href="#refresh"><strong>5</strong><span>Refresh scope</span></a></div>
                                 
@@ -98,7 +98,13 @@
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-installation"><a href="#installation"><strong>3</strong><span>Installation</span></a></div>
         
-        <div class="toc-item" style="margin-left:0px" id="toc-item-resource"><a href="#resource"><strong>4</strong><span>Resources</span></a></div>
+        <div class="toc-item" style="margin-left:0px" id="toc-item-resource"><a href="#resource"><strong>4</strong><span>CRaC Resources</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-datasource"><a href="#datasource"><strong>4.1</strong><span>DataSources</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-redis"><a href="#redis"><strong>4.2</strong><span>Redis</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-custom"><a href="#custom"><strong>4.3</strong><span>Custom CRaC Resources</span></a></div>
         
         <div class="toc-item" style="margin-left:0px" id="toc-item-refresh"><a href="#refresh"><strong>5</strong><span>Refresh scope</span></a></div>
         
@@ -120,13 +126,13 @@
         <h1>Micronaut CRaC</h1>
         <p></p>
         <p>Adds support for CRaC (Coordinated Restore at Checkpoint) to the Micronaut Framework.</p>
-        <p><strong>Version:</strong> <select style='max-width: 200px' onChange='window.document.location.href=this.options[this.selectedIndex].value;'><option value='https://micronaut-projects.github.io/micronaut-crac/snapshot/guide/index.html'>SNAPSHOT</option><option value='https://micronaut-projects.github.io/micronaut-crac/latest/guide/index.html'>LATEST</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.2.0/guide/index.html'>1.2.0</option><option selected='selected' value='https://micronaut-projects.github.io/micronaut-crac/1.1.2/guide/index.html'>1.1.2</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.1.1/guide/index.html'>1.1.1</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.1.0/guide/index.html'>1.1.0</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.0.1/guide/index.html'>1.0.1</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.0.0/guide/index.html'>1.0.0</option></select> </p>
+        <p><strong>Version:</strong> <select style='max-width: 200px' onChange='window.document.location.href=this.options[this.selectedIndex].value;'><option value='https://micronaut-projects.github.io/micronaut-crac/snapshot/guide/index.html'>SNAPSHOT</option><option value='https://micronaut-projects.github.io/micronaut-crac/latest/guide/index.html'>LATEST</option><option selected='selected' value='https://micronaut-projects.github.io/micronaut-crac/1.2.1/guide/index.html'>1.2.1</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.2.0/guide/index.html'>1.2.0</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.1.2/guide/index.html'>1.1.2</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.1.1/guide/index.html'>1.1.1</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.1.0/guide/index.html'>1.1.0</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.0.1/guide/index.html'>1.0.1</option><option value='https://micronaut-projects.github.io/micronaut-crac/1.0.0/guide/index.html'>1.0.0</option></select> </p>
     </div>
     
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -139,7 +145,7 @@
 <h1 id="releaseHistory"><a class="anchor" href="#releaseHistory"></a>2 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/releaseHistory.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/releaseHistory.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -155,7 +161,7 @@
 <h1 id="installation"><a class="anchor" href="#installation"></a>3 Installation</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/installation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/installation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -181,17 +187,192 @@
 </div></p>
 </div>
 
-<h1 id="resource"><a class="anchor" href="#resource"></a>4 Resources</h1>
+<h1 id="resource"><a class="anchor" href="#resource"></a>4 CRaC Resources</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/resource.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/resource.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+<h2 id="datasource"><a class="anchor" href="#datasource"></a>4.1 DataSources</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/resource/datasource.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
 
 
 <div class="paragraph">
-<p>To provide CRaC resources, create beans of type <a href="../api/io/micronaut/crac/OrderedResource.html">OrderedResource</a>.</p>
+<p>We currently support <a href="https://micronaut-projects.github.io/micronaut-sql/latest/guide">Hikari DataSources</a> that are configured to allow suspension with:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">datasources.default.allow-pool-suspension=true</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">datasources:
+  default:
+    allow-pool-suspension: true</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml">[datasources]
+  [datasources.default]
+    allow-pool-suspension=true</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy-config hljs" data-lang="groovy-config">datasources {
+  'default' {
+    allowPoolSuspension = true
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-hocon hljs" data-lang="hocon">{
+  datasources {
+    default {
+      allow-pool-suspension = true
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json-config hljs" data-lang="json-config">{
+  "datasources": {
+    "default": {
+      "allow-pool-suspension": true
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When a checkpoint is taken, the pool is suspended and the connections are closed.  When the checkpoint is restored, the pool is resumed and the connections are re-established.</p>
+</div>
+
+<h2 id="redis"><a class="anchor" href="#redis"></a>4.2 Redis</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/resource/redis.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Since v1.2.1 of this library, we also support Redis connections.</p>
+</div>
+<div class="paragraph">
+<p>When the checkpoint is taken, we destroy <code>RedisClient</code>, <code>RedisCache</code> and <code>StatefulRedisConnection</code> beans that exist in the application.</p>
+</div>
+<div class="paragraph">
+<p>These will be re-created once the checkpoint is restored, however you will need to add your beans to <a href="#refresh">the refresh scope</a> so that these new beans are used.</p>
+</div>
+<div class="paragraph">
+<p>The resources for each of the above can be disabled via configuration:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">crac.redis.enabled=false
+crac.redis.client-enabled=false
+crac.redis.cache-enabled=false
+crac.redis.connection-enabled=false</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">crac:
+    redis:
+        enabled: false            # disable all redis support
+        client-enabled: false     # disable RedisClient support
+        cache-enabled: false      # disable RedisCache support
+        connection-enabled: false # disable StatefulRedisConnection support</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml">[crac]
+  [crac.redis]
+    enabled=false
+    client-enabled=false
+    cache-enabled=false
+    connection-enabled=false</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy-config hljs" data-lang="groovy-config">crac {
+  redis {
+    enabled = false
+    clientEnabled = false
+    cacheEnabled = false
+    connectionEnabled = false
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-hocon hljs" data-lang="hocon">{
+  crac {
+    redis {
+      enabled = false
+      client-enabled = false
+      cache-enabled = false
+      connection-enabled = false
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json-config hljs" data-lang="json-config">{
+  "crac": {
+    "redis": {
+      "enabled": false,
+      "client-enabled": false,
+      "cache-enabled": false,
+      "connection-enabled": false
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<h2 id="custom"><a class="anchor" href="#custom"></a>4.3 Custom CRaC Resources</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/resource/custom.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>To provide custom CRaC resources, create beans of type <a href="../api/io/micronaut/crac/OrderedResource.html">OrderedResource</a>.</p>
 </div>
 <div class="paragraph">
 <p>Micronaut CRaC registers resources for you into the CRaC Context. You just focus on providing implementations for <code>OrderedResource::beforeCheckpoint</code> and <code>OrderedResource::afterRestore</code> in your resources.</p>
@@ -203,7 +384,7 @@
 <h1 id="refresh"><a class="anchor" href="#refresh"></a>5 Refresh scope</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/refresh.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/refresh.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -219,7 +400,7 @@
 <h1 id="events"><a class="anchor" href="#events"></a>6 Events</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/events.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/events.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -236,7 +417,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <h1 id="context"><a class="anchor" href="#context"></a>7 Context Provider</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/context.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/context.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -249,7 +430,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <h1 id="docker"><a class="anchor" href="#docker"></a>8 Docker Support</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/docker.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/docker.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -262,7 +443,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <h1 id="testing"><a class="anchor" href="#testing"></a>9 Testing</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/testing.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/testing.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -346,7 +527,7 @@ fun testClient() {
 <h1 id="repository"><a class="anchor" href="#repository"></a>10 Repository</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.1.x/src/main/docs/guide/repository.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/1.2.x/src/main/docs/guide/repository.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
