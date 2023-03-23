@@ -17,6 +17,7 @@ dependencies {
     testImplementation(mnSql.micronaut.jdbc.dbcp)
     testImplementation(mn.logback.classic)
     testRuntimeOnly(mnSql.h2)
+    testRuntimeOnly(mn.micronaut.jackson.databind)
 }
 
 tasks.test {

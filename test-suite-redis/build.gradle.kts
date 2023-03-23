@@ -12,12 +12,14 @@ dependencies {
     testImplementation(project(":crac"))
     testImplementation(mnTest.micronaut.test.spock)
     testImplementation(mn.micronaut.http.server.netty)
+    testImplementation(mn.micronaut.http.client)
     testImplementation(mn.micronaut.inject.groovy)
     testImplementation(mnCache.micronaut.cache.core)
     testImplementation(mnRedis.micronaut.redis.lettuce)
     testImplementation(mn.logback.classic)
 
     testRuntimeOnly(mnSql.h2)
+    testRuntimeOnly(mn.micronaut.jackson.databind)
 }
 
 tasks.test {
