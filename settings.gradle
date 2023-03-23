@@ -11,6 +11,8 @@ plugins {
     id 'io.micronaut.build.shared.settings' version '6.3.5'
 }
 
+enableFeaturePreview('TYPESAFE_PROJECT_ACCESSORS')
+
 rootProject.name = 'crac-parent'
 
 include 'crac'
@@ -26,6 +28,8 @@ include 'test-suite-redis'
 micronautBuild {
     // Required for 4.0.0-SNAPSHOT, can be removed after
     addSnapshotRepository()
+
+    useStandardizedProjectNames = true
     importMicronautCatalog()
     importMicronautCatalog("micronaut-cache")
     importMicronautCatalog("micronaut-data")

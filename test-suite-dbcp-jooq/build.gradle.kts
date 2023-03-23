@@ -9,7 +9,7 @@ micronaut {
 }
 
 dependencies {
-    testImplementation(project(":crac"))
+    testImplementation(projects.micronautCrac)
     testImplementation(mnTest.micronaut.test.spock)
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.micronaut.inject.groovy)
