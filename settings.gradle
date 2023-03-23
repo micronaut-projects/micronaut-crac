@@ -19,6 +19,7 @@ include 'test-suite-dbcp-jooq'
 include 'test-suite-groovy'
 include 'test-suite-hikari-jooq'
 include 'test-suite-kotlin'
+include 'test-suite-redis'
 
 micronautBuild {
     importMicronautCatalog()
