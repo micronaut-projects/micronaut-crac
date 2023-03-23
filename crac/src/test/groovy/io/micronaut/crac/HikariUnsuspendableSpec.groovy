@@ -2,16 +2,11 @@ package io.micronaut.crac
 
 import ch.qos.logback.classic.Logger
 import io.micronaut.context.ApplicationContext
-import io.micronaut.context.BeanContext
 import io.micronaut.context.exceptions.BeanInstantiationException
-import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
 import spock.lang.Specification
 
 class HikariUnsuspendableSpec extends Specification {
-
-    @Inject
-    BeanContext ctx
 
     void "hikari is suspended and restarted"() {
         given:

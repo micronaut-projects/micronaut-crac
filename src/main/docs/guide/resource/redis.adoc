@@ -1,0 +1,17 @@
+Since v1.2.1 of this library, we also support Redis connections.
+
+When the checkpoint is taken, we destroy `RedisClient`, `RedisCache` and `StatefulRedisConnection` beans that exist in the application.
+
+These will be re-created once the checkpoint is restored, however you will need to add your beans to <<refresh,the refresh scope>> so that these new beans are used.
+
+The resources for each of the above can be disabled via configuration:
+
+[configuration]
+----
+crac:
+    redis:
+        enabled: false            # disable all redis support
+        client-enabled: false     # disable RedisClient support
+        cache-enabled: false      # disable RedisCache support
+        connection-enabled: false # disable StatefulRedisConnection support
+----

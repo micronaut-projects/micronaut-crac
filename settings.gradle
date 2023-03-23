@@ -2,6 +2,8 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
+        // Required for the test-suite snapshot plugins
+        maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots" }
     }
 }
 
@@ -14,11 +16,20 @@ rootProject.name = 'crac-parent'
 include 'crac'
 include 'crac-bom'
 
+include 'test-suite'
+include 'test-suite-dbcp-jooq'
+include 'test-suite-groovy'
+include 'test-suite-hikari-jooq'
+include 'test-suite-kotlin'
+include 'test-suite-redis'
+
 micronautBuild {
     // Required for 4.0.0-SNAPSHOT, can be removed after
     addSnapshotRepository()
     importMicronautCatalog()
+    importMicronautCatalog("micronaut-cache")
     importMicronautCatalog("micronaut-data")
+    importMicronautCatalog("micronaut-redis")
     importMicronautCatalog("micronaut-serde")
     importMicronautCatalog("micronaut-sql")
 }

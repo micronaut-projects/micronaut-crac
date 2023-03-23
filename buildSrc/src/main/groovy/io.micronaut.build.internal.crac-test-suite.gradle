@@ -1,0 +1,17 @@
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    testImplementation(libs.managed.crac)
+
+    testAnnotationProcessor(mn.micronaut.inject.java)
+    testImplementation(mn.micronaut.http.client)
+    testImplementation(mn.micronaut.http.server.netty)
+
+    testRuntimeOnly(mn.logback.classic)
+}
+
+test {
+    useJUnitPlatform()
+}
