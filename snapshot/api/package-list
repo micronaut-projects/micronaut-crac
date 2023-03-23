@@ -3,4 +3,5 @@ io.micronaut.crac.events
 io.micronaut.crac.resources
 io.micronaut.crac.resources.datasources
 io.micronaut.crac.resources.datasources.resolver
+io.micronaut.crac.resources.redis
 io.micronaut.crac.test
