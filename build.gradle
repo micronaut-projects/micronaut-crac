@@ -10,3 +10,9 @@ allprojects {
         mavenCentral()
     }
 }
+
+configurations.all {
+    resolutionStrategy {
+        preferProjectModules()
+    }
+}
