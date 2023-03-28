@@ -4,10 +4,6 @@ plugins {
     id("io.micronaut.test-resources") version "4.0.0-SNAPSHOT"
 }
 
-// Required as there's no M1 platform yet
-micronaut {
-}
-
 dependencies {
     testImplementation(projects.micronautCrac)
     testImplementation(mnTest.micronaut.test.spock)
