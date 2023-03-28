@@ -2,10 +2,15 @@ introduction:
   title: Introduction
 releaseHistory: Release History
 installation: Installation
-resource: Resources
+resource:
+  title: CRaC Resources
+  datasource: DataSources
+  redis: Redis
+  custom: Custom CRaC Resources
 refresh: Refresh scope
 events: Events
 context: Context Provider
 docker: Docker Support
+testing: Testing
 repository: Repository
 

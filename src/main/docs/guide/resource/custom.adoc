@@ -1,0 +1,5 @@
+To provide custom CRaC resources, create beans of type api:crac.OrderedResource[].
+
+Micronaut CRaC registers resources for you into the CRaC Context. You just focus on providing implementations for `OrderedResource::beforeCheckpoint` and `OrderedResource::afterRestore` in your resources.
+
+Micronaut CRaC registers resources in order. You can control the order by overriding `OrderedResource::getOrder`.
