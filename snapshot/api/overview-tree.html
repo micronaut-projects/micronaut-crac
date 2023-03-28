@@ -54,6 +54,8 @@ loadScripts(document, 'script');</script>
 <li><a href="io/micronaut/crac/events/package-tree.html">io.micronaut.crac.events</a>, </li>
 <li><a href="io/micronaut/crac/resources/package-tree.html">io.micronaut.crac.resources</a>, </li>
 <li><a href="io/micronaut/crac/resources/datasources/package-tree.html">io.micronaut.crac.resources.datasources</a>, </li>
+<li><a href="io/micronaut/crac/resources/datasources/resolver/package-tree.html">io.micronaut.crac.resources.datasources.resolver</a>, </li>
+<li><a href="io/micronaut/crac/resources/redis/package-tree.html">io.micronaut.crac.resources.redis</a>, </li>
 <li><a href="io/micronaut/crac/test/package-tree.html">io.micronaut.crac.test</a></li>
 </ul>
 </div>
@@ -62,8 +64,17 @@ loadScripts(document, 'script');</script>
 <ul>
 <li class="circle">java.lang.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" class="type-name-link external-link" title="class or interface in java.lang">Object</a>
 <ul>
+<li class="circle">io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/AbstractRedisResource.html" class="type-name-link" title="class in io.micronaut.crac.resources.redis">AbstractRedisResource</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/OrderedResource.html" title="interface in io.micronaut.crac">OrderedResource</a>)
+<ul>
+<li class="circle">io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/RedisCacheResource.html" class="type-name-link" title="class in io.micronaut.crac.resources.redis">RedisCacheResource</a></li>
+<li class="circle">io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/RedisClientResource.html" class="type-name-link" title="class in io.micronaut.crac.resources.redis">RedisClientResource</a></li>
+<li class="circle">io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/StatefulRedisConnectionResource.html" class="type-name-link" title="class in io.micronaut.crac.resources.redis">StatefulRedisConnectionResource</a></li>
+</ul>
+</li>
+<li class="circle">io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/CompositeDataSourceResolver.html" class="type-name-link" title="class in io.micronaut.crac.resources.datasources.resolver">CompositeDataSourceResolver</a> (implements io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/DataSourceResourceResolver.html" title="interface in io.micronaut.crac.resources.datasources.resolver">DataSourceResourceResolver</a>)</li>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/CracConfigurationProperties.html" class="type-name-link" title="class in io.micronaut.crac">CracConfigurationProperties</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/CracConfiguration.html" title="interface in io.micronaut.crac">CracConfiguration</a>)</li>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/CracEventPublisher.html" class="type-name-link" title="class in io.micronaut.crac">CracEventPublisher</a></li>
+<li class="circle">io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/CracRedisConfigurationProperties.html" class="type-name-link" title="class in io.micronaut.crac.resources.redis">CracRedisConfigurationProperties</a> (implements io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/CracRedisConfiguration.html" title="interface in io.micronaut.crac.resources.redis">CracRedisConfiguration</a>)</li>
 <li class="circle">io.micronaut.crac.resources.<a href="io/micronaut/crac/resources/DataSourceResource.html" class="type-name-link" title="class in io.micronaut.crac.resources">DataSourceResource</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/OrderedResource.html" title="interface in io.micronaut.crac">OrderedResource</a>)</li>
 <li class="circle">io.micronaut.crac.test.<a href="io/micronaut/crac/test/DefaultCheckpointSimulator.html" class="type-name-link" title="class in io.micronaut.crac.test">DefaultCheckpointSimulator</a> (implements io.micronaut.crac.test.<a href="io/micronaut/crac/test/CheckpointSimulator.html" title="interface in io.micronaut.crac.test">CheckpointSimulator</a>)</li>
 <li class="circle">java.util.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/EventObject.html" class="type-name-link external-link" title="class or interface in java.util">EventObject</a> (implements java.io.<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/Serializable.html" title="class or interface in java.io" class="external-link">Serializable</a>)
@@ -73,7 +84,9 @@ loadScripts(document, 'script');</script>
 </ul>
 </li>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/GlobalCracContextProvider.html" class="type-name-link" title="class in io.micronaut.crac">GlobalCracContextProvider</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/CracContextProvider.html" title="interface in io.micronaut.crac">CracContextProvider</a>)</li>
+<li class="circle">io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/HikariDataSourceResolver.html" class="type-name-link" title="class in io.micronaut.crac.resources.datasources.resolver">HikariDataSourceResolver</a> (implements io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/DataSourceResourceResolver.html" title="interface in io.micronaut.crac.resources.datasources.resolver">DataSourceResourceResolver</a>)</li>
 <li class="circle">io.micronaut.crac.resources.datasources.<a href="io/micronaut/crac/resources/datasources/HikariDataSourceResource.html" class="type-name-link" title="class in io.micronaut.crac.resources.datasources">HikariDataSourceResource</a> (implements org.crac.Resource)</li>
+<li class="circle">io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/HikariDelegatingDataSourceResolver.html" class="type-name-link" title="class in io.micronaut.crac.resources.datasources.resolver">HikariDelegatingDataSourceResolver</a> (implements io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/DataSourceResourceResolver.html" title="interface in io.micronaut.crac.resources.datasources.resolver">DataSourceResourceResolver</a>)</li>
 <li class="circle">io.micronaut.crac.resources.<a href="io/micronaut/crac/resources/NettyEmbeddedServerResource.html" class="type-name-link" title="class in io.micronaut.crac.resources">NettyEmbeddedServerResource</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/OrderedResource.html" title="interface in io.micronaut.crac">OrderedResource</a>)</li>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/OrderedCracResourceRegistrar.html" class="type-name-link" title="class in io.micronaut.crac">OrderedCracResourceRegistrar</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/CracResourceRegistrar.html" title="interface in io.micronaut.crac">CracResourceRegistrar</a>)</li>
 <li class="circle">io.micronaut.crac.resources.<a href="io/micronaut/crac/resources/RefreshEventResource.html" class="type-name-link" title="class in io.micronaut.crac.resources">RefreshEventResource</a> (implements io.micronaut.crac.<a href="io/micronaut/crac/OrderedResource.html" title="interface in io.micronaut.crac">OrderedResource</a>)</li>
@@ -91,6 +104,7 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/CracResourceRegistrar.html" class="type-name-link" title="interface in io.micronaut.crac">CracResourceRegistrar</a></li>
 <li class="circle">io.micronaut.core.order.Ordered
 <ul>
+<li class="circle">io.micronaut.crac.resources.datasources.resolver.<a href="io/micronaut/crac/resources/datasources/resolver/DataSourceResourceResolver.html" class="type-name-link" title="interface in io.micronaut.crac.resources.datasources.resolver">DataSourceResourceResolver</a></li>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/OrderedResource.html" class="type-name-link" title="interface in io.micronaut.crac">OrderedResource</a> (also extends org.crac.Resource)</li>
 </ul>
 </li>
@@ -102,6 +116,7 @@ loadScripts(document, 'script');</script>
 <li class="circle">io.micronaut.core.util.Toggleable
 <ul>
 <li class="circle">io.micronaut.crac.<a href="io/micronaut/crac/CracConfiguration.html" class="type-name-link" title="interface in io.micronaut.crac">CracConfiguration</a></li>
+<li class="circle">io.micronaut.crac.resources.redis.<a href="io/micronaut/crac/resources/redis/CracRedisConfiguration.html" class="type-name-link" title="interface in io.micronaut.crac.resources.redis">CracRedisConfiguration</a></li>
 </ul>
 </li>
 </ul>
