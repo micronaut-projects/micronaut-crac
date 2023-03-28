@@ -1,6 +1,6 @@
 plugins {
-    id("org.jetbrains.kotlin.jvm") version "1.7.21"
-    id("org.jetbrains.kotlin.kapt") version "1.7.21"
+    id("org.jetbrains.kotlin.jvm") version "1.8.10"
+    id("org.jetbrains.kotlin.kapt") version "1.8.10"
     id("io.micronaut.build.internal.crac-test-suite")
 }
 
