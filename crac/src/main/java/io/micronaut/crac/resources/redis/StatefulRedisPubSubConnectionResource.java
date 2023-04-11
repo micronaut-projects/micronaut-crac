@@ -16,6 +16,7 @@
 package io.micronaut.crac.resources.redis;
 
 import io.lettuce.core.api.StatefulRedisConnection;
+import io.lettuce.core.pubsub.StatefulRedisPubSubConnection;
 import io.micronaut.context.BeanContext;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
@@ -30,29 +31,29 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * Destroys any StatefulRedisConnection beans before checkpointing.
+ * Destroys any StatefulRedisPubSubConnection beans before checkpointing.
  *
  * @author Tim Yates
- * @since 1.2.1
+ * @since 1.2.2
  */
 @Experimental
 @EachBean(StatefulRedisConnection.class)
-@Requires(classes = {StatefulRedisConnection.class})
+@Requires(classes = {StatefulRedisPubSubConnection.class})
 @Requires(bean = CracResourceRegistrar.class)
-@Requires(property = StatefulRedisConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
-public class StatefulRedisConnectionResource extends AbstractRedisResource<StatefulRedisConnection<?, ?>> {
+@Requires(property = StatefulRedisPubSubConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
+public class StatefulRedisPubSubConnectionResource extends AbstractRedisResource<StatefulRedisPubSubConnection<?, ?>> {
 
-    static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".connection-enabled";
+    static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".pubsub-connection-enabled";
 
-    private static final Logger LOG = LoggerFactory.getLogger(StatefulRedisConnectionResource.class);
+    private static final Logger LOG = LoggerFactory.getLogger(StatefulRedisPubSubConnectionResource.class);
 
     private final CracEventPublisher eventPublisher;
-    private final StatefulRedisConnection<?, ?> connection;
+    private final StatefulRedisPubSubConnection<?, ?> connection;
 
-    public StatefulRedisConnectionResource(
+    public StatefulRedisPubSubConnectionResource(
         BeanContext beanContext,
         CracEventPublisher eventPublisher,
-        StatefulRedisConnection<?, ?> connection
+        StatefulRedisPubSubConnection<?, ?> connection
     ) {
         super(beanContext);
         this.eventPublisher = eventPublisher;
@@ -62,7 +63,7 @@ public class StatefulRedisConnectionResource extends AbstractRedisResource<State
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
         eventPublisher.fireBeforeCheckpointEvents(this, () ->
-            destroyAction(connection, LOG, "Destroying Redis stateful connection {}")
+            destroyAction(connection, LOG, "Destroying Redis stateful pubsub connection {}")
         );
     }
 

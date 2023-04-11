@@ -40,13 +40,12 @@ import org.slf4j.LoggerFactory;
 @Requires(classes = {RedisClient.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = RedisClientResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
-public class RedisClientResource extends AbstractRedisResource {
+public class RedisClientResource extends AbstractRedisResource<RedisClient> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".client-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisClientResource.class);
 
-    private final BeanContext beanContext;
     private final CracEventPublisher eventPublisher;
     private final RedisClient client;
 
@@ -55,21 +54,16 @@ public class RedisClientResource extends AbstractRedisResource {
         CracEventPublisher eventPublisher,
         RedisClient client
     ) {
-        this.beanContext = beanContext;
+        super(beanContext);
         this.eventPublisher = eventPublisher;
         this.client = client;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Destroying Redis client {}", client);
-            }
-            long beforeStart = System.nanoTime();
-            beanContext.destroyBean(client);
-            return System.nanoTime() - beforeStart;
-        });
+        eventPublisher.fireBeforeCheckpointEvents(this, () ->
+            destroyAction(client, LOG, "Destroying Redis client {}")
+        );
     }
 
     @Override

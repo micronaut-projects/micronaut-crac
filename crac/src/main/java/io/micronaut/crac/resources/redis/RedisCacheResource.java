@@ -39,13 +39,12 @@ import org.slf4j.LoggerFactory;
 @Requires(classes = {RedisCache.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = RedisCacheResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
-public class RedisCacheResource extends AbstractRedisResource {
+public class RedisCacheResource extends AbstractRedisResource<RedisCache> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".cache-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisCacheResource.class);
 
-    private final BeanContext beanContext;
     private final CracEventPublisher eventPublisher;
     private final RedisCache redisCache;
 
@@ -54,20 +53,15 @@ public class RedisCacheResource extends AbstractRedisResource {
         CracEventPublisher eventPublisher,
         RedisCache redisCache
     ) {
-        this.beanContext = beanContext;
+        super(beanContext);
         this.eventPublisher = eventPublisher;
         this.redisCache = redisCache;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Destroying Redis cache {}", redisCache);
-            }
-            long beforeStart = System.nanoTime();
-            beanContext.destroyBean(redisCache);
-            return System.nanoTime() - beforeStart;
-        });
+        eventPublisher.fireBeforeCheckpointEvents(this, () ->
+            destroyAction(redisCache, LOG, "Destroying Redis cache {}")
+        );
     }
 }
