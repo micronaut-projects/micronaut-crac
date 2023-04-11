@@ -40,13 +40,12 @@ import org.slf4j.LoggerFactory;
 @Requires(classes = {StatefulRedisConnection.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = StatefulRedisConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
-public class StatefulRedisConnectionResource extends AbstractRedisResource {
+public class StatefulRedisConnectionResource extends AbstractRedisResource<StatefulRedisConnection<?, ?>> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".connection-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(StatefulRedisConnectionResource.class);
 
-    private final BeanContext beanContext;
     private final CracEventPublisher eventPublisher;
     private final StatefulRedisConnection<?, ?> connection;
 
@@ -55,21 +54,14 @@ public class StatefulRedisConnectionResource extends AbstractRedisResource {
         CracEventPublisher eventPublisher,
         StatefulRedisConnection<?, ?> connection
     ) {
-        this.beanContext = beanContext;
+        super(beanContext);
         this.eventPublisher = eventPublisher;
         this.connection = connection;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Destroying Redis stateful connection {}", connection);
-            }
-            long beforeStart = System.nanoTime();
-            beanContext.destroyBean(connection);
-            return System.nanoTime() - beforeStart;
-        });
+        eventPublisher.fireBeforeCheckpointEvents(this, () -> action(connection, LOG, "Destroying Redis stateful connection {}"));
     }
 
     @Override

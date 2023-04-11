@@ -15,11 +15,13 @@
  */
 package io.micronaut.crac.resources.redis;
 
+import io.micronaut.context.BeanContext;
 import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.Internal;
 import io.micronaut.crac.OrderedResource;
 import org.crac.Context;
 import org.crac.Resource;
+import org.slf4j.Logger;
 
 /**
  * Redis resources are removed from the context, so they are automatically recreated on restore.
@@ -29,7 +31,22 @@ import org.crac.Resource;
  */
 @Internal
 @Experimental
-public abstract class AbstractRedisResource implements OrderedResource {
+public abstract class AbstractRedisResource<T> implements OrderedResource {
+
+    final BeanContext beanContext;
+
+    protected AbstractRedisResource(BeanContext beanContext) {
+        this.beanContext = beanContext;
+    }
+
+    long action(T resource, Logger logger, String log) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(log, resource);
+        }
+        long beforeStart = System.nanoTime();
+        beanContext.destroyBean(resource);
+        return System.nanoTime() - beforeStart;
+    }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {

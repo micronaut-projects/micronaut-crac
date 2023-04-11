@@ -41,36 +41,28 @@ import org.slf4j.LoggerFactory;
 @Requires(classes = {StatefulRedisPubSubConnection.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = StatefulRedisPubSubConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
-public class StatefulRedisPubSubConnectionResource extends AbstractRedisResource {
+public class StatefulRedisPubSubConnectionResource extends AbstractRedisResource<StatefulRedisPubSubConnection<?, ?>> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".pubsub-connection-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(StatefulRedisPubSubConnectionResource.class);
 
-    private final BeanContext beanContext;
     private final CracEventPublisher eventPublisher;
-    private final StatefulRedisConnection<?, ?> connection;
+    private final StatefulRedisPubSubConnection<?, ?> connection;
 
     public StatefulRedisPubSubConnectionResource(
         BeanContext beanContext,
         CracEventPublisher eventPublisher,
         StatefulRedisPubSubConnection<?, ?> connection
     ) {
-        this.beanContext = beanContext;
+        super(beanContext);
         this.eventPublisher = eventPublisher;
         this.connection = connection;
     }
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> {
-            if (LOG.isDebugEnabled()) {
-                LOG.debug("Destroying Redis stateful pubsub connection {}", connection);
-            }
-            long beforeStart = System.nanoTime();
-            beanContext.destroyBean(connection);
-            return System.nanoTime() - beforeStart;
-        });
+        eventPublisher.fireBeforeCheckpointEvents(this, () -> action(connection, LOG, "Destroying Redis stateful pubsub connection {}"));
     }
 
     @Override
