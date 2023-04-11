@@ -60,6 +60,8 @@ public class RedisCacheResource extends AbstractRedisResource<RedisCache> {
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> action(redisCache, LOG, "Destroying Redis cache {}"));
+        eventPublisher.fireBeforeCheckpointEvents(this, () ->
+            destroyAction(redisCache, LOG, "Destroying Redis cache {}")
+        );
     }
 }

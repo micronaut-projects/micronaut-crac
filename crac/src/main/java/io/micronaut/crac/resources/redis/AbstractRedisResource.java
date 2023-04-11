@@ -44,12 +44,12 @@ public abstract class AbstractRedisResource<T> implements OrderedResource {
      * Destroy the bean.
      * @param resource the bean to destroy
      * @param logger the logger to use
-     * @param log the log message
+     * @param message the log message
      * @return the time taken to destroy the bean
      */
-    protected long action(T resource, Logger logger, String log) {
+    protected long destroyAction(T resource, Logger logger, String message) {
         if (logger.isDebugEnabled()) {
-            logger.debug(log, resource);
+            logger.debug(message, resource);
         }
         long beforeStart = System.nanoTime();
         beanContext.destroyBean(resource);

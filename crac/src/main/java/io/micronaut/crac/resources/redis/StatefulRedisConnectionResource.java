@@ -61,7 +61,9 @@ public class StatefulRedisConnectionResource extends AbstractRedisResource<State
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> action(connection, LOG, "Destroying Redis stateful connection {}"));
+        eventPublisher.fireBeforeCheckpointEvents(this, () ->
+            destroyAction(connection, LOG, "Destroying Redis stateful connection {}")
+        );
     }
 
     @Override

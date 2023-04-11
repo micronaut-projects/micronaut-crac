@@ -61,7 +61,9 @@ public class RedisClientResource extends AbstractRedisResource<RedisClient> {
 
     @Override
     public void beforeCheckpoint(Context<? extends Resource> context) throws Exception {
-        eventPublisher.fireBeforeCheckpointEvents(this, () -> action(client, LOG, "Destroying Redis client {}"));
+        eventPublisher.fireBeforeCheckpointEvents(this, () ->
+            destroyAction(client, LOG, "Destroying Redis client {}")
+        );
     }
 
     @Override
