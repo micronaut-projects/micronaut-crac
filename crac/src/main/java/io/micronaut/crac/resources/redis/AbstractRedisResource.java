@@ -26,6 +26,7 @@ import org.slf4j.Logger;
 /**
  * Redis resources are removed from the context, so they are automatically recreated on restore.
  *
+ * @param <T> The type of resource
  * @author Tim Yates
  * @since 1.2.1
  */
@@ -39,7 +40,14 @@ public abstract class AbstractRedisResource<T> implements OrderedResource {
         this.beanContext = beanContext;
     }
 
-    long action(T resource, Logger logger, String log) {
+    /**
+     * Destroy the bean.
+     * @param resource the bean to destroy
+     * @param logger the logger to use
+     * @param log the log message
+     * @return the time taken to destroy the bean
+     */
+    protected long action(T resource, Logger logger, String log) {
         if (logger.isDebugEnabled()) {
             logger.debug(log, resource);
         }
