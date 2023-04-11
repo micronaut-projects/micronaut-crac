@@ -34,7 +34,7 @@ import org.slf4j.Logger;
 @Experimental
 public abstract class AbstractRedisResource<T> implements OrderedResource {
 
-    final BeanContext beanContext;
+    protected final BeanContext beanContext;
 
     protected AbstractRedisResource(BeanContext beanContext) {
         this.beanContext = beanContext;
