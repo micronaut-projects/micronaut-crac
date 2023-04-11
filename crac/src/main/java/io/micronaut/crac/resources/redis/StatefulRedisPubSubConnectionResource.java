@@ -34,10 +34,10 @@ import org.slf4j.LoggerFactory;
  * Destroys any StatefulRedisPubSubConnection beans before checkpointing.
  *
  * @author Tim Yates
- * @since 1.2.1
+ * @since 1.2.2
  */
 @Experimental
-@EachBean(StatefulRedisPubSubConnection.class)
+@EachBean(StatefulRedisConnection.class)
 @Requires(classes = {StatefulRedisPubSubConnection.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = StatefulRedisPubSubConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
@@ -49,7 +49,7 @@ public class StatefulRedisPubSubConnectionResource extends AbstractRedisResource
 
     private final BeanContext beanContext;
     private final CracEventPublisher eventPublisher;
-    private final StatefulRedisPubSubConnection<?, ?> connection;
+    private final StatefulRedisConnection<?, ?> connection;
 
     public StatefulRedisPubSubConnectionResource(
         BeanContext beanContext,
