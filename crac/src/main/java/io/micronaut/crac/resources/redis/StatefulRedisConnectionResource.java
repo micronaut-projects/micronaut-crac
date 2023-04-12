@@ -62,7 +62,6 @@ public class StatefulRedisConnectionResource extends AbstractRedisResource<State
     ) {
         super(beanContext);
         this.eventPublisher = eventPublisher;
-        beanContext.findBeanRegistration(connection).map(BeanRegistration::getBeanDefinition).ifPresent(e -> System.out.println(e.getAnnotation(Named.class.getName())));
         this.connection = connection;
     }
 
