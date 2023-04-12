@@ -5,7 +5,9 @@ import io.micronaut.core.util.StringUtils
 import io.micronaut.crac.resources.redis.CracRedisConfiguration
 import io.micronaut.crac.resources.redis.RedisCacheResource
 import io.micronaut.crac.resources.redis.RedisClientResource
+import io.micronaut.crac.resources.redis.RedisNamedConfigResource
 import io.micronaut.crac.resources.redis.StatefulRedisConnectionResource
+import io.micronaut.crac.resources.redis.StatefulRedisPubSubConnectionResource
 import spock.lang.Specification
 
 class CracRedisConfigurationSpec extends Specification {
@@ -35,8 +37,11 @@ class CracRedisConfigurationSpec extends Specification {
         and:
         ctx.containsBean(CracRedisConfiguration)
         ctx.containsBean(RedisCacheResource)
-        ctx.containsBean(RedisClientResource)
-        ctx.containsBean(StatefulRedisConnectionResource)
+        ctx.containsBean(RedisNamedConfigResource)
+        // These are deprecated and should be removed in 2.0.0
+        !ctx.containsBean(RedisClientResource)
+        !ctx.containsBean(StatefulRedisConnectionResource)
+        !ctx.containsBean(StatefulRedisPubSubConnectionResource)
 
         cleanup:
         ctx.close()
@@ -58,8 +63,11 @@ class CracRedisConfigurationSpec extends Specification {
         !ctx.containsBean(CracResourceRegistrar)
         !ctx.containsBean(CracRedisConfiguration)
         !ctx.containsBean(RedisCacheResource)
+        !ctx.containsBean(RedisNamedConfigResource)
+        // These are deprecated and should be removed in 2.0.0
         !ctx.containsBean(RedisClientResource)
         !ctx.containsBean(StatefulRedisConnectionResource)
+        !ctx.containsBean(StatefulRedisPubSubConnectionResource)
 
         cleanup:
         ctx.close()
@@ -77,8 +85,11 @@ class CracRedisConfigurationSpec extends Specification {
         ctx.containsBean(CracResourceRegistrar)
         !ctx.containsBean(CracRedisConfiguration)
         !ctx.containsBean(RedisCacheResource)
+        !ctx.containsBean(RedisNamedConfigResource)
+        // These are deprecated and should be removed in 2.0.0
         !ctx.containsBean(RedisClientResource)
         !ctx.containsBean(StatefulRedisConnectionResource)
+        !ctx.containsBean(StatefulRedisPubSubConnectionResource)
 
         cleanup:
         ctx.close()
@@ -96,10 +107,13 @@ class CracRedisConfigurationSpec extends Specification {
 
         expect:
         ctx.containsBean(RedisCacheResource) == (suffix != 'cache')
-        ctx.containsBean(RedisClientResource) == (suffix != 'client')
-        ctx.containsBean(StatefulRedisConnectionResource) == (suffix != 'connection')
+        ctx.containsBean(RedisNamedConfigResource) == (suffix != 'servers')
+        // These are deprecated and should be removed in 2.0.0
+        !ctx.containsBean(RedisClientResource)
+        !ctx.containsBean(StatefulRedisConnectionResource)
+        !ctx.containsBean(StatefulRedisPubSubConnectionResource)
 
         where:
-        suffix << ['cache', 'client', 'connection']
+        suffix << ['cache', 'servers']
     }
 }

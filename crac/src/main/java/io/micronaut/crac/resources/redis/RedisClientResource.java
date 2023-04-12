@@ -32,14 +32,18 @@ import org.slf4j.LoggerFactory;
 /**
  * Destroys any RedisClient beans before checkpointing.
  *
+ * @deprecated Since 1.2.3, this is covered by {@link RedisNamedConfigResource} now, which can handle multiple named configurations
  * @author Tim Yates
  * @since 1.2.1
  */
+@Deprecated
 @Experimental
 @EachBean(RedisClient.class)
 @Requires(classes = {RedisClient.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = RedisClientResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
+// Disable this resource in a binary compat way
+@Requires(missing = RedisCacheResource.class)
 public class RedisClientResource extends AbstractRedisResource<RedisClient> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".client-enabled";

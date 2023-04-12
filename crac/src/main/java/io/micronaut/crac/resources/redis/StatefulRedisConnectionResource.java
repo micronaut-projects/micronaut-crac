@@ -17,6 +17,7 @@ package io.micronaut.crac.resources.redis;
 
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.micronaut.context.BeanContext;
+import io.micronaut.context.BeanRegistration;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
@@ -24,6 +25,7 @@ import io.micronaut.core.util.StringUtils;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.resources.NettyEmbeddedServerResource;
+import jakarta.inject.Named;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
@@ -32,14 +34,18 @@ import org.slf4j.LoggerFactory;
 /**
  * Destroys any StatefulRedisConnection beans before checkpointing.
  *
+ * @deprecated Since 1.2.3, this is covered by {@link RedisNamedConfigResource} now, which can handle multiple named configurations
  * @author Tim Yates
  * @since 1.2.1
  */
 @Experimental
+@Deprecated
 @EachBean(StatefulRedisConnection.class)
 @Requires(classes = {StatefulRedisConnection.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = StatefulRedisConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
+// Disable this resource in a binary compat way
+@Requires(missing = StatefulRedisConnectionResource.class)
 public class StatefulRedisConnectionResource extends AbstractRedisResource<StatefulRedisConnection<?, ?>> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".connection-enabled";
@@ -56,6 +62,7 @@ public class StatefulRedisConnectionResource extends AbstractRedisResource<State
     ) {
         super(beanContext);
         this.eventPublisher = eventPublisher;
+        beanContext.findBeanRegistration(connection).map(BeanRegistration::getBeanDefinition).ifPresent(e -> System.out.println(e.getAnnotation(Named.class.getName())));
         this.connection = connection;
     }
 

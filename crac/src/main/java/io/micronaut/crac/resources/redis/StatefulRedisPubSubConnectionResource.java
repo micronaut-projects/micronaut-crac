@@ -33,14 +33,18 @@ import org.slf4j.LoggerFactory;
 /**
  * Destroys any StatefulRedisPubSubConnection beans before checkpointing.
  *
+ * @deprecated Since 1.2.3, this is covered by {@link RedisNamedConfigResource} now, which can handle multiple named configurations
  * @author Tim Yates
  * @since 1.2.2
  */
 @Experimental
+@Deprecated
 @EachBean(StatefulRedisConnection.class)
 @Requires(classes = {StatefulRedisPubSubConnection.class})
 @Requires(bean = CracResourceRegistrar.class)
 @Requires(property = StatefulRedisPubSubConnectionResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
+// Disable this resource in a binary compat way
+@Requires(missing = StatefulRedisPubSubConnectionResource.class)
 public class StatefulRedisPubSubConnectionResource extends AbstractRedisResource<StatefulRedisPubSubConnection<?, ?>> {
 
     static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".pubsub-connection-enabled";
