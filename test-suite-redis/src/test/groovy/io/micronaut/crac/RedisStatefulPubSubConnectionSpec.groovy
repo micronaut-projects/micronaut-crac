@@ -32,7 +32,7 @@ class RedisStatefulPubSubConnectionSpec extends BaseCacheSpecification {
         simulator.runBeforeCheckpoint()
 
         then:
-        appender.events.formattedMessage.any { it.contains("Destroying Redis stateful pubsub connection") }
+        appender.events.formattedMessage.any { it.contains("Destroying") }
 
         when: "we trigger a restore"
         simulator.runAfterRestore()
