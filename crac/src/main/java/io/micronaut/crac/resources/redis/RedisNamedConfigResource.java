@@ -51,7 +51,7 @@ import java.util.Optional;
 @Requires(property = RedisNamedConfigResource.ENABLED_PROPERTY, defaultValue = StringUtils.TRUE, value = StringUtils.TRUE)
 public class RedisNamedConfigResource extends AbstractRedisResource<RedisClient> {
 
-    static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".servers-enabled";
+    static final String ENABLED_PROPERTY = CracRedisConfigurationProperties.PREFIX + ".connection-enabled";
 
     private static final Logger LOG = LoggerFactory.getLogger(RedisNamedConfigResource.class);
 
