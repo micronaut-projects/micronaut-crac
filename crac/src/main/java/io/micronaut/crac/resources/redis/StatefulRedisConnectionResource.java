@@ -17,7 +17,6 @@ package io.micronaut.crac.resources.redis;
 
 import io.lettuce.core.api.StatefulRedisConnection;
 import io.micronaut.context.BeanContext;
-import io.micronaut.context.BeanRegistration;
 import io.micronaut.context.annotation.EachBean;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
@@ -25,7 +24,6 @@ import io.micronaut.core.util.StringUtils;
 import io.micronaut.crac.CracEventPublisher;
 import io.micronaut.crac.CracResourceRegistrar;
 import io.micronaut.crac.resources.NettyEmbeddedServerResource;
-import jakarta.inject.Named;
 import org.crac.Context;
 import org.crac.Resource;
 import org.slf4j.Logger;
