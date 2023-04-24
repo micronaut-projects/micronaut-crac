@@ -1,15 +1,15 @@
 [versions]
 micronaut = "4.0.0-M1"
 
-micronaut-cache = "4.0.0-M1"
-micronaut-data = "3.9.6"
+micronaut-cache = "4.0.0-M2"
+micronaut-data = "4.0.0-M1"
 micronaut-docs = "2.0.0"
 micronaut-redis = "6.0.0-M1"
 micronaut-serialization = "2.0.0-M1"
 micronaut-sql = "5.0.0-M1"
 micronaut-test = "4.0.0-M1"
 
-groovy = "4.0.10"
+groovy = "4.0.11"
 spock = "2.3-groovy-4.0"
 
 managed-crac = "0.1.3"
