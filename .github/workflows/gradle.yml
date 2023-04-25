@@ -45,13 +45,11 @@ jobs:
         with:
           fetch-depth: 0
 
-      - name: "🔧 Setup GraalVM CE"
-        uses: graalvm/setup-graalvm@v1
+      - name: Set up JDK
+        uses: actions/setup-java@v3
         with:
-          version: ${{ matrix.graalvm }}
+          distribution: 'temurin'
           java-version: ${{ matrix.java }}
-          components: 'native-image'
-          github-token: ${{ secrets.GITHUB_TOKEN }}
 
       - name: "🔧 Setup Gradle"
         uses: gradle/gradle-build-action@v2
@@ -64,6 +62,14 @@ jobs:
         id: gradle
         run: |
           ./gradlew check --no-daemon --continue
+        env:
+          GH_TOKEN_PUBLIC_REPOS_READONLY: ${{ secrets.GH_TOKEN_PUBLIC_REPOS_READONLY }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
+          TESTCONTAINERS_RYUK_DISABLED: true
+          GRADLE_ENTERPRISE_ACCESS_KEY: ${{ secrets.GRADLE_ENTERPRISE_ACCESS_KEY }}
+          GRADLE_ENTERPRISE_CACHE_USERNAME: ${{ secrets.GRADLE_ENTERPRISE_CACHE_USERNAME }}
+          GRADLE_ENTERPRISE_CACHE_PASSWORD: ${{ secrets.GRADLE_ENTERPRISE_CACHE_PASSWORD }}
+          PREDICTIVE_TEST_SELECTION: "${{ github.event_name == 'pull_request' && 'true' || 'false' }}"
 
       - name: "🔎 Run static analysis"
         if: env.SONAR_TOKEN != ''
@@ -88,6 +94,8 @@ jobs:
       - name: "📦 Publish to Sonatype Snapshots"
         if: success() && github.event_name == 'push' && matrix.java == '17'
         env:
+          GH_TOKEN_PUBLIC_REPOS_READONLY: ${{ secrets.GH_TOKEN_PUBLIC_REPOS_READONLY }}
+          GH_USERNAME: ${{ secrets.GH_USERNAME }}
           SONATYPE_USERNAME: ${{ secrets.SONATYPE_USERNAME }}
           SONATYPE_PASSWORD: ${{ secrets.SONATYPE_PASSWORD }}
         run: ./gradlew publishToSonatype docs --no-daemon

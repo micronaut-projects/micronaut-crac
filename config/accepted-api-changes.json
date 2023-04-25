@@ -1,0 +1,62 @@
+[
+  {
+    "type": "io.micronaut.crac.resources.redis.$RedisClientResource$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.$RedisClientResource$Definition$Reference",
+    "member": "Constructor io.micronaut.crac.resources.redis.$RedisClientResource$Definition$Reference()",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.$StatefulRedisConnectionResource$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.$StatefulRedisConnectionResource$Definition$Reference",
+    "member": "Constructor io.micronaut.crac.resources.redis.$StatefulRedisConnectionResource$Definition$Reference()",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.$StatefulRedisPubSubConnectionResource$Definition$Reference",
+    "member": "Field $ANNOTATION_METADATA",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.$StatefulRedisPubSubConnectionResource$Definition$Reference",
+    "member": "Constructor io.micronaut.crac.resources.redis.$StatefulRedisPubSubConnectionResource$Definition$Reference()",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.RedisClientResource",
+    "member": "Constructor io.micronaut.crac.resources.redis.RedisClientResource(io.micronaut.context.BeanContext,io.micronaut.crac.CracEventPublisher,io.lettuce.core.RedisClient)",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.RedisClientResource",
+    "member": "Implemented interface io.micronaut.crac.OrderedResource",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.StatefulRedisConnectionResource",
+    "member": "Constructor io.micronaut.crac.resources.redis.StatefulRedisConnectionResource(io.micronaut.context.BeanContext,io.micronaut.crac.CracEventPublisher,io.lettuce.core.api.StatefulRedisConnection)",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.StatefulRedisConnectionResource",
+    "member": "Implemented interface io.micronaut.crac.OrderedResource",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.StatefulRedisPubSubConnectionResource",
+    "member": "Constructor io.micronaut.crac.resources.redis.StatefulRedisPubSubConnectionResource(io.micronaut.context.BeanContext,io.micronaut.crac.CracEventPublisher,io.lettuce.core.pubsub.StatefulRedisPubSubConnection)",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.redis.StatefulRedisPubSubConnectionResource",
+    "member": "Implemented interface io.micronaut.crac.OrderedResource",
+    "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  }
+]

@@ -50,7 +50,7 @@ public class DataSourceResource implements OrderedResource {
     private final DataSourceResourceResolver dataSourceResolver;
 
     /**
-     * 
+     *
      * @param configuration
      * @param eventPublisher
      * @param dataSource

@@ -4,8 +4,7 @@ import io.micronaut.context.ApplicationContext
 import io.micronaut.core.util.StringUtils
 import io.micronaut.crac.resources.redis.CracRedisConfiguration
 import io.micronaut.crac.resources.redis.RedisCacheResource
-import io.micronaut.crac.resources.redis.RedisClientResource
-import io.micronaut.crac.resources.redis.StatefulRedisConnectionResource
+import io.micronaut.crac.resources.redis.RedisNamedConfigResource
 import spock.lang.Specification
 
 class CracRedisConfigurationSpec extends Specification {
@@ -35,8 +34,7 @@ class CracRedisConfigurationSpec extends Specification {
         and:
         ctx.containsBean(CracRedisConfiguration)
         ctx.containsBean(RedisCacheResource)
-        ctx.containsBean(RedisClientResource)
-        ctx.containsBean(StatefulRedisConnectionResource)
+        ctx.containsBean(RedisNamedConfigResource)
 
         cleanup:
         ctx.close()
@@ -58,8 +56,7 @@ class CracRedisConfigurationSpec extends Specification {
         !ctx.containsBean(CracResourceRegistrar)
         !ctx.containsBean(CracRedisConfiguration)
         !ctx.containsBean(RedisCacheResource)
-        !ctx.containsBean(RedisClientResource)
-        !ctx.containsBean(StatefulRedisConnectionResource)
+        !ctx.containsBean(RedisNamedConfigResource)
 
         cleanup:
         ctx.close()
@@ -77,8 +74,7 @@ class CracRedisConfigurationSpec extends Specification {
         ctx.containsBean(CracResourceRegistrar)
         !ctx.containsBean(CracRedisConfiguration)
         !ctx.containsBean(RedisCacheResource)
-        !ctx.containsBean(RedisClientResource)
-        !ctx.containsBean(StatefulRedisConnectionResource)
+        !ctx.containsBean(RedisNamedConfigResource)
 
         cleanup:
         ctx.close()
@@ -96,10 +92,9 @@ class CracRedisConfigurationSpec extends Specification {
 
         expect:
         ctx.containsBean(RedisCacheResource) == (suffix != 'cache')
-        ctx.containsBean(RedisClientResource) == (suffix != 'client')
-        ctx.containsBean(StatefulRedisConnectionResource) == (suffix != 'connection')
+        ctx.containsBean(RedisNamedConfigResource) == (suffix != 'connection')
 
         where:
-        suffix << ['cache', 'client', 'connection']
+        suffix << ['cache', 'connection']
     }
 }
