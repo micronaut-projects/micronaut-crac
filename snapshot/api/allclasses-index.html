@@ -11,7 +11,7 @@
 <link rel="stylesheet" type="text/css" href="script-dir/jquery-ui.min.css" title="Style">
 <link rel="stylesheet" type="text/css" href="jquery-ui.overrides.css" title="Style">
 <script type="text/javascript" src="script.js"></script>
-<script type="text/javascript" src="script-dir/jquery-3.6.0.min.js"></script>
+<script type="text/javascript" src="script-dir/jquery-3.6.1.min.js"></script>
 <script type="text/javascript" src="script-dir/jquery-ui.min.js"></script>
 </head>
 <body class="all-classes-index-page">
@@ -59,7 +59,7 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary" aria-labelledby="all-classes-table-tab0">
 <div class="table-header col-first">Class</div>
 <div class="table-header col-last">Description</div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/redis/AbstractRedisResource.html" title="class in io.micronaut.crac.resources.redis">AbstractRedisResource</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/redis/AbstractRedisResource.html" title="class in io.micronaut.crac.resources.redis">AbstractRedisResource</a>&lt;<a href="io/micronaut/crac/resources/redis/AbstractRedisResource.html" title="type parameter in AbstractRedisResource">T</a>&gt;</div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Redis resources are removed from the context, so they are automatically recreated on restore.</div>
 </div>
@@ -151,9 +151,9 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Destroys any RedisCache beans before checkpointing.</div>
 </div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/redis/RedisClientResource.html" title="class in io.micronaut.crac.resources.redis">RedisClientResource</a></div>
+<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/redis/RedisNamedConfigResource.html" title="class in io.micronaut.crac.resources.redis">RedisNamedConfigResource</a></div>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Destroys any RedisClient beans before checkpointing.</div>
+<div class="block">Destroys Redis connection beans for a named configuration.</div>
 </div>
 <div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/RefreshEventResource.html" title="class in io.micronaut.crac.resources">RefreshEventResource</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
@@ -163,12 +163,8 @@ loadScripts(document, 'script');</script>
 <div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Registers all defined Resources for Coordinated Restore at Checkpoint at <code>StartupEvent</code>.</div>
 </div>
-<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/redis/StatefulRedisConnectionResource.html" title="class in io.micronaut.crac.resources.redis">StatefulRedisConnectionResource</a></div>
+<div class="col-first even-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/datasources/UnknownDataSourceResource.html" title="class in io.micronaut.crac.resources.datasources">UnknownDataSourceResource</a></div>
 <div class="col-last even-row-color all-classes-table all-classes-table-tab2">
-<div class="block">Destroys any StatefulRedisConnection beans before checkpointing.</div>
-</div>
-<div class="col-first odd-row-color all-classes-table all-classes-table-tab2"><a href="io/micronaut/crac/resources/datasources/UnknownDataSourceResource.html" title="class in io.micronaut.crac.resources.datasources">UnknownDataSourceResource</a></div>
-<div class="col-last odd-row-color all-classes-table all-classes-table-tab2">
 <div class="block">Handler for currently unhandled DataSources.</div>
 </div>
 </div>
