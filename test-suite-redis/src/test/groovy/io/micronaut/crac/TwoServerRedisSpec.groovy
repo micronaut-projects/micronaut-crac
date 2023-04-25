@@ -3,16 +3,23 @@ package io.micronaut.crac
 import ch.qos.logback.classic.Logger
 import io.lettuce.core.api.StatefulRedisConnection
 import io.micronaut.context.annotation.Property
-import io.micronaut.core.util.StringUtils
+import io.micronaut.inject.qualifiers.Qualifiers
 import jakarta.inject.Inject
+import jakarta.inject.Named
 import org.slf4j.LoggerFactory
 
 @Property(name = "spec.name", value = "RedisStatefulConnectionSpec")
-@Property(name = "redis.cache.enabled", value = StringUtils.TRUE)
-class RedisStatefulConnectionSpec extends BaseCacheSpecification {
+@Property(name = "redis.servers.pub.uri", value = '${redis.uri}')
+@Property(name = "redis.servers.sub.uri", value = '${redis.uri}')
+class TwoServerRedisSpec extends BaseCacheSpecification {
 
     @Inject
-    StatefulRedisConnection<String, String> connection;
+    @Named("pub")
+    StatefulRedisConnection<String, String> pub;
+
+    @Inject
+    @Named("sub")
+    StatefulRedisConnection<String, String> sub;
 
     void "test redis connection"() {
         given:
@@ -21,10 +28,13 @@ class RedisStatefulConnectionSpec extends BaseCacheSpecification {
         appender.start()
 
         when:
-        connection.sync().set("foo", "bar")
+        pub.sync().set("foo", "bar")
 
         then:
-        connection.sync().get("foo") == "bar"
+        pub.sync().get("foo") == "bar"
+
+        and:
+        sub.sync().get("foo") == "bar"
 
         when:
         simulator.runBeforeCheckpoint()
@@ -36,9 +46,12 @@ class RedisStatefulConnectionSpec extends BaseCacheSpecification {
         simulator.runAfterRestore()
 
         and: "we get a new connection"
-        def newConnection = ctx.getBean(StatefulRedisConnection.class)
+        def newPub = ctx.getBean(StatefulRedisConnection.class, Qualifiers.byName("pub"))
+        def newSub = ctx.getBean(StatefulRedisConnection.class, Qualifiers.byName("sub"))
 
         then: "the data is still there"
-        newConnection.sync().get("foo") == "bar"
+        newPub != newSub
+        newPub.sync().get("foo") == "bar"
+        newSub.sync().get("foo") == "bar"
     }
 }

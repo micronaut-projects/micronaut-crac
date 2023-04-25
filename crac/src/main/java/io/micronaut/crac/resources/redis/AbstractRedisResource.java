@@ -15,21 +15,46 @@
  */
 package io.micronaut.crac.resources.redis;
 
+import io.micronaut.context.BeanContext;
 import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.Internal;
 import io.micronaut.crac.OrderedResource;
 import org.crac.Context;
 import org.crac.Resource;
+import org.slf4j.Logger;
 
 /**
  * Redis resources are removed from the context, so they are automatically recreated on restore.
  *
+ * @param <T> The type of resource
  * @author Tim Yates
  * @since 1.2.1
  */
 @Internal
 @Experimental
-public abstract class AbstractRedisResource implements OrderedResource {
+public abstract class AbstractRedisResource<T> implements OrderedResource {
+
+    protected final BeanContext beanContext;
+
+    protected AbstractRedisResource(BeanContext beanContext) {
+        this.beanContext = beanContext;
+    }
+
+    /**
+     * Destroy the bean.
+     * @param resource the bean to destroy
+     * @param logger the logger to use
+     * @param message the log message
+     * @return the time taken to destroy the bean
+     */
+    protected long destroyAction(T resource, Logger logger, String message) {
+        if (logger.isDebugEnabled()) {
+            logger.debug(message, resource);
+        }
+        long beforeStart = System.nanoTime();
+        beanContext.destroyBean(resource);
+        return System.nanoTime() - beforeStart;
+    }
 
     @Override
     public void afterRestore(Context<? extends Resource> context) throws Exception {
