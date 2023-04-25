@@ -1,0 +1,31 @@
+plugins {
+    id("groovy")
+    id("io.micronaut.library")
+}
+
+configurations.all {
+    resolutionStrategy {
+        eachDependency {
+            if (requested.group == "io.micronaut.platform" && requested.name == "micronaut-platform") {
+                useVersion("4.0.0-M1")
+                because("There's no M2 platform yet")
+            }
+        }
+        dependencySubstitution {
+            substitute(module("io.micronaut.crac:micronaut-crac")).using(project(":micronaut-crac")).because("we work with the unreleased development version")
+        }
+    }
+}
+
+dependencies {
+    testImplementation(projects.micronautCrac)
+    testImplementation(mn.logback.classic)
+    testImplementation(mn.micronaut.http.server.netty)
+    testImplementation(mn.micronaut.inject.groovy)
+    testImplementation(mnTest.micronaut.test.spock)
+    testRuntimeOnly(mn.micronaut.jackson.databind)
+}
+
+tasks.test {
+    useJUnitPlatform()
+}

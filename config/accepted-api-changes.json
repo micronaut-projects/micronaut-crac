@@ -58,5 +58,10 @@
     "type": "io.micronaut.crac.resources.redis.StatefulRedisPubSubConnectionResource",
     "member": "Implemented interface io.micronaut.crac.OrderedResource",
     "reason": "Experimental class removed in 1.2.3 to fix an issue with named redis connections"
+  },
+  {
+    "type": "io.micronaut.crac.resources.DataSourceResource",
+    "member": "Constructor io.micronaut.crac.resources.DataSourceResource(io.micronaut.crac.CracConfiguration,io.micronaut.crac.CracEventPublisher,javax.sql.DataSource)",
+    "reason": "Deprecated constructor removal for 2.0.0"
   }
 ]
