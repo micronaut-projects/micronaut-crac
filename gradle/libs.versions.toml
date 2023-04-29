@@ -2,7 +2,7 @@
 micronaut = "4.0.0-M2"
 
 micronaut-cache = "4.0.0-M1"
-micronaut-data = "4.0.0-M2"
+micronaut-data = "4.0.0-SNAPSHOT"
 micronaut-docs = "2.0.0"
 micronaut-redis = "6.0.0-M2"
 micronaut-serialization = "2.0.0-M3"
