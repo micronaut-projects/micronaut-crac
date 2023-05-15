@@ -2,13 +2,11 @@ pluginManagement {
     repositories {
         gradlePluginPortal()
         mavenCentral()
-        // Required for the test-suite snapshot plugins
-        maven { url = "https://s01.oss.sonatype.org/content/repositories/snapshots" }
     }
 }
 
 plugins {
-    id 'io.micronaut.build.shared.settings' version '6.4.2'
+    id 'io.micronaut.build.shared.settings' version '6.4.4'
 }
 
 enableFeaturePreview('TYPESAFE_PROJECT_ACCESSORS')
@@ -26,9 +24,6 @@ include 'test-suite-kotlin'
 include 'test-suite-redis'
 
 micronautBuild {
-    // Required for 4.0.0-SNAPSHOT, can be removed after
-    addSnapshotRepository()
-
     useStandardizedProjectNames = true
     importMicronautCatalog()
     importMicronautCatalog("micronaut-cache")
