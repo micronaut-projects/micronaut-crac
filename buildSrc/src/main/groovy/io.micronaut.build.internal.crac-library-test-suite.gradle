@@ -19,7 +19,7 @@ configurations.all {
 
 dependencies {
     testImplementation(projects.micronautCrac)
-    testImplementation(mn.logback.classic)
+    testImplementation(mnLogging.logback.classic)
     testImplementation(mn.micronaut.http.server.netty)
     testImplementation(mn.micronaut.inject.groovy)
     testImplementation(mnTest.micronaut.test.spock)
