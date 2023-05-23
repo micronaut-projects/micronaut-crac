@@ -9,3 +9,13 @@ snippet::io.micronaut.crac.EagerHttpClientCreationTest[tags=test,indent=0,title=
 <1> Inject the `EmbeddedServer` as normal
 <2> Lazily create a `HttpClient` when it is first called
 <3> Get the `HttpClient` and make the request
+
+With CRaC, you run your application to a point, and then "checkpoint" it. This calls the app to close all its sockets and file handles, and then dumps the memory to disk. When it restarts from this snapshot, it calls the app again to say it's been restored, and one can re-open files and network connections.
+
+The simulator allows you to synthesise these 2 calls (before checkpoint and after restore), so that under a test, you can check your service that it works again after it was closed and recreated.
+
+snippet::io.micronaut.crac.CheckpointSimulatorTest[tags=test,indent=0,title=Using CheckpointSimulator in a test]
+
+<1> Obtain the `CheckpointSimulator` from the running environment
+<2> Emulate the checkpoint and assert the server is no longer running
+<3> Emulate the restore and assert the server restarted
