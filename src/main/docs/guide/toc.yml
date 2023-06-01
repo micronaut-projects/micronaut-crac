@@ -11,6 +11,9 @@ refresh: Refresh scope
 events: Events
 context: Context Provider
 docker: Docker Support
-testing: Testing
+testing:
+  title: Testing
+  disableEager: Disable Eager Singleton Initialization
+  checkpointSimulator: Using a CheckpointSimulator
 repository: Repository
 
