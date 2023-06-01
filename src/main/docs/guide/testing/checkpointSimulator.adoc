@@ -1,0 +1,23 @@
+With CRaC, you run your application to a point and then "checkpoint" it. This calls the app to close all its sockets and file handles, and then dumps the memory to disk. When it restarts from this snapshot, it calls the app again to say it's been restored, and one can re-open files and network connections.
+
+The simulator allows you to synthesise these two calls (before checkpoint and after restore), so that under a test you can check your service works again after it was closed and recreated.
+
+The following example demonstrates how to write and test custom OrderedResource implementations. Here it is doing nothing for sake of the example, but in reality it would have a socket or file that needs to be closed, or something along those lines.
+
+snippet::io.micronaut.crac.ResourceBean[tags=bean,indent=0,title=A resource bean]
+
+<1> A simulated state for the bean
+
+An OrderedResource which will stop the ResourceBean before a checkpoint and start it again after a restore.
+
+snippet::io.micronaut.crac.ResourceBeanResource[tags=resource,indent=0,title=An `OrderedResouce` for the bean]
+
+<1> Implement the `OrderedResource` interface
+<2> Override to stop the resource before a checkpoint
+<3> Override to restart it again after a restore
+
+snippet::io.micronaut.crac.OrderedResourceCheckpointSimulatorTest[tags=test,indent=0,title=Using `CheckpointSimulator` in a test]
+
+<1> Obtain the `CheckpointSimulator` from the running environment
+<2> Emulate the checkpoint and assert the bean is no longer running
+<3> Emulate the restore and assert the bean is running again
