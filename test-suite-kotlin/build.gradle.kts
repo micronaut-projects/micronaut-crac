@@ -5,6 +5,7 @@ plugins {
 }
 
 dependencies {
+    testImplementation(projects.micronautCrac)
     kaptTest(mn.micronaut.inject.java)
     testImplementation(mnTest.micronaut.test.junit5)
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
