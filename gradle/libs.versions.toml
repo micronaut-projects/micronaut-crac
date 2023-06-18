@@ -14,7 +14,7 @@ spock = "2.3-groovy-4.0"
 
 managed-crac = "0.1.3"
 
-micronaut-logging = "1.0.0-M3"
+micronaut-logging = "1.0.0-M5"
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
