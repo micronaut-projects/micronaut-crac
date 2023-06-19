@@ -20,7 +20,7 @@ import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.crac.CracConfiguration;
-import io.micronaut.transaction.jdbc.DelegatingDataSource;
+import io.micronaut.data.connection.jdbc.advice.DelegatingDataSource;
 import jakarta.inject.Singleton;
 import org.crac.Resource;
 import org.slf4j.Logger;
@@ -30,7 +30,7 @@ import javax.sql.DataSource;
 import java.util.Optional;
 
 /**
- * If the data Source is of type {@link io.micronaut.transaction.jdbc.DelegatingDataSource}, extract the underlying data source.
+ * If the data Source is of type {@link io.micronaut.data.connection.jdbc.advice.DelegatingDataSource}, extract the underlying data source.
  *
  * @author Sergio del Amo
  * @since 1.2.0

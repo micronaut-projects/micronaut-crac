@@ -6,8 +6,8 @@ import groovy.sql.Sql
 import io.micronaut.context.BeanContext
 import io.micronaut.context.annotation.Property
 import io.micronaut.crac.test.CheckpointSimulator
+import io.micronaut.data.connection.jdbc.advice.DelegatingDataSource
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
-import io.micronaut.transaction.jdbc.DelegatingDataSource
 import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
 import spock.lang.AutoCleanup
@@ -50,7 +50,7 @@ class HikariSpec extends Specification {
         hikariDataSource.running
 
         when: "we make sure we've got a connection warmed up"
-        def rows = new Sql(dataSource).rows("select 1")
+        def rows = new Sql(hikariDataSource).rows("select 1")
 
         then:
         rows.size() == 1
