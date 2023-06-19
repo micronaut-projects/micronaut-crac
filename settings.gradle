@@ -24,7 +24,6 @@ include 'test-suite-kotlin'
 include 'test-suite-redis'
 
 micronautBuild {
-    importMicronautCatalog("micronaut-logging")
     useStandardizedProjectNames = true
     importMicronautCatalog()
     importMicronautCatalog("micronaut-cache")
