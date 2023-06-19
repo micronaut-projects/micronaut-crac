@@ -2,12 +2,12 @@
 micronaut = "4.0.0-RC1"
 
 micronaut-cache = "4.0.0-M5"
-micronaut-data = "4.0.0-M9"
+micronaut-data = "4.0.0-M10"
 micronaut-docs = "2.0.0"
-micronaut-redis = "6.0.0-M5"
+micronaut-redis = "6.0.0-M6"
 micronaut-serialization = "2.0.0-M12"
-micronaut-sql = "5.0.0-M11"
-micronaut-test = "4.0.0-M6"
+micronaut-sql = "5.0.0-M12"
+micronaut-test = "4.0.0-M8"
 
 groovy = "4.0.12"
 spock = "2.3-groovy-4.0"
