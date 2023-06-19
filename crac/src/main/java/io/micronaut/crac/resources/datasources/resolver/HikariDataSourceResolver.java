@@ -21,7 +21,7 @@ import io.micronaut.core.annotation.Experimental;
 import io.micronaut.core.annotation.NonNull;
 import io.micronaut.crac.CracConfiguration;
 import io.micronaut.crac.resources.datasources.HikariDataSourceResource;
-import io.micronaut.transaction.jdbc.DelegatingDataSource;
+import io.micronaut.data.connection.jdbc.advice.DelegatingDataSource;
 import jakarta.inject.Singleton;
 import org.crac.Resource;
 import org.slf4j.Logger;

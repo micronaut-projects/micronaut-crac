@@ -6,9 +6,10 @@ dependencies {
     api(libs.managed.crac)
     compileOnly(mn.micronaut.http.server.netty)
     compileOnly(mnSql.micronaut.jdbc.hikari)
-    compileOnly(mnData.micronaut.data.tx)
+    compileOnly(mnData.micronaut.data.connection.jdbc)
     compileOnly(mnRedis.micronaut.redis.lettuce)
 
+    testImplementation(mnData.micronaut.data.connection.jdbc)
     testImplementation(mnData.micronaut.data.tx)
     testImplementation(mnSql.micronaut.jdbc.hikari)
     testImplementation(mnSerde.micronaut.serde.jackson)
