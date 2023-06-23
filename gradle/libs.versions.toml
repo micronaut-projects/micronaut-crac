@@ -6,25 +6,25 @@ micronaut-data = "4.0.0-M11"
 micronaut-docs = "2.0.0"
 micronaut-redis = "6.0.0-M6"
 micronaut-serialization = "2.0.0-M12"
-micronaut-sql = "5.0.0-M11"
-micronaut-test = "4.0.0-M6"
+micronaut-sql = "5.0.0-M12"
+micronaut-test = "4.0.0-M8"
 
 groovy = "4.0.12"
 spock = "2.3-groovy-4.0"
 
-managed-crac = "0.1.3"
+managed-crac = "1.3.0"
 
 micronaut-logging = "1.0.0-M5"
+
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
 
-micronaut-logging = { module = "io.micronaut.logging:micronaut-logging-bom", version.ref = "micronaut-logging" }
 micronaut-cache = { module = "io.micronaut.cache:micronaut-cache-bom", version.ref = "micronaut-cache" }
 micronaut-data = { module = "io.micronaut.data:micronaut-data-bom", version.ref = "micronaut-data" }
 micronaut-redis = { module = "io.micronaut.redis:micronaut-redis-bom", version.ref = "micronaut-redis" }
 micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serialization" }
 micronaut-sql = { module = "io.micronaut.sql:micronaut-sql-bom", version.ref = "micronaut-sql" }
 
-managed-crac = { module = "io.github.crac:org-crac", version.ref = "managed-crac" }
+managed-crac = { module = "org.crac:crac", version.ref = "managed-crac" }
 
