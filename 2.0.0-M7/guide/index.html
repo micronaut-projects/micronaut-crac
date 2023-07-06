@@ -1,0 +1,896 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en">
+<head>
+    <title>Micronaut CRaC</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../css/main.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
+    <link rel="stylesheet" href="../css/custom.css" type="text/css" media="screen, print" title="Style" charset="utf-8" />
+    <link rel="stylesheet" href="../css/pdf.css" type="text/css" media="print" title="PDF" charset="utf-8" />
+    <link rel="stylesheet" href="../css/highlight/agate.css">
+    <script src="../js/highlight.pack.js"></script>
+    <script src="../js/guide.js"></script>
+    <script src="../js/multi-language-sample.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+    <link rel="stylesheet" href="../css/multi-language-sample.css"/>
+    <script src="../js/docs.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script type="text/javascript">
+        function addJsClass(el) {
+            var classes = document.body.className.split(" ");
+            classes.push("js");
+            document.body.className = classes.join(" ");
+        }
+    </script>
+
+</head>
+
+<body class="body" id="docs" onload="addJsClass();" onhashchange="highlightMenu()">
+
+<div id="table-of-content-nav-link" class="desktop">
+    <a id="theme-switcher" title="Switch to dark theme" href="javascript:switchTheme(true)"><i class="fa fa-moon-o"></i></a>
+    <a title="Collapse/Open Table of contents" title="Hide Table of Contents" href="javascript:hideTableOfContents();" class="button">[ + ]</a>
+</div>
+
+<div id="main">
+    <div id="navigation" class="no-print">
+        <div class="navTitle">
+            <span id="logo"><a href="http://micronaut.io" title="Go to Micronaut Website"><img src="../img/micronaut-logo-white.svg" alt="Micronaut"/></a></span>
+        </div>
+        <div class="navLinks">
+            <ul>
+                    <li><div id="nav-summary" onmouseover="toggleNavSummary(false)" onmouseout="toggleNavSummary(true)" class="desktop">
+                            <a href="../guide/index.html" class="button">Table of contents</a>
+                            <div id="nav-summary-childs" style="display:none;">
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#releaseHistory"><strong>2</strong><span>Release History</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#installation"><strong>3</strong><span>Installation</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#resource"><strong>4</strong><span>CRaC Resources</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#refresh"><strong>5</strong><span>Refresh scope</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#events"><strong>6</strong><span>Events</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#context"><strong>7</strong><span>Context Provider</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#docker"><strong>8</strong><span>Docker Support</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#testing"><strong>9</strong><span>Testing</span></a></div>
+                                
+                                <div class="toc-item" style="margin-left:0"><a href="#repository"><strong>10</strong><span>Repository</span></a></div>
+                                
+                            </div>
+                        </div>
+                    </li>
+
+                <li id="table-of-content-nav-link-mobile" class="mobile">
+                    <a title="Scroll to Table of contents" href="javascript:scrollToTop();" class="button">Toc</a>
+                </li>
+                <li class="desktop">
+                    <a title="Go to API documentation" href="../api/index.html" class="button">API Reference</a>
+                </li>
+                <li class="mobile">
+                    <a title="Go to API documentation" href="../api/index.html" class="button">API</a>
+                </li>
+                <li class="desktop">
+                    <a title="Go to Configuration Reference documentation" href="../guide/configurationreference.html" class="button">Configuration Reference</a>
+                </li>
+                <li class="mobile">
+                    <a title="Go to Configuration Reference documentation" href="../guide/configurationreference.html" class="button">Conf</a>
+                </li>
+            </ul>
+
+        </div>
+    </div>
+    
+    <div id="table-of-content">
+        <div class="toc-content">
+
+        <h2>Table of Contents</h2>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-introduction"><a href="#introduction"><strong>1</strong><span>Introduction</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-releaseHistory"><a href="#releaseHistory"><strong>2</strong><span>Release History</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-installation"><a href="#installation"><strong>3</strong><span>Installation</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-resource"><a href="#resource"><strong>4</strong><span>CRaC Resources</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-datasource"><a href="#datasource"><strong>4.1</strong><span>DataSources</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-redis"><a href="#redis"><strong>4.2</strong><span>Redis</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-custom"><a href="#custom"><strong>4.3</strong><span>Custom CRaC Resources</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-refresh"><a href="#refresh"><strong>5</strong><span>Refresh scope</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-events"><a href="#events"><strong>6</strong><span>Events</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-context"><a href="#context"><strong>7</strong><span>Context Provider</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-docker"><a href="#docker"><strong>8</strong><span>Docker Support</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-testing"><a href="#testing"><strong>9</strong><span>Testing</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-disableEager"><a href="#disableEager"><strong>9.1</strong><span>Disable Eager Singleton Initialization</span></a></div>
+        
+        <div class="toc-item" style="margin-left:10px" id="toc-item-checkpointSimulator"><a href="#checkpointSimulator"><strong>9.2</strong><span>Using a CheckpointSimulator</span></a></div>
+        
+        <div class="toc-item" style="margin-left:0px" id="toc-item-repository"><a href="#repository"><strong>10</strong><span>Repository</span></a></div>
+        
+        </div>
+    </div>
+    
+    <div class="docs-content">
+    <div class="project">
+        <h1>Micronaut CRaC</h1>
+        <p></p>
+        <p>Adds support for CRaC (Coordinated Restore at Checkpoint) to the Micronaut Framework.</p>
+        <p><strong>Version:</strong> <select style='max-width: 200px' onChange='window.document.location.href=this.options[this.selectedIndex].value;'><option value='https://micronaut-projects.github.io/micronaut-crac/snapshot/guide/index.html'>SNAPSHOT</option><option value='https://micronaut-projects.github.io/micronaut-crac/latest/guide/index.html'>LATEST</option></select> </p>
+    </div>
+    
+<h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/introduction.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>This Micronaut module adds support for <a href="https://wiki.openjdk.org/display/CRaC">CRaC (Coordinated Restore at Checkpoint)</a> within the framework.</p>
+</div>
+
+<h1 id="releaseHistory"><a class="anchor" href="#releaseHistory"></a>2 Release History</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/releaseHistory.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>For this project, you can find a list of releases (with release notes) here:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/micronaut-projects/micronaut-crac/releases">https://github.com/micronaut-projects/micronaut-crac/releases</a></p>
+</div>
+
+<h1 id="installation"><a class="anchor" href="#installation"></a>3 Installation</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/installation.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Add the following the dependency to your build:</p>
+</div>
+<div class="paragraph">
+<p>        <div class="listingblock multi-language-sample">
+<div class="title"></div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="gradle">implementation(<span class="hljs-string">"io.micronaut.crac:micronaut-crac")</span></code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-xml hljs" data-lang="maven">&lt;dependency&gt;
+    &lt;groupId&gt;io.micronaut.crac&lt;/groupId&gt;
+    &lt;artifactId&gt;micronaut-crac&lt;/artifactId&gt;
+&lt;/dependency&gt;</code></pre>
+</div>
+</div></p>
+</div>
+
+<h1 id="resource"><a class="anchor" href="#resource"></a>4 CRaC Resources</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/resource.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+
+
+<h2 id="datasource"><a class="anchor" href="#datasource"></a>4.1 DataSources</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/resource/datasource.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>We currently support <a href="https://micronaut-projects.github.io/micronaut-sql/latest/guide">Hikari DataSources</a> that are configured to allow suspension with:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">datasources.default.allow-pool-suspension=true</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">datasources:
+  default:
+    allow-pool-suspension: true</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml">[datasources]
+  [datasources.default]
+    allow-pool-suspension=true</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy-config hljs" data-lang="groovy-config">datasources {
+  'default' {
+    allowPoolSuspension = true
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-hocon hljs" data-lang="hocon">{
+  datasources {
+    default {
+      allow-pool-suspension = true
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json-config hljs" data-lang="json-config">{
+  "datasources": {
+    "default": {
+      "allow-pool-suspension": true
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+<div class="paragraph">
+<p>When a checkpoint is taken, the pool is suspended and the connections are closed.  When the checkpoint is restored, the pool is resumed and the connections are re-established.</p>
+</div>
+
+<h2 id="redis"><a class="anchor" href="#redis"></a>4.2 Redis</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/resource/redis.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Since v1.2.1 of this library, we also support Redis connections.</p>
+</div>
+<div class="paragraph">
+<p>When the checkpoint is taken, we destroy <code>RedisClient</code>, <code>RedisCache</code> and <code>StatefulRedisConnection</code> beans that exist in the application.</p>
+</div>
+<div class="paragraph">
+<p>These will be re-created once the checkpoint is restored, however you will need to add your beans to <a href="#refresh">the refresh scope</a> so that these new beans are used.</p>
+</div>
+<div class="paragraph">
+<p>The resources for each of the above can be disabled via configuration:</p>
+</div>
+<div class="openblock">
+<div class="content">
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-properties hljs" data-lang="properties">crac.redis.enabled=false
+crac.redis.client-enabled=false
+crac.redis.cache-enabled=false
+crac.redis.connection-enabled=false</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-yaml hljs" data-lang="yaml">crac:
+    redis:
+        enabled: false            # disable all redis support
+        client-enabled: false     # disable RedisClient support
+        cache-enabled: false      # disable RedisCache support
+        connection-enabled: false # disable StatefulRedisConnection support</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-toml hljs" data-lang="toml">[crac]
+  [crac.redis]
+    enabled=false
+    client-enabled=false
+    cache-enabled=false
+    connection-enabled=false</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy-config hljs" data-lang="groovy-config">crac {
+  redis {
+    enabled = false
+    clientEnabled = false
+    cacheEnabled = false
+    connectionEnabled = false
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-hocon hljs" data-lang="hocon">{
+  crac {
+    redis {
+      enabled = false
+      client-enabled = false
+      cache-enabled = false
+      connection-enabled = false
+    }
+  }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-json-config hljs" data-lang="json-config">{
+  "crac": {
+    "redis": {
+      "enabled": false,
+      "client-enabled": false,
+      "cache-enabled": false,
+      "connection-enabled": false
+    }
+  }
+}</code></pre>
+</div>
+</div>
+</div>
+</div>
+
+<h2 id="custom"><a class="anchor" href="#custom"></a>4.3 Custom CRaC Resources</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/resource/custom.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>To provide custom CRaC resources, create beans of type <a href="../api/io/micronaut/crac/OrderedResource.html">OrderedResource</a>.</p>
+</div>
+<div class="paragraph">
+<p>Micronaut CRaC registers resources for you into the CRaC Context. You just focus on providing implementations for <code>OrderedResource::beforeCheckpoint</code> and <code>OrderedResource::afterRestore</code> in your resources.</p>
+</div>
+<div class="paragraph">
+<p>Micronaut CRaC registers resources in order. You can control the order by overriding <code>OrderedResource::getOrder</code>.</p>
+</div>
+
+<h1 id="refresh"><a class="anchor" href="#refresh"></a>5 Refresh scope</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/refresh.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Prior to a checkpoint being taken, a <a href="../api/io/micronaut/runtime/context/scope/refresh/RefreshEvent.html">RefreshEvent</a> will be published to invalidate all beans in the @<a href="../api/io/micronaut/runtime/context/scope/Refreshable.html">Refreshable</a> scope.</p>
+</div>
+<div class="paragraph">
+<p>This behaviour can be disabled by setting the <code>crac.refresh-beans</code> property to <code>false</code> in the application config.</p>
+</div>
+
+<h1 id="events"><a class="anchor" href="#events"></a>6 Events</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/events.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>To notify external components when the default Resource handlers execute, there are two events; <a href="../api/io/micronaut/crac/events/BeforeCheckpointEvent.html">BeforeCheckpointEvent</a> and <a href="../api/io/micronaut/crac/events/AfterRestoreEvent.html">AfterRestoreEvent</a>.
+These events contain the <code>java.time.Instant</code> that the action completed, the length of time it took to execute the action in nanoseconds, and the Resource that was acted upon.</p>
+</div>
+<div class="paragraph">
+<p>Please see the <a href="https://docs.micronaut.io/latest/guide/#contextEvents">Micronaut Framework guide</a> for information on how to listen for these events.</p>
+</div>
+
+<h1 id="context"><a class="anchor" href="#context"></a>7 Context Provider</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/context.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p><a href="../api/io/micronaut/crac/GlobalCracContextProvider.html">GlobalCracContextProvider</a>, Micronaut CRaC&#8217;s default implementation of <a href="../api/io/micronaut/crac/CracContextProvider.html">CracContextProvider</a>, returns the global context. You can provide a replacement for <a href="../api/io/micronaut/crac/CracContextProvider.html">CracContextProvider</a> and provide your custom <a href="https://crac.github.io/openjdk-builds/javadoc/api/java.base/jdk/crac/Context.html">Context</a>.</p>
+</div>
+
+<h1 id="docker"><a class="anchor" href="#docker"></a>8 Docker Support</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/docker.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>Support for building CRaC-enabled Docker images is provided by the Micronaut <a href="https://micronaut-projects.github.io/micronaut-gradle-plugin/latest/#_micronaut_crac_plugin">Gradle</a> or <a href="https://micronaut-projects.github.io/micronaut-maven-plugin/snapshot/examples/package.html#building_crac_based_docker_images">Maven</a> plugin. Either one is capable of generating a docker image containing a CRaC enabled JDK and a pre-warmed, checkpointed application.</p>
+</div>
+
+<h1 id="testing"><a class="anchor" href="#testing"></a>9 Testing</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/testing.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>When you create a Micronaut Framework application (either via <a href="https://launch.micronaut.io" class="bare">https://launch.micronaut.io</a> or the command line application), it creates a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/annotation/ContextConfigurer.html">ContextConfigurer</a> with enables <a href="https://docs.micronaut.io/latest/guide/index.html#eagerInit">eager singleton initialization</a>.</p>
+</div>
+<div class="paragraph">
+<p>As tests annotated with <code>@MicronautTest</code> are implicitly in the <code>Singleton</code> scope, this can cause problems injecting some beans (for example an <code>HttpClient</code>) into your test class.</p>
+</div>
+<div class="paragraph">
+<p>To avoid this, you can either disable eager singleton initialization for your tests, or you will need to manually get an instance of the bean you would normally inject.  As an example, to get an <code>HttpClient</code> you could do:</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+EmbeddedServer server; // <b class="conum">(1)</b>
+
+Supplier&lt;HttpClient&gt; clientSupplier = SupplierUtil.memoizedNonEmpty(() -&gt; // <b class="conum">(2)</b>
+    server.getApplicationContext().createBean(HttpClient.class, server.getURL())
+);
+
+@Test
+void testClient() {
+    assertEquals("ok", clientSupplier.get().toBlocking().retrieve("/eager")); // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Inject
+EmbeddedServer server // <b class="conum">(1)</b>
+
+@Memoized // <b class="conum">(2)</b>
+HttpClient clientSupplier() {
+    server.applicationContext.createBean(HttpClient, server.URL)
+}
+
+void 'test client'() {
+    expect:
+    clientSupplier().toBlocking().retrieve("/eager") == "ok" // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
+lateinit var server: EmbeddedServer // <b class="conum">(1)</b>
+
+val client by lazy {
+    server.applicationContext.createBean(HttpClient::class.java, server.url) // <b class="conum">(2)</b>
+}
+
+@Test
+fun testClient() {
+    assertEquals("ok", client.toBlocking().retrieve("/eager")) // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Inject the <code>EmbeddedServer</code> as normal</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Lazily create a <code>HttpClient</code> when it is first called</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Get the <code>HttpClient</code> and make the request</td>
+</tr>
+</table>
+</div>
+
+<h2 id="disableEager"><a class="anchor" href="#disableEager"></a>9.1 Disable Eager Singleton Initialization</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/testing/disableEager.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>When you create a Micronaut Framework application (either via <a href="https://launch.micronaut.io" class="bare">https://launch.micronaut.io</a> or the command line application), it creates a <a href="https://docs.micronaut.io/latest/api/io/micronaut/context/annotation/ContextConfigurer.html">ContextConfigurer</a> with enables <a href="https://docs.micronaut.io/latest/guide/index.html#eagerInit">eager singleton initialization</a>.</p>
+</div>
+<div class="paragraph">
+<p>As tests annotated with <code>@MicronautTest</code> are implicitly in the <code>Singleton</code> scope, this can cause problems injecting some beans (for example an <code>HttpClient</code>) into your test class.</p>
+</div>
+<div class="paragraph">
+<p>To avoid this, you can either disable eager singleton initialization for your tests, or you will need to manually get an instance of the bean you would normally inject.  As an example, to get an <code>HttpClient</code> you could do:</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+EmbeddedServer server; // <b class="conum">(1)</b>
+
+Supplier&lt;HttpClient&gt; clientSupplier = SupplierUtil.memoizedNonEmpty(() -&gt; // <b class="conum">(2)</b>
+    server.getApplicationContext().createBean(HttpClient.class, server.getURL())
+);
+
+@Test
+void testClient() {
+    assertEquals("ok", clientSupplier.get().toBlocking().retrieve("/eager")); // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Inject
+EmbeddedServer server // <b class="conum">(1)</b>
+
+@Memoized // <b class="conum">(2)</b>
+HttpClient clientSupplier() {
+    server.applicationContext.createBean(HttpClient, server.URL)
+}
+
+void 'test client'() {
+    expect:
+    clientSupplier().toBlocking().retrieve("/eager") == "ok" // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
+lateinit var server: EmbeddedServer // <b class="conum">(1)</b>
+
+val client by lazy {
+    server.applicationContext.createBean(HttpClient::class.java, server.url) // <b class="conum">(2)</b>
+}
+
+@Test
+fun testClient() {
+    assertEquals("ok", client.toBlocking().retrieve("/eager")) // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Inject the <code>EmbeddedServer</code> as normal</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Lazily create a <code>HttpClient</code> when it is first called</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Get the <code>HttpClient</code> and make the request</td>
+</tr>
+</table>
+</div>
+
+<h2 id="checkpointSimulator"><a class="anchor" href="#checkpointSimulator"></a>9.2 Using a CheckpointSimulator</h2>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/testing/checkpointSimulator.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>With CRaC, you run your application to a point and then "checkpoint" it. This calls the app to close all its sockets and file handles, and then dumps the memory to disk. When it restarts from this snapshot, it calls the app again to say it&#8217;s been restored, and one can re-open files and network connections.</p>
+</div>
+<div class="paragraph">
+<p>The simulator allows you to synthesise these two calls (before checkpoint and after restore), so that under a test you can check your service works again after it was closed and recreated.</p>
+</div>
+<div class="paragraph">
+<p>The following example demonstrates how to write and test custom OrderedResource implementations. Here it is doing nothing for sake of the example, but in reality it would have a socket or file that needs to be closed, or something along those lines.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">A resource bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Singleton
+class ResourceBean {
+
+    private boolean running = true; // <b class="conum">(1)</b>
+
+    boolean isRunning() {
+        return running;
+    }
+
+    void stop() {
+        this.running = false;
+    }
+
+    void start() {
+        this.running = true;
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">A resource bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Singleton
+ class ResourceBean {
+
+    private boolean running = true // <b class="conum">(1)</b>
+
+    boolean isRunning() {
+        return running
+    }
+
+    void stop() {
+        this.running = false
+    }
+
+    void start() {
+        this.running = true
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">A resource bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Singleton
+class ResourceBean {
+
+    var isRunning = true // <b class="conum">(1)</b>
+        private set
+
+    fun stop() {
+        isRunning = false
+    }
+
+    fun start() {
+        isRunning = true
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>A simulated state for the bean</td>
+</tr>
+</table>
+</div>
+<div class="paragraph">
+<p>An OrderedResource which will stop the ResourceBean before a checkpoint and start it again after a restore.</p>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">An <code>OrderedResouce</code> for the bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Singleton
+class ResourceBeanResource implements OrderedResource { // <b class="conum">(1)</b>
+
+    private final ResourceBean resourceBean;
+
+    ResourceBeanResource(ResourceBean resourceBean) {
+        this.resourceBean = resourceBean;
+    }
+
+    @Override
+    public void beforeCheckpoint(Context&lt;? extends Resource&gt; context) throws Exception { // <b class="conum">(2)</b>
+        resourceBean.stop();
+    }
+
+    @Override
+    public void afterRestore(Context&lt;? extends Resource&gt; context) throws Exception { // <b class="conum">(3)</b>
+        resourceBean.start();
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">An <code>OrderedResouce</code> for the bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Singleton
+ class ResourceBeanResource implements OrderedResource { // <b class="conum">(1)</b>
+
+    private final ResourceBean resourceBean
+
+    ResourceBeanResource(ResourceBean resourceBean) {
+        this.resourceBean = resourceBean
+    }
+
+    @Override
+    void beforeCheckpoint(Context&lt;? extends Resource&gt; context) throws Exception { // <b class="conum">(2)</b>
+        resourceBean.stop()
+    }
+
+    @Override
+    void afterRestore(Context&lt;? extends Resource&gt; context) throws Exception { // <b class="conum">(3)</b>
+        resourceBean.start()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">An <code>OrderedResouce</code> for the bean</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Singleton
+class ResourceBeanResource(private val resourceBean: ResourceBean) : OrderedResource { // <b class="conum">(1)</b>
+
+    @Throws(Exception::class)
+    override fun beforeCheckpoint(context: Context&lt;out Resource?&gt;?) { // <b class="conum">(2)</b>
+        resourceBean.stop()
+    }
+
+    @Throws(Exception::class)
+    override fun afterRestore(context: Context&lt;out Resource?&gt;?) { // <b class="conum">(3)</b>
+        resourceBean.start()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Implement the <code>OrderedResource</code> interface</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Override to stop the resource before a checkpoint</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Override to restart it again after a restore</td>
+</tr>
+</table>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Using <code>CheckpointSimulator</code> in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-java hljs" data-lang="java">@Inject
+BeanContext ctx;
+
+@Test
+void testCustomOrderedResourceUsingCheckpointSimulator() {
+    ResourceBean myBean = ctx.getBean(ResourceBean.class);
+    CheckpointSimulator checkpointSimulator = ctx.getBean(CheckpointSimulator.class); // <b class="conum">(1)</b>
+    assertTrue(myBean.isRunning());
+
+    checkpointSimulator.runBeforeCheckpoint();  // <b class="conum">(2)</b>
+    assertFalse(myBean.isRunning());
+
+    checkpointSimulator.runAfterRestore(); // <b class="conum">(3)</b>
+    assertTrue(myBean.isRunning());
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Using <code>CheckpointSimulator</code> in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Inject
+BeanContext ctx
+
+void "test custom OrderedResource implementation using the CheckpointSimulator"() {
+    given:
+    ResourceBean myBean = ctx.getBean(ResourceBean)
+    CheckpointSimulator checkpointSimulator = ctx.getBean(CheckpointSimulator) // <b class="conum">(1)</b>
+    expect:
+    myBean.running
+
+    when:
+    checkpointSimulator.runBeforeCheckpoint()  // <b class="conum">(2)</b>
+    then:
+    !myBean.running
+
+    when:
+    checkpointSimulator.runAfterRestore() // <b class="conum">(3)</b>
+
+    then:
+    myBean.running
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Using <code>CheckpointSimulator</code> in a test</div>
+<div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
+lateinit var ctx: BeanContext
+
+@Test
+fun testCustomOrderedResourceUsingCheckpointSimulator() {
+    val myBean = ctx.getBean(ResourceBean::class.java)
+    val checkpointSimulator = ctx.getBean(CheckpointSimulator::class.java) // <b class="conum">(1)</b>
+    Assertions.assertTrue(myBean.isRunning)
+
+    checkpointSimulator.runBeforeCheckpoint() // <b class="conum">(2)</b>
+    Assertions.assertFalse(myBean.isRunning)
+
+    checkpointSimulator.runAfterRestore() // <b class="conum">(3)</b>
+    Assertions.assertTrue(myBean.isRunning)
+}</code></pre>
+</div>
+</div>
+<div class="colist arabic">
+<table>
+<tr>
+<td><i class="conum" data-value="1"></i><b>1</b></td>
+<td>Obtain the <code>CheckpointSimulator</code> from the running environment</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="2"></i><b>2</b></td>
+<td>Emulate the checkpoint and assert the bean is no longer running</td>
+</tr>
+<tr>
+<td><i class="conum" data-value="3"></i><b>3</b></td>
+<td>Emulate the restore and assert the bean is running again</td>
+</tr>
+</table>
+</div>
+
+<h1 id="repository"><a class="anchor" href="#repository"></a>10 Repository</h1>
+
+<div class='contribute-btn'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/master/src/main/docs/guide/repository.adoc"'>
+        <i class='fa fa-pencil-square-o'></i> Improve this doc
+    </button>
+</div>
+
+
+<div class="paragraph">
+<p>You can find the source code of this project in this repository:</p>
+</div>
+<div class="paragraph">
+<p><a href="https://github.com/micronaut-projects/micronaut-crac">https://github.com/micronaut-projects/micronaut-crac</a></p>
+</div>
+
+    </div>
+</div>
+
+<script type="text/javascript">
+
+</script>
+</body>
+</html>
