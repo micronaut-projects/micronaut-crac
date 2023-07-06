@@ -1,5 +1,5 @@
 [versions]
-micronaut = "4.0.0-RC4"
+micronaut = "4.0.0-RC5"
 
 micronaut-cache = "4.0.0-M5"
 micronaut-data = "4.0.0-M14"
