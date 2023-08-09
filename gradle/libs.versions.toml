@@ -1,13 +1,13 @@
 [versions]
-micronaut = "4.0.2"
+micronaut = "4.0.3"
 
 micronaut-cache = "4.0.1"
-micronaut-data = "4.0.2"
+micronaut-data = "4.0.4"
 micronaut-docs = "2.0.0"
 micronaut-redis = "6.0.1"
-micronaut-serialization = "2.0.0"
+micronaut-serialization = "2.0.1"
 micronaut-sql = "5.0.1"
-micronaut-test = "4.0.0"
+micronaut-test = "4.0.1"
 
 groovy = "4.0.13"
 spock = "2.3-groovy-4.0"
