@@ -5,15 +5,7 @@ plugins {
 
 configurations.all {
     resolutionStrategy {
-        eachDependency {
-            if (requested.group == "io.micronaut.platform" && requested.name == "micronaut-platform") {
-                useVersion("4.0.0-M1")
-                because("There's no M2 platform yet")
-            }
-        }
-        dependencySubstitution {
-            substitute(module("io.micronaut.crac:micronaut-crac")).using(project(":micronaut-crac")).because("we work with the unreleased development version")
-        }
+        preferProjectModules()
     }
 }
 

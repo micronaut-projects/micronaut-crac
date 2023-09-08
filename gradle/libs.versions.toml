@@ -18,7 +18,7 @@ micronaut-logging = "1.0.0"
 
 [libraries]
 # Core
-micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
+micronaut-platform = { module = 'io.micronaut.platform:micronaut-platform', version.ref = 'micronaut' }
 
 micronaut-cache = { module = "io.micronaut.cache:micronaut-cache-bom", version.ref = "micronaut-cache" }
 micronaut-data = { module = "io.micronaut.data:micronaut-data-bom", version.ref = "micronaut-data" }
