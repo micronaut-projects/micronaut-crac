@@ -1,9 +1,10 @@
 [versions]
-micronaut = "4.0.3"
+micronaut = "4.0.6"
 
 micronaut-cache = "4.0.2"
 micronaut-data = "4.0.4"
 micronaut-docs = "2.0.0"
+micronaut-platform = "4.0.6"
 micronaut-redis = "6.0.2"
 micronaut-serialization = "2.0.1"
 micronaut-sql = "5.0.1"
@@ -18,10 +19,11 @@ micronaut-logging = "1.0.0"
 
 [libraries]
 # Core
-micronaut-platform = { module = 'io.micronaut.platform:micronaut-platform', version.ref = 'micronaut' }
+micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
 
 micronaut-cache = { module = "io.micronaut.cache:micronaut-cache-bom", version.ref = "micronaut-cache" }
 micronaut-data = { module = "io.micronaut.data:micronaut-data-bom", version.ref = "micronaut-data" }
+micronaut-platform = { module = 'io.micronaut.platform:micronaut-platform', version.ref = 'micronaut-platform' }
 micronaut-redis = { module = "io.micronaut.redis:micronaut-redis-bom", version.ref = "micronaut-redis" }
 micronaut-serde = { module = "io.micronaut.serde:micronaut-serde-bom", version.ref = "micronaut-serialization" }
 micronaut-sql = { module = "io.micronaut.sql:micronaut-sql-bom", version.ref = "micronaut-sql" }
