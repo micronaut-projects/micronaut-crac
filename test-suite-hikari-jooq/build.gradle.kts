@@ -9,3 +9,7 @@ dependencies {
 
     testRuntimeOnly(mnSql.h2)
 }
+
+micronaut {
+    version.set(libs.versions.micronaut.platform.get())
+}
