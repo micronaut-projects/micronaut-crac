@@ -17,6 +17,8 @@ managed-crac = "1.4.0"
 
 micronaut-logging = "1.0.0"
 
+testcontainers = "1.19.0"
+
 [libraries]
 # Core
 micronaut-core = { module = 'io.micronaut:micronaut-core-bom', version.ref = 'micronaut' }
@@ -30,3 +32,4 @@ micronaut-sql = { module = "io.micronaut.sql:micronaut-sql-bom", version.ref = "
 
 managed-crac = { module = "org.crac:crac", version.ref = "managed-crac" }
 
+testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }

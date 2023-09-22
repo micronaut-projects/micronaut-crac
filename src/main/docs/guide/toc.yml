@@ -15,5 +15,6 @@ testing:
   title: Testing
   disableEager: Disable Eager Singleton Initialization
   checkpointSimulator: Using a CheckpointSimulator
+info: Info sources
 repository: Repository
 

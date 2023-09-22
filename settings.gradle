@@ -18,6 +18,7 @@ include 'crac-bom'
 
 include 'test-suite'
 include 'test-suite-dbcp-jooq'
+include 'test-suite-docker'
 include 'test-suite-groovy'
 include 'test-suite-hikari-jooq'
 include 'test-suite-kotlin'
