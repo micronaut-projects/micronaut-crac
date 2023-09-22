@@ -1,4 +1,4 @@
-package io.micronaut.crac.test;
+package io.micronaut.crac.example;
 
 import io.micronaut.http.annotation.Controller;
 import io.micronaut.http.annotation.Get;

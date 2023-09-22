@@ -1,4 +1,4 @@
-package io.micronaut.crac.test;
+package io.micronaut.crac.example;
 
 import io.micronaut.runtime.Micronaut;
 

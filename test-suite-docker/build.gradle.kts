@@ -26,7 +26,7 @@ tasks.withType(Test::class) {
 }
 
 application {
-    mainClass.set("io.micronaut.crac.test.Application")
+    mainClass.set("io.micronaut.crac.example.Application")
 }
 
 micronaut {
