@@ -1,6 +1,8 @@
 package io.micronaut.crac
 
+import io.micronaut.context.ApplicationContext
 import io.micronaut.context.annotation.Property
+import io.micronaut.crac.info.CracInfoSource
 import io.micronaut.http.HttpRequest
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
@@ -17,7 +19,21 @@ class InfoSpec extends Specification {
     @Client("/")
     HttpClient client
 
-    void "hikari is suspended and restarted"() {
+    void "can be disabled"() {
+        when:
+        def ctx = ApplicationContext.run("endpoints.info.crac.enabled": enabled)
+
+        then:
+        ctx.containsBean(CracInfoSource) == enabled
+
+        cleanup:
+        ctx.close()
+
+        where:
+        enabled << [true, false]
+    }
+
+    void "info endpoint exists"() {
         given:
         Map map = client.toBlocking().retrieve(HttpRequest.GET("/info"), Map)
 
