@@ -27,6 +27,12 @@ import org.reactivestreams.Publisher;
 
 import java.util.Map;
 
+/**
+ * Exposes the information contained in the CRaC MXBean via the {@link InfoEndpoint}.
+ *
+ * @since 2.1.0
+ * @author Tim Yates
+ */
 @Singleton
 @Requires(beans = InfoEndpoint.class, classes = CRaCMXBean.class)
 @Requires(property = "endpoints.info.crac.enabled", notEquals = StringUtils.FALSE, defaultValue = StringUtils.TRUE)
