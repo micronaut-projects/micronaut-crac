@@ -8,6 +8,7 @@ dependencies {
     compileOnly(mnSql.micronaut.jdbc.hikari)
     compileOnly(mnData.micronaut.data.connection.jdbc)
     compileOnly(mnRedis.micronaut.redis.lettuce)
+    compileOnly(mn.micronaut.management)
 
     testImplementation(mnData.micronaut.data.connection.jdbc)
     testImplementation(mnData.micronaut.data.tx)
@@ -17,5 +18,7 @@ dependencies {
     testImplementation(mn.micronaut.http.client)
     testImplementation(mn.groovy.sql)
     testImplementation(mnLogging.logback.classic)
+
+    testRuntimeOnly(mn.micronaut.management)
     testRuntimeOnly(mnSql.h2)
 }
