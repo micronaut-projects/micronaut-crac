@@ -20,7 +20,10 @@ include 'test-suite'
 include 'test-suite-dbcp-jooq'
 include 'test-suite-groovy'
 include 'test-suite-hikari-jooq'
-include 'test-suite-kotlin'
+if (JavaVersion.current() < JavaVersion.VERSION_21) {
+    include 'test-suite-kotlin'
+}
+include 'test-suite-kotlin-ksp'
 include 'test-suite-redis'
 
 micronautBuild {
