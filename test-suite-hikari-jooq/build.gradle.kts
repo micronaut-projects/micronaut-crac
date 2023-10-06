@@ -11,5 +11,5 @@ dependencies {
 }
 
 micronaut {
-    version.set(libs.versions.micronaut.platform.get())
+    importMicronautPlatform.set(false)
 }

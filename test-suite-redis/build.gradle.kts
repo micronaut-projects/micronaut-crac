@@ -13,7 +13,7 @@ dependencies {
 }
 
 micronaut {
-    version.set(libs.versions.micronaut.platform.get())
+    importMicronautPlatform.set(false)
     testResources {
         additionalModules.set(listOf("redis"))
     }
