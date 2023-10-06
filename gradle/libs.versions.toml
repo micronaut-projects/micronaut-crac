@@ -37,8 +37,8 @@ managed-crac = { module = "org.crac:crac", version.ref = "managed-crac" }
 
 testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
 
-micronaut-gradle-plugin = { module = "io.micronaut.gradle:micronaut-gradle-plugin:4.1.1" version.ref = 'micronaut-gradle-plugin' }
-micronaut-crac-plugin = { module = "io.micronaut.gradle:micronaut-crac-plugin:4.1.1" version.ref = 'micronaut-gradle-plugin' }
+micronaut-gradle-plugin = { module = "io.micronaut.gradle:micronaut-gradle-plugin", version.ref = 'micronaut-gradle-plugin' }
+micronaut-crac-plugin = { module = "io.micronaut.gradle:micronaut-crac-plugin", version.ref = 'micronaut-gradle-plugin' }
 kotlin-gradle-plugin = { module = 'org.jetbrains.kotlin:kotlin-gradle-plugin', version.ref = 'kotlin' }
 kotlin-gradle-allopen = { module = 'org.jetbrains.kotlin:kotlin-allopen', version.ref = 'kotlin' }
 kotlin-gradle-ksp = { module = 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin', version.ref = 'ksp' }
