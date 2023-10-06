@@ -4,6 +4,7 @@ micronaut = "4.1.6"
 micronaut-cache = "4.0.2"
 micronaut-data = "4.1.3"
 micronaut-docs = "2.0.0"
+micronaut-gradle-plugin = "4.1.1"
 micronaut-platform = "4.1.3"
 micronaut-redis = "6.0.2"
 micronaut-serialization = "2.2.5"
@@ -11,6 +12,8 @@ micronaut-sql = "5.0.1"
 micronaut-test = "4.0.1"
 
 groovy = "4.0.13"
+kotlin = '1.9.10'
+ksp = '1.9.10-1.0.13'
 spock = "2.3-groovy-4.0"
 
 managed-crac = "1.4.0"
@@ -33,3 +36,9 @@ micronaut-sql = { module = "io.micronaut.sql:micronaut-sql-bom", version.ref = "
 managed-crac = { module = "org.crac:crac", version.ref = "managed-crac" }
 
 testcontainers = { module = "org.testcontainers:testcontainers", version.ref = "testcontainers" }
+
+micronaut-gradle-plugin = { module = "io.micronaut.gradle:micronaut-gradle-plugin:4.1.1" version.ref = 'micronaut-gradle-plugin' }
+micronaut-crac-plugin = { module = "io.micronaut.gradle:micronaut-crac-plugin:4.1.1" version.ref = 'micronaut-gradle-plugin' }
+kotlin-gradle-plugin = { module = 'org.jetbrains.kotlin:kotlin-gradle-plugin', version.ref = 'kotlin' }
+kotlin-gradle-allopen = { module = 'org.jetbrains.kotlin:kotlin-allopen', version.ref = 'kotlin' }
+kotlin-gradle-ksp = { module = 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin', version.ref = 'ksp' }
