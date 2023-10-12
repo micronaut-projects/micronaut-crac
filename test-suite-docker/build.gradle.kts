@@ -33,4 +33,7 @@ micronaut {
     importMicronautPlatform.set(false)
     runtime("netty")
     testRuntime("spock")
+    crac {
+        this.javaVersion.set(JavaLanguageVersion.of(JavaVersion.current().majorVersion))
+    }
 }
