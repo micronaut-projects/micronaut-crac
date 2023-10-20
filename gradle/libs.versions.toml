@@ -20,7 +20,7 @@ managed-crac = "1.4.0"
 
 micronaut-logging = "1.0.0"
 
-testcontainers = "1.19.0"
+testcontainers = "1.19.1"
 
 [libraries]
 # Core

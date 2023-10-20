@@ -6,7 +6,7 @@ pluginManagement {
 }
 
 plugins {
-    id 'io.micronaut.build.shared.settings' version '6.5.7'
+    id 'io.micronaut.build.shared.settings' version '6.6.0'
 }
 
 enableFeaturePreview('TYPESAFE_PROJECT_ACCESSORS')
@@ -21,9 +21,7 @@ include 'test-suite-dbcp-jooq'
 include 'test-suite-docker'
 include 'test-suite-groovy'
 include 'test-suite-hikari-jooq'
-if (JavaVersion.current() < JavaVersion.VERSION_21) {
-    include 'test-suite-kotlin'
-}
+include 'test-suite-kotlin'
 include 'test-suite-kotlin-ksp'
 include 'test-suite-redis'
 

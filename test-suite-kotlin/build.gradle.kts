@@ -10,3 +10,9 @@ dependencies {
     testImplementation(mnTest.micronaut.test.junit5)
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
+
+kotlin {
+    jvmToolchain {
+        languageVersion.set(JavaLanguageVersion.of(17))
+    }
+}
