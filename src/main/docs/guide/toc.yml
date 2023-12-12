@@ -16,5 +16,6 @@ testing:
   disableEager: Disable Eager Singleton Initialization
   checkpointSimulator: Using a CheckpointSimulator
 info: Info sources
+cracGuides: Guides
 repository: Repository
 
