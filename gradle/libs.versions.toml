@@ -2,7 +2,7 @@
 micronaut = "4.2.3"
 
 micronaut-cache = "4.2.0"
-micronaut-data = "4.1.4"
+micronaut-data = "4.4.1"
 micronaut-docs = "2.0.0"
 micronaut-gradle-plugin = "4.2.1"
 micronaut-platform = "4.2.3"
