@@ -13,7 +13,7 @@ micronaut-test = "4.0.1"
 
 groovy = "4.0.13"
 kotlin = '1.9.22'
-ksp = '1.9.22-1.0.16'
+ksp = '1.9.22-1.0.17'
 spock = "2.3-groovy-4.0"
 
 managed-crac = "1.4.0"
