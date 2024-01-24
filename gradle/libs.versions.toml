@@ -8,7 +8,7 @@ micronaut-gradle-plugin = "4.2.1"
 micronaut-platform = "4.2.3"
 micronaut-redis = "6.2.0"
 micronaut-serialization = "2.7.1"
-micronaut-sql = "5.4.0"
+micronaut-sql = "5.4.1"
 micronaut-test = "4.0.1"
 
 groovy = "4.0.13"
