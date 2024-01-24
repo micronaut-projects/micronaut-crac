@@ -7,7 +7,7 @@ micronaut-docs = "2.0.0"
 micronaut-gradle-plugin = "4.2.1"
 micronaut-platform = "4.2.3"
 micronaut-redis = "6.2.0"
-micronaut-serialization = "2.7.0"
+micronaut-serialization = "2.7.1"
 micronaut-sql = "5.4.0"
 micronaut-test = "4.0.1"
 
