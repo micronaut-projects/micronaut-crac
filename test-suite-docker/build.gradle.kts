@@ -17,7 +17,7 @@ dependencies {
     runtimeOnly(mnSerde.micronaut.serde.jackson)
     runtimeOnly(mnLogging.logback.classic)
 
-    testImplementation(libs.testcontainers)
+    implementation(mnTestResources.testcontainers.core)
     testImplementation(mn.micronaut.http.client)
 }
 
