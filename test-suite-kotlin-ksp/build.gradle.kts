@@ -2,7 +2,7 @@ import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 
 plugins {
     id("org.jetbrains.kotlin.jvm")
-    id("com.google.devtools.ksp")
+    id("com.google.devtools.ksp") version mn.versions.ksp
     id("io.micronaut.build.internal.crac-test-suite")
 }
 
