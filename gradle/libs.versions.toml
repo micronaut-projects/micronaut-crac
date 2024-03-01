@@ -14,7 +14,6 @@ micronaut-test-resources="2.3.3"
 
 groovy = "4.0.13"
 kotlin = '1.9.22'
-ksp = '1.9.22-1.0.17'
 spock = "2.3-groovy-4.0"
 
 managed-crac = "1.4.0"
@@ -39,4 +38,3 @@ micronaut-gradle-plugin = { module = "io.micronaut.gradle:micronaut-gradle-plugi
 micronaut-crac-plugin = { module = "io.micronaut.gradle:micronaut-crac-plugin", version.ref = 'micronaut-gradle-plugin' }
 kotlin-gradle-plugin = { module = 'org.jetbrains.kotlin:kotlin-gradle-plugin', version.ref = 'kotlin' }
 kotlin-gradle-allopen = { module = 'org.jetbrains.kotlin:kotlin-allopen', version.ref = 'kotlin' }
-kotlin-gradle-ksp = { module = 'com.google.devtools.ksp:com.google.devtools.ksp.gradle.plugin', version.ref = 'ksp' }
