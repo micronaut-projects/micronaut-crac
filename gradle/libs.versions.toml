@@ -13,7 +13,7 @@ micronaut-test = "4.0.1"
 micronaut-test-resources="2.5.0"
 
 groovy = "4.0.13"
-kotlin = '1.9.23'
+kotlin = '1.9.24'
 spock = "2.3-groovy-4.0"
 
 managed-crac = "1.4.0"
