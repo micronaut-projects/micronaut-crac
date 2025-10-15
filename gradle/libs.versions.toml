@@ -1,7 +1,6 @@
 [versions]
 micronaut = "4.10.4"
-
-micronaut-cache = "5.2.0"
+micronaut-cache = "5.3.0"
 micronaut-data = "4.13.7"
 micronaut-docs = "3.0.0"
 micronaut-gradle-plugin = "4.5.5"
