@@ -16,6 +16,7 @@ dependencies {
     testImplementation(mn.micronaut.inject.groovy)
     testImplementation(mnTest.micronaut.test.spock)
     testRuntimeOnly(mn.micronaut.jackson.databind)
+    testRuntimeOnly(mnTest.junit.platform.launcher)
 }
 
 tasks.test {
