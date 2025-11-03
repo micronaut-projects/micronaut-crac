@@ -1,8 +1,5 @@
-import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
-
 plugins {
-    id("org.jetbrains.kotlin.jvm")
-    alias(libs.plugins.ksp)
+    id("io.micronaut.build.internal.kotlin-ksp")
     id("io.micronaut.build.internal.crac-test-suite")
 }
 
