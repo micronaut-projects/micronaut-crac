@@ -12,4 +12,5 @@ dependencies {
     implementation(libs.micronaut.crac.plugin)
     implementation(libs.kotlin.gradle.plugin)
     implementation(libs.kotlin.gradle.allopen)
+    implementation(providers.gradleProperty("micronaut-build-version").map { "io.micronaut.build.internal:micronaut-kotlin-build-plugins:${it}" }.get())
 }
