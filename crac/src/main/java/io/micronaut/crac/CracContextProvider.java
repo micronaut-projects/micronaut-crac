@@ -15,7 +15,7 @@
  */
 package io.micronaut.crac;
 
-import io.micronaut.core.annotation.NonNull;
+import org.jspecify.annotations.NonNull;
 import org.crac.Context;
 import org.crac.Resource;
 
