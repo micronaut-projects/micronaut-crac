@@ -15,7 +15,7 @@
  */
 package io.micronaut.crac.resources.datasources.resolver;
 
-import io.micronaut.core.annotation.NonNull;
+import org.jspecify.annotations.NonNull;
 import io.micronaut.core.order.Ordered;
 import io.micronaut.crac.CracConfiguration;
 import org.crac.Resource;

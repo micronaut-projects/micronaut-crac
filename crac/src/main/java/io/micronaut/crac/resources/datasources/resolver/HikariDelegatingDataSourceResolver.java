@@ -18,7 +18,7 @@ package io.micronaut.crac.resources.datasources.resolver;
 import com.zaxxer.hikari.HikariDataSource;
 import io.micronaut.context.annotation.Requires;
 import io.micronaut.core.annotation.Experimental;
-import io.micronaut.core.annotation.NonNull;
+import org.jspecify.annotations.NonNull;
 import io.micronaut.crac.CracConfiguration;
 import io.micronaut.data.connection.jdbc.advice.DelegatingDataSource;
 import jakarta.inject.Singleton;
