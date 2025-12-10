@@ -16,7 +16,7 @@
 package io.micronaut.crac;
 
 import io.micronaut.context.event.ApplicationEventPublisher;
-import io.micronaut.core.annotation.NonNull;
+import org.jspecify.annotations.NonNull;
 import io.micronaut.crac.events.AfterRestoreEvent;
 import io.micronaut.crac.events.BeforeCheckpointEvent;
 import jakarta.inject.Singleton;
