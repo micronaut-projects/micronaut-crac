@@ -5,10 +5,9 @@ import io.micronaut.crac.test.CheckpointSimulator
 import io.micronaut.test.extensions.spock.annotation.MicronautTest
 import jakarta.inject.Inject
 import spock.lang.AutoCleanup
-import spock.lang.Specification
 
 @MicronautTest
-class BaseCacheSpecification extends Specification {
+class BaseCacheSpecification extends AbstractRedisContainerSpec {
 
     @Inject
     ApplicationContext ctx
