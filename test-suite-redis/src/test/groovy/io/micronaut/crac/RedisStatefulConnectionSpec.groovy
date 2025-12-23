@@ -4,12 +4,18 @@ import ch.qos.logback.classic.Logger
 import io.lettuce.core.api.StatefulRedisConnection
 import io.micronaut.context.annotation.Property
 import io.micronaut.core.util.StringUtils
+import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
 
 @Property(name = "spec.name", value = "RedisStatefulConnectionSpec")
 @Property(name = "redis.cache.enabled", value = StringUtils.TRUE)
-class RedisStatefulConnectionSpec extends BaseCacheSpecification {
+class RedisStatefulConnectionSpec extends BaseCacheSpecification implements TestPropertyProvider{
+
+    @Override
+    Map<String, String> getProperties() {
+        return AbstractRedisContainerSpec.getProperties();
+    }
 
     @Inject
     StatefulRedisConnection<String, String> connection;

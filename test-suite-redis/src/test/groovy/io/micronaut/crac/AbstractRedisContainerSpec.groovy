@@ -7,34 +7,32 @@ import io.micronaut.test.support.TestPropertyProvider
 import spock.lang.Shared
 import spock.lang.Specification
 
-@Testcontainers
-abstract class AbstractRedisContainerSpec extends Specification implements TestPropertyProvider {
+abstract class AbstractRedisContainerSpec {
 
-    @Shared
-    static RedisContainer redis = new RedisContainer(DockerImageName.parse("redis:7.2")).withReuse(true)
+    private static final String IMAGE_NAME = "redis"
+    private static RedisContainer container
 
-    def setupSpec() {
-        if (!redis.isRunning()) {
-            redis.start()
+     static  Map<String, String> getProperties() {
+        if (container == null) {
+            container = new RedisContainer(DockerImageName.parse(IMAGE_NAME))
+            do {
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    throw new RuntimeException(e);
+                }
+            } while(!container.isRunning());
+            return getProperties(container);
+        } else {
+            return getProperties(container);
         }
     }
 
-    @Override
-    Map<String, String> getProperties() {
-        if (!redis.isRunning()) {
-            redis.start()
-        }
-        String uri = redis.getRedisURI()
+    static def Map<String, String> getProperties(RedisContainer container) {
+        String uri = container.getRedisURI()
         return [
-            'redis.enabled': 'true',
-            'redis.uri'   : uri
+                'redis.enabled': 'true',
+                'redis.uri'   : uri
         ]
-    }
-
-    def cleanupSpec() {
-        System.clearProperty("redis.uri")
-        if (redis != null && redis.isRunning()) {
-            redis.stop()
-        }
     }
 }

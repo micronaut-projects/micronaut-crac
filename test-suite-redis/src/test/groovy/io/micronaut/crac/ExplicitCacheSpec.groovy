@@ -6,6 +6,7 @@ import io.micronaut.context.annotation.Property
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.util.StringUtils
 import io.micronaut.runtime.context.scope.Refreshable
+import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import jakarta.inject.Named
 import jakarta.inject.Singleton
@@ -13,7 +14,12 @@ import org.slf4j.LoggerFactory
 
 @Property(name = "spec.name", value = "ExplicitCacheSpec")
 @Property(name = "redis.caches.test.enabled", value = StringUtils.TRUE)
-class ExplicitCacheSpec extends BaseCacheSpecification {
+class ExplicitCacheSpec extends BaseCacheSpecification implements TestPropertyProvider{
+
+    @Override
+    Map<String, String> getProperties() {
+        return AbstractRedisContainerSpec.getProperties();
+    }
 
     @Inject
     CacheService cacheService

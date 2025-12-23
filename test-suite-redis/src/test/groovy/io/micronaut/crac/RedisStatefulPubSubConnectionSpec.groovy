@@ -6,12 +6,18 @@ import io.lettuce.core.pubsub.StatefulRedisPubSubConnection
 import io.micronaut.context.BeanContext
 import io.micronaut.context.annotation.Property
 import io.micronaut.core.util.StringUtils
+import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import org.slf4j.LoggerFactory
 
 @Property(name = "spec.name", value = "RedisStatefulPubSubConnectionSpec")
 @Property(name = "redis.cache.enabled", value = StringUtils.TRUE)
-class RedisStatefulPubSubConnectionSpec extends BaseCacheSpecification {
+class RedisStatefulPubSubConnectionSpec extends BaseCacheSpecification implements TestPropertyProvider{
+
+    @Override
+    Map<String, String> getProperties() {
+        return AbstractRedisContainerSpec.getProperties();
+    }
 
     @Inject
     StatefulRedisPubSubConnection<String, String> connection;

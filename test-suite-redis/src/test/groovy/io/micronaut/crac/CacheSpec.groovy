@@ -8,13 +8,19 @@ import io.micronaut.http.annotation.Controller
 import io.micronaut.http.annotation.Get
 import io.micronaut.http.client.HttpClient
 import io.micronaut.http.client.annotation.Client
+import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import jakarta.inject.Singleton
 import spock.lang.PendingFeature
 
 @Property(name = "spec.name", value = "CacheSpec")
 @Property(name = "redis.caches.test.enabled", value = StringUtils.TRUE)
-class CacheSpec extends BaseCacheSpecification {
+class CacheSpec extends BaseCacheSpecification implements TestPropertyProvider{
+
+    @Override
+    Map<String, String> getProperties() {
+        return AbstractRedisContainerSpec.getProperties();
+    }
 
     @Inject
     @Client("/")
