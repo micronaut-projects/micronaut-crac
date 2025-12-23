@@ -10,7 +10,6 @@ dependencies {
     testImplementation(platform(mnTest.boms.testcontainers))
     testImplementation(libs.testcontainers)
     testImplementation(libs.managed.testcontainers.redis)
-    testImplementation("org.testcontainers:testcontainers-spock")
     testRuntimeOnly(mn.micronaut.jackson.databind)
 }
 

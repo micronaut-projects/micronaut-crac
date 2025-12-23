@@ -6,7 +6,6 @@ import io.micronaut.crac.resources.redis.CracRedisConfiguration
 import io.micronaut.crac.resources.redis.RedisCacheResource
 import io.micronaut.crac.resources.redis.RedisNamedConfigResource
 import io.micronaut.test.support.TestPropertyProvider
-import spock.lang.Specification
 
 class CracRedisConfigurationSpec extends AbstractRedisContainerSpec implements TestPropertyProvider {
 

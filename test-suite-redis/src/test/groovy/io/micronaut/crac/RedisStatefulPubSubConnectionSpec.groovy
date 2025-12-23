@@ -1,9 +1,7 @@
 package io.micronaut.crac
 
 import ch.qos.logback.classic.Logger
-import io.lettuce.core.api.StatefulRedisConnection
 import io.lettuce.core.pubsub.StatefulRedisPubSubConnection
-import io.micronaut.context.BeanContext
 import io.micronaut.context.annotation.Property
 import io.micronaut.core.util.StringUtils
 import io.micronaut.test.support.TestPropertyProvider
