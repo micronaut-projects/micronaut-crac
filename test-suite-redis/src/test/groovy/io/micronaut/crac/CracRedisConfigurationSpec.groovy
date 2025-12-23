@@ -5,16 +5,21 @@ import io.micronaut.core.util.StringUtils
 import io.micronaut.crac.resources.redis.CracRedisConfiguration
 import io.micronaut.crac.resources.redis.RedisCacheResource
 import io.micronaut.crac.resources.redis.RedisNamedConfigResource
+import io.micronaut.test.support.TestPropertyProvider
 import spock.lang.Specification
 
-class CracRedisConfigurationSpec extends Specification {
+class CracRedisConfigurationSpec extends AbstractRedisContainerSpec implements TestPropertyProvider {
+
+    @Override
+    Map<String, String> getProperties() {
+        return AbstractRedisContainerSpec.getProperties()
+    }
 
     void "Redis CRaC enabled by default"() {
         given:
-        def ctx = ApplicationContext.run(
-                "redis.enabled": StringUtils.TRUE,
+        def ctx = ApplicationContext.run(getProperties() + [
                 "redis.caches.test.enabled": StringUtils.TRUE,
-        )
+        ])
 
         when:
         def cfg = ctx.getBean(CracConfiguration)
@@ -84,15 +89,17 @@ class CracRedisConfigurationSpec extends Specification {
         given:
         String cfg = "crac.redis.$suffix-enabled"
 
-        ApplicationContext ctx = ApplicationContext.run(
-                'redis.enabled': StringUtils.TRUE,
+        ApplicationContext ctx = ApplicationContext.run(getProperties() + [
                 "redis.caches.test.enabled": StringUtils.TRUE,
                 (cfg): StringUtils.FALSE,
-        )
+        ])
 
         expect:
         ctx.containsBean(RedisCacheResource) == (suffix != 'cache')
         ctx.containsBean(RedisNamedConfigResource) == (suffix != 'connection')
+
+        cleanup:
+        ctx.close()
 
         where:
         suffix << ['cache', 'connection']
