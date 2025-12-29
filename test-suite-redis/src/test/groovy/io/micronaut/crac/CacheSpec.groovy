@@ -15,12 +15,7 @@ import spock.lang.PendingFeature
 
 @Property(name = "spec.name", value = "CacheSpec")
 @Property(name = "redis.caches.test.enabled", value = StringUtils.TRUE)
-class CacheSpec extends BaseCacheSpecification implements TestPropertyProvider{
-
-    @Override
-    Map<String, String> getProperties() {
-        return AbstractRedisContainerSpec.getProperties();
-    }
+class CacheSpec extends BaseCacheSpecification {
 
     @Inject
     @Client("/")

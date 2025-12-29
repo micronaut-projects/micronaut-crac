@@ -5,13 +5,15 @@ import io.micronaut.core.util.StringUtils
 import io.micronaut.crac.resources.redis.CracRedisConfiguration
 import io.micronaut.crac.resources.redis.RedisCacheResource
 import io.micronaut.crac.resources.redis.RedisNamedConfigResource
+import io.micronaut.crac.testcontainers.Redis
 import io.micronaut.test.support.TestPropertyProvider
+import spock.lang.Specification
 
-class CracRedisConfigurationSpec extends AbstractRedisContainerSpec implements TestPropertyProvider {
+class CracRedisConfigurationSpec extends Specification implements TestPropertyProvider {
 
     @Override
     Map<String, String> getProperties() {
-        return AbstractRedisContainerSpec.getProperties()
+        return Redis.getProperties()
     }
 
     void "Redis CRaC enabled by default"() {

@@ -10,12 +10,7 @@ import org.slf4j.LoggerFactory
 
 @Property(name = "spec.name", value = "RedisStatefulConnectionSpec")
 @Property(name = "redis.cache.enabled", value = StringUtils.TRUE)
-class RedisStatefulConnectionSpec extends BaseCacheSpecification implements TestPropertyProvider{
-
-    @Override
-    Map<String, String> getProperties() {
-        return AbstractRedisContainerSpec.getProperties();
-    }
+class RedisStatefulConnectionSpec extends BaseCacheSpecification {
 
     @Inject
     StatefulRedisConnection<String, String> connection;

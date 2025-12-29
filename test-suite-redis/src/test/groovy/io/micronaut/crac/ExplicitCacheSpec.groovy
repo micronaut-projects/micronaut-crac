@@ -14,13 +14,7 @@ import org.slf4j.LoggerFactory
 
 @Property(name = "spec.name", value = "ExplicitCacheSpec")
 @Property(name = "redis.caches.test.enabled", value = StringUtils.TRUE)
-class ExplicitCacheSpec extends BaseCacheSpecification implements TestPropertyProvider{
-
-    @Override
-    Map<String, String> getProperties() {
-        return AbstractRedisContainerSpec.getProperties();
-    }
-
+class ExplicitCacheSpec extends BaseCacheSpecification {
     @Inject
     CacheService cacheService
 
