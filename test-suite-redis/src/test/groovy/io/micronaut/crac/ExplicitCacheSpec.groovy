@@ -6,7 +6,6 @@ import io.micronaut.context.annotation.Property
 import io.micronaut.context.annotation.Requires
 import io.micronaut.core.util.StringUtils
 import io.micronaut.runtime.context.scope.Refreshable
-import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import jakarta.inject.Named
 import jakarta.inject.Singleton

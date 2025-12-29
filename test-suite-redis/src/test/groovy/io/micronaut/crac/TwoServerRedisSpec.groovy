@@ -4,7 +4,6 @@ import ch.qos.logback.classic.Logger
 import io.lettuce.core.api.StatefulRedisConnection
 import io.micronaut.context.annotation.Property
 import io.micronaut.inject.qualifiers.Qualifiers
-import io.micronaut.test.support.TestPropertyProvider
 import jakarta.inject.Inject
 import jakarta.inject.Named
 import org.slf4j.LoggerFactory
