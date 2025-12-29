@@ -14,7 +14,6 @@ import org.slf4j.LoggerFactory
 @Property(name = "spec.name", value = "ExplicitCacheSpec")
 @Property(name = "redis.caches.test.enabled", value = StringUtils.TRUE)
 class ExplicitCacheSpec extends BaseCacheSpecification {
-
     @Inject
     CacheService cacheService
 

@@ -33,5 +33,4 @@ micronautBuild {
     importMicronautCatalog("micronaut-redis")
     importMicronautCatalog("micronaut-serde")
     importMicronautCatalog("micronaut-sql")
-    importMicronautCatalog("micronaut-test-resources")
 }

@@ -11,7 +11,6 @@ import org.slf4j.LoggerFactory
 @Property(name = "spec.name", value = "BothRedisConnectionSpec")
 @Property(name = "redis.cache.enabled", value = StringUtils.TRUE)
 class BothRedisConnectionSpec extends BaseCacheSpecification {
-
     @Inject
     StatefulRedisPubSubConnection<String, String> pubsub;
 

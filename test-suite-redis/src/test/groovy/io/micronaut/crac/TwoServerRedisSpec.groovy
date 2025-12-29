@@ -12,7 +12,6 @@ import org.slf4j.LoggerFactory
 @Property(name = "redis.servers.pub.uri", value = '${redis.uri}')
 @Property(name = "redis.servers.sub.uri", value = '${redis.uri}')
 class TwoServerRedisSpec extends BaseCacheSpecification {
-
     @Inject
     @Named("pub")
     StatefulRedisConnection<String, String> pub;
