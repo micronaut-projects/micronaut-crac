@@ -7,7 +7,7 @@ micronaut-gradle-plugin = "5.0.0-M1"
 micronaut-platform = "5.0.0-RC1"
 micronaut-redis = "7.0.0"
 micronaut-serialization = "3.0.0"
-micronaut-sql = "7.0.0-RC1"
+micronaut-sql = "7.0.1"
 managed-crac = "1.5.0"
 managed-testcontainers-redis = "1.6.4"
 
