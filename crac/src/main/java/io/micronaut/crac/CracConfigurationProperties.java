@@ -68,6 +68,7 @@ public class CracConfigurationProperties implements CracConfiguration {
     /**
      * @return Whether to refresh beans prior to taking a checkpoint.
      */
+    @Override
     public boolean isRefreshBeans() {
         return refreshBeans;
     }
