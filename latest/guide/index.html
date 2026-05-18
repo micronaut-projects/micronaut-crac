@@ -15,7 +15,7 @@
     <script>hljs.initHighlightingOnLoad();</script>
     <link rel="stylesheet" href="../css/multi-language-sample.css"/>
     <script src="../js/docs.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/1.5.13/clipboard.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     <script type="text/javascript">
         function addJsClass(el) {
             var classes = document.body.className.split(" ");
@@ -23,7 +23,9 @@
             document.body.className = classes.join(" ");
         }
     </script>
-
+    <style type="text/css">
+        .lang-java { display: block }; .lang-python { display: block }; .lang-kotlin { display: block }; .lang-groovy { display: block }; 
+    </style>
 </head>
 
 <body class="body" id="docs" onload="addJsClass();" onhashchange="highlightMenu()">
@@ -139,13 +141,13 @@
         <h1>Micronaut CRaC</h1>
         <p></p>
         <p>Adds support for CRaC (Coordinated Restore at Checkpoint) to the Micronaut Framework.</p>
-        <p><strong>Version:</strong> 2.7.0 </p>
+        <p><strong>Version:</strong> 3.0.0 </p>
     </div>
     
 <h1 id="introduction"><a class="anchor" href="#introduction"></a>1 Introduction</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/introduction.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/introduction.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -158,7 +160,7 @@
 <h1 id="releaseHistory"><a class="anchor" href="#releaseHistory"></a>2 Release History</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/releaseHistory.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/releaseHistory.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -174,7 +176,7 @@
 <h1 id="installation"><a class="anchor" href="#installation"></a>3 Installation</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/installation.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/installation.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -197,13 +199,14 @@
     &lt;artifactId&gt;micronaut-crac&lt;/artifactId&gt;
 &lt;/dependency&gt;</code></pre>
 </div>
-</div></p>
+</div>
+</p>
 </div>
 
 <h1 id="resource"><a class="anchor" href="#resource"></a>4 CRaC Resources</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/resource.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/resource.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -214,7 +217,7 @@
 <h2 id="datasource"><a class="anchor" href="#datasource"></a>4.1 DataSources</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/resource/datasource.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/resource/datasource.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -284,7 +287,7 @@
 <h2 id="redis"><a class="anchor" href="#redis"></a>4.2 Redis</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/resource/redis.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/resource/redis.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -378,7 +381,7 @@ crac.redis.connection-enabled=false</code></pre>
 <h2 id="custom"><a class="anchor" href="#custom"></a>4.3 Custom CRaC Resources</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/resource/custom.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/resource/custom.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -397,7 +400,7 @@ crac.redis.connection-enabled=false</code></pre>
 <h1 id="refresh"><a class="anchor" href="#refresh"></a>5 Refresh scope</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/refresh.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/refresh.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -413,7 +416,7 @@ crac.redis.connection-enabled=false</code></pre>
 <h1 id="events"><a class="anchor" href="#events"></a>6 Events</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/events.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/events.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -430,7 +433,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <h1 id="context"><a class="anchor" href="#context"></a>7 Context Provider</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/context.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/context.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -443,7 +446,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <h1 id="docker"><a class="anchor" href="#docker"></a>8 Docker Support</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/docker.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/docker.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -456,7 +459,7 @@ These events contain the <code>java.time.Instant</code> that the action complete
 <h1 id="testing"><a class="anchor" href="#testing"></a>9 Testing</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/testing.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/testing.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -490,6 +493,22 @@ void testClient() {
 <div class="listingblock multi-language-sample">
 <div class="title">Lazily get an HttpClient in a test</div>
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
+lateinit var server: EmbeddedServer // <b class="conum">(1)</b>
+
+val client by lazy {
+    server.applicationContext.createBean(HttpClient::class.java, server.url) // <b class="conum">(2)</b>
+}
+
+@Test
+fun testClient() {
+    assertEquals("ok", client.toBlocking().retrieve("/eager")) // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Inject
 EmbeddedServer server // <b class="conum">(1)</b>
 
@@ -501,22 +520,6 @@ HttpClient clientSupplier() {
 void 'test client'() {
     expect:
     clientSupplier().toBlocking().retrieve("/eager") == "ok" // <b class="conum">(3)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="title">Lazily get an HttpClient in a test</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
-lateinit var server: EmbeddedServer // <b class="conum">(1)</b>
-
-val client by lazy {
-    server.applicationContext.createBean(HttpClient::class.java, server.url) // <b class="conum">(2)</b>
-}
-
-@Test
-fun testClient() {
-    assertEquals("ok", client.toBlocking().retrieve("/eager")) // <b class="conum">(3)</b>
 }</code></pre>
 </div>
 </div>
@@ -540,7 +543,7 @@ fun testClient() {
 <h2 id="disableEager"><a class="anchor" href="#disableEager"></a>9.1 Disable Eager Singleton Initialization</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/testing/disableEager.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/testing/disableEager.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -574,6 +577,22 @@ void testClient() {
 <div class="listingblock multi-language-sample">
 <div class="title">Lazily get an HttpClient in a test</div>
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
+lateinit var server: EmbeddedServer // <b class="conum">(1)</b>
+
+val client by lazy {
+    server.applicationContext.createBean(HttpClient::class.java, server.url) // <b class="conum">(2)</b>
+}
+
+@Test
+fun testClient() {
+    assertEquals("ok", client.toBlocking().retrieve("/eager")) // <b class="conum">(3)</b>
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Lazily get an HttpClient in a test</div>
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Inject
 EmbeddedServer server // <b class="conum">(1)</b>
 
@@ -585,22 +604,6 @@ HttpClient clientSupplier() {
 void 'test client'() {
     expect:
     clientSupplier().toBlocking().retrieve("/eager") == "ok" // <b class="conum">(3)</b>
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="title">Lazily get an HttpClient in a test</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
-lateinit var server: EmbeddedServer // <b class="conum">(1)</b>
-
-val client by lazy {
-    server.applicationContext.createBean(HttpClient::class.java, server.url) // <b class="conum">(2)</b>
-}
-
-@Test
-fun testClient() {
-    assertEquals("ok", client.toBlocking().retrieve("/eager")) // <b class="conum">(3)</b>
 }</code></pre>
 </div>
 </div>
@@ -624,7 +627,7 @@ fun testClient() {
 <h2 id="checkpointSimulator"><a class="anchor" href="#checkpointSimulator"></a>9.2 Using a CheckpointSimulator</h2>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/testing/checkpointSimulator.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/testing/checkpointSimulator.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -664,6 +667,25 @@ class ResourceBean {
 <div class="listingblock multi-language-sample">
 <div class="title">A resource bean</div>
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Singleton
+class ResourceBean {
+
+    var isRunning = true // <b class="conum">(1)</b>
+        private set
+
+    fun stop() {
+        isRunning = false
+    }
+
+    fun start() {
+        isRunning = true
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">A resource bean</div>
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Singleton
  class ResourceBean {
 
@@ -679,25 +701,6 @@ class ResourceBean {
 
     void start() {
         this.running = true
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="title">A resource bean</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Singleton
-class ResourceBean {
-
-    var isRunning = true // <b class="conum">(1)</b>
-        private set
-
-    fun stop() {
-        isRunning = false
-    }
-
-    fun start() {
-        isRunning = true
     }
 }</code></pre>
 </div>
@@ -740,6 +743,24 @@ class ResourceBeanResource implements OrderedResource { // <b class="conum">(1)<
 <div class="listingblock multi-language-sample">
 <div class="title">An <code>OrderedResouce</code> for the bean</div>
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Singleton
+class ResourceBeanResource(private val resourceBean: ResourceBean) : OrderedResource { // <b class="conum">(1)</b>
+
+    @Throws(Exception::class)
+    override fun beforeCheckpoint(context: Context&lt;out Resource?&gt;?) { // <b class="conum">(2)</b>
+        resourceBean.stop()
+    }
+
+    @Throws(Exception::class)
+    override fun afterRestore(context: Context&lt;out Resource?&gt;?) { // <b class="conum">(3)</b>
+        resourceBean.start()
+    }
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">An <code>OrderedResouce</code> for the bean</div>
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Singleton
  class ResourceBeanResource implements OrderedResource { // <b class="conum">(1)</b>
 
@@ -756,24 +777,6 @@ class ResourceBeanResource implements OrderedResource { // <b class="conum">(1)<
 
     @Override
     void afterRestore(Context&lt;? extends Resource&gt; context) throws Exception { // <b class="conum">(3)</b>
-        resourceBean.start()
-    }
-}</code></pre>
-</div>
-</div>
-<div class="listingblock multi-language-sample">
-<div class="title">An <code>OrderedResouce</code> for the bean</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@Singleton
-class ResourceBeanResource(private val resourceBean: ResourceBean) : OrderedResource { // <b class="conum">(1)</b>
-
-    @Throws(Exception::class)
-    override fun beforeCheckpoint(context: Context&lt;out Resource?&gt;?) { // <b class="conum">(2)</b>
-        resourceBean.stop()
-    }
-
-    @Throws(Exception::class)
-    override fun afterRestore(context: Context&lt;out Resource?&gt;?) { // <b class="conum">(3)</b>
         resourceBean.start()
     }
 }</code></pre>
@@ -818,6 +821,26 @@ void testCustomOrderedResourceUsingCheckpointSimulator() {
 <div class="listingblock multi-language-sample">
 <div class="title">Using <code>CheckpointSimulator</code> in a test</div>
 <div class="content">
+<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
+lateinit var ctx: BeanContext
+
+@Test
+fun testCustomOrderedResourceUsingCheckpointSimulator() {
+    val myBean = ctx.getBean(ResourceBean::class.java)
+    val checkpointSimulator = ctx.getBean(CheckpointSimulator::class.java) // <b class="conum">(1)</b>
+    Assertions.assertTrue(myBean.isRunning)
+
+    checkpointSimulator.runBeforeCheckpoint() // <b class="conum">(2)</b>
+    Assertions.assertFalse(myBean.isRunning)
+
+    checkpointSimulator.runAfterRestore() // <b class="conum">(3)</b>
+    Assertions.assertTrue(myBean.isRunning)
+}</code></pre>
+</div>
+</div>
+<div class="listingblock multi-language-sample">
+<div class="title">Using <code>CheckpointSimulator</code> in a test</div>
+<div class="content">
 <pre class="highlightjs highlight"><code class="language-groovy hljs" data-lang="groovy">@Inject
 BeanContext ctx
 
@@ -841,26 +864,6 @@ void "test custom OrderedResource implementation using the CheckpointSimulator"(
 }</code></pre>
 </div>
 </div>
-<div class="listingblock multi-language-sample">
-<div class="title">Using <code>CheckpointSimulator</code> in a test</div>
-<div class="content">
-<pre class="highlightjs highlight"><code class="language-kotlin hljs" data-lang="kotlin">@field:Inject
-lateinit var ctx: BeanContext
-
-@Test
-fun testCustomOrderedResourceUsingCheckpointSimulator() {
-    val myBean = ctx.getBean(ResourceBean::class.java)
-    val checkpointSimulator = ctx.getBean(CheckpointSimulator::class.java) // <b class="conum">(1)</b>
-    Assertions.assertTrue(myBean.isRunning)
-
-    checkpointSimulator.runBeforeCheckpoint() // <b class="conum">(2)</b>
-    Assertions.assertFalse(myBean.isRunning)
-
-    checkpointSimulator.runAfterRestore() // <b class="conum">(3)</b>
-    Assertions.assertTrue(myBean.isRunning)
-}</code></pre>
-</div>
-</div>
 <div class="colist arabic">
 <table>
 <tr>
@@ -881,7 +884,7 @@ fun testCustomOrderedResourceUsingCheckpointSimulator() {
 <h1 id="info"><a class="anchor" href="#info"></a>10 Info sources</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/info.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/info.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -897,7 +900,7 @@ fun testCustomOrderedResourceUsingCheckpointSimulator() {
 <h1 id="cracGuides"><a class="anchor" href="#cracGuides"></a>11 Guides</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/cracGuides.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/cracGuides.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
@@ -913,7 +916,7 @@ fun testCustomOrderedResourceUsingCheckpointSimulator() {
 <h1 id="repository"><a class="anchor" href="#repository"></a>12 Repository</h1>
 
 <div class='contribute-btn'>
-    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/2.7.x/src/main/docs/guide/repository.adoc"'>
+    <button type='button' class='btn btn-default' onclick='window.location.href="https://github.com/micronaut-projects/micronaut-crac/edit/3.0.x/src/main/docs/guide/repository.adoc"'>
         <i class='fa fa-pencil-square-o'></i> Improve this doc
     </button>
 </div>
