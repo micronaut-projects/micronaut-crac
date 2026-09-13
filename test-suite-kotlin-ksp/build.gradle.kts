@@ -5,6 +5,7 @@ plugins {
 
 dependencies {
     ksp(mn.micronaut.inject.kotlin)
+    kspTest(mn.micronaut.inject.kotlin)
 
     testImplementation(projects.micronautCrac)
     testImplementation(mnTest.micronaut.test.junit5)
