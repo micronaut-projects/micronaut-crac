@@ -1,4 +1,4 @@
-package io.micronaut.crac
+package io.micronaut.crac.docs
 
 import io.micronaut.context.DefaultApplicationContextBuilder
 import io.micronaut.context.annotation.Property

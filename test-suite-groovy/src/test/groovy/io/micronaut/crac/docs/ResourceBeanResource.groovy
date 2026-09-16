@@ -1,6 +1,7 @@
-package io.micronaut.crac
+package io.micronaut.crac.docs
 
 import io.micronaut.context.annotation.Requires
+import io.micronaut.crac.OrderedResource
 import jakarta.inject.Singleton
 import org.crac.Context
 import org.crac.Resource
@@ -8,7 +9,7 @@ import org.crac.Resource
 @Requires(property = "spec.name", value = OrderedResourceCheckpointSimulatorTest.SPEC_NAME)
 //tag::resource[]
 @Singleton
- class ResourceBeanResource implements OrderedResource { // <1>
+class ResourceBeanResource implements OrderedResource { // <1>
 
     private final ResourceBean resourceBean
 
