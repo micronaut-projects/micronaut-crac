@@ -1,17 +1,13 @@
 from functools import cached_property
 from typing import Annotated
 
-import java
 from jakarta.inject import Inject
 from micronaut.context.annotation import Property, Requires
 from micronaut.http.annotation import Controller, Get
+from micronaut.http.client import HttpClient
 from micronaut.runtime.server import EmbeddedServer
 from micronaut.test.extensions.junit5.annotation import MicronautTest
 from org.junit.jupiter.api import Test
-
-# TODO(python): the imported micronaut.http.client.HttpClient shim cannot be used as a runtime type argument of
-# ApplicationContext.createBean ("TypeError: invalid instantiation of foreign object"), only a java.type(...) alias can
-HttpClient = java.type("io.micronaut.http.client.HttpClient")
 
 
 @MicronautTest
