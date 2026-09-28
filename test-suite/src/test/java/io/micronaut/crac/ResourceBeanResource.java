@@ -1,6 +1,7 @@
 package io.micronaut.crac;
 
 import io.micronaut.context.annotation.Requires;
+import io.micronaut.crac.OrderedResource;
 import jakarta.inject.Singleton;
 import org.crac.Context;
 import org.crac.Resource;
