@@ -4,19 +4,19 @@ The simulator allows you to synthesise these two calls (before checkpoint and af
 
 The following example demonstrates how to write and test custom OrderedResource implementations. Here it is doing nothing for sake of the example, but in reality it would have a socket or file that needs to be closed, or something along those lines.
 
-snippet::io.micronaut.crac.docs.ResourceBean[tags=bean,indent=0,title=A resource bean]
+snippet::io.micronaut.crac.ResourceBean[tags=bean,indent=0,title=A resource bean]
 
 <1> A simulated state for the bean
 
 An OrderedResource which will stop the ResourceBean before a checkpoint and start it again after a restore.
 
-snippet::io.micronaut.crac.docs.ResourceBeanResource[tags=resource,indent=0,title=An `OrderedResouce` for the bean]
+snippet::io.micronaut.crac.ResourceBeanResource[tags=resource,indent=0,title=An `OrderedResouce` for the bean]
 
 <1> Implement the `OrderedResource` interface
 <2> Override to stop the resource before a checkpoint
 <3> Override to restart it again after a restore
 
-snippet::io.micronaut.crac.docs.OrderedResourceCheckpointSimulatorTest[tags=test,indent=0,title=Using `CheckpointSimulator` in a test]
+snippet::io.micronaut.crac.OrderedResourceCheckpointSimulatorTest[tags=test,indent=0,title=Using `CheckpointSimulator` in a test]
 
 <1> Obtain the `CheckpointSimulator` from the running environment
 <2> Emulate the checkpoint and assert the bean is no longer running

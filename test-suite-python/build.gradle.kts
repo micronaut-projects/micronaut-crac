@@ -14,7 +14,3 @@ dependencies {
 
     testRuntimeOnly("org.junit.jupiter:junit-jupiter-engine")
 }
-
-tasks.withType<Test>().configureEach {
-    systemProperty("micronaut.python.pool.enabled", "false")
-}

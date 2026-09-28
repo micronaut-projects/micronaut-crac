@@ -1,4 +1,4 @@
-package io.micronaut.crac.docs;
+package io.micronaut.crac;
 
 import io.micronaut.context.annotation.Requires;
 import jakarta.inject.Singleton;

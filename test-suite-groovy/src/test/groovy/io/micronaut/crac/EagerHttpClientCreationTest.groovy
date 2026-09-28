@@ -1,4 +1,4 @@
-package io.micronaut.crac.docs
+package io.micronaut.crac
 
 import groovy.transform.Memoized
 import io.micronaut.context.DefaultApplicationContextBuilder
